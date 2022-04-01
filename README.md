@@ -76,9 +76,10 @@ An app for sharing songs with others.
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/wireframe-ListenUp.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
+See Digital Wireframe above.
 
 ### [BONUS] Interactive Prototype
 
