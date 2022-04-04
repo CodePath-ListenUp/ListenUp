@@ -80,7 +80,7 @@ An app for sharing songs with others.
 See Digital Wireframe above.
 
 ### [BONUS] Interactive Prototype
-<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=200>
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=320>
 
 ## Schema 
 [This section will be completed in Unit 9]
