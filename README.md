@@ -53,7 +53,6 @@ An app for sharing songs with others.
     * User can view the songs they've liked
 * **Safari View Controller**
     * User can open the song in other streaming services
-   
 
 ### 3. Navigation
 
@@ -75,13 +74,13 @@ An app for sharing songs with others.
     * Safari View Controller
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/wireframe-ListenUp.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 See Digital Wireframe above.
 
 ### [BONUS] Interactive Prototype
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=200>
 
 ## Schema 
 [This section will be completed in Unit 9]
