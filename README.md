@@ -82,11 +82,75 @@ See Digital Wireframe above.
 ### [BONUS] Interactive Prototype
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=320>
 
-## Schema 
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
-### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+# Schema
+
+### User
+| propertyName   | Type   | Description |
+| - | - | - |
+| submittedPosts | [Post] | Array of posts that the user has submitted |
+| upvotedPosts   | [Post] | Array of posts that the user has upvoted |
+| favoritedPosts | [Post] | Array of posts that the user has favorited; favoriting a post is more significant than upvoting a post (save vs upvote on reddit, for example) |
+| downvotedPosts | [Post] | Array of posts that the user has downvoted |
+| username       | String | username for this user (managed by Parse?) |
+| password       | String | password for this user (managed by Parse?) |
+
+
+### Post
+| propertyName | Type | Description |
+|-|-|-|
+| id | Int | The ID of the post|
+| song | Song | The song will be stored in the SongResult object (Description below) |
+| songLink | String URL | SongWhip Link given by API |
+| upvotes | Int | Number of upvotes for the post |
+| downvotes | Int | Number of downvotes for the post |
+| calculatedScore | Int | Difference between upvotes and downvotes |
+| createdAt | Date | Swift Date describing time of creation of post |
+| createdBy | User | User that created the post
+
+# Networking
+
+* Log-in & Sign up
+    - (Create/POST) Create a new profile
+    - (Read/GET) Read user credentials and find a match
+* Feed
+    - (Read/GET) Query all posts with the highest calculated score as a sorter
+    - (Create/POST) Create a new upvote
+    - (Delete) Delete a previous upvote
+    - (Create/POST) Create a new downvote
+    - (Delete) Delete a previous downvote
+* Create Post
+    - (Read/GET) Search for a song using the iTunes Search API
+    - (Create/POST) Create a new post
+* Favorites
+    - (Read/GET) Query all posts which have been favorited by the user
+
+## Existing API Endpoints
+
+We'll also be creating the following classes to manage our API responses from the iTunes Search API.
+
+Base URL: "https://itunes.apple.com/"
+
+GET: "/search"
+- Options
+    - term -> search term given by user
+    - entity=song
+
+### SongResult
+| propertyName | Type | Description |
+|-|-|-|
+| artistName | String | Name of the artist |
+| trackName | String | Name of the track |
+| collectionName | String | Name of the collection |
+| trackCensoredName | String | Name of the track (non-explicit) |
+| collectionCensoredName | String | Name of the collection (non-explicit) |
+| previewUrl | String URL | Link to the 30-second track preview |
+| artworkUrl[size] | String URL | Link to the track artwork |
+| releaseDate | Date | Release date of the tack |
+| primaryGenreName | String | The specific genre the track belongs to |
+| trackName | String | Name of the track |
+
+### iTunesAPIResponse
+| propertyName | Type | Description |
+|-|-|-|
+| resultsCount | Int | Number of results returned by API |
+| results | [SongResult] |Array of SongResult objects |
