@@ -74,13 +74,13 @@ An app for sharing songs with others.
     * Safari View Controller
 
 ## Wireframes
-<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/wireframe-ListenUp.png" width=600>
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/wireframe-ListenUp.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 See Digital Wireframe above.
 
 ### [BONUS] Interactive Prototype
-<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=320>
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/interactive-wireframe-ListenUp.gif" width=320>
 
 ## Schema
 
