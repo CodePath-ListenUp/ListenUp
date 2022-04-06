@@ -113,6 +113,27 @@ See Digital Wireframe above.
     - (Read/GET) Read user credentials and find a match
 * Feed
     - (Read/GET) Query all posts with the highest calculated score as a sorter
+       ```
+        let query = PFQuery(className: "Post")
+        query.includeKeys(["id","song","songLink","upvotes","downvotes","calculatedScore","createdAt","createdBy"])
+        query.limit = numberOfPostsLoaded
+        query.addDescendingOrder("calculatedScore")
+
+        query.findObjectsInBackground { posts, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            else {
+                guard let posts = posts else {
+                    print("An unknown error occurred.")
+                    return
+                }
+
+                // Do something with posts...
+            }
+        }
+       ```
     - (Create/POST) Create a new upvote
     - (Delete) Delete a previous upvote
     - (Create/POST) Create a new downvote
