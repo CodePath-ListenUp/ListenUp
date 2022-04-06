@@ -82,9 +82,9 @@ See Digital Wireframe above.
 ### [BONUS] Interactive Prototype
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/interactive-wireframe-ListenUp.gif" width=320>
 
-# Schema
+## Schema
 
-### User
+#### User
 | propertyName   | Type   | Description |
 | - | - | - |
 | submittedPosts | [Post] | Array of posts that the user has submitted |
@@ -94,8 +94,7 @@ See Digital Wireframe above.
 | username       | String | username for this user (managed by Parse?) |
 | password       | String | password for this user (managed by Parse?) |
 
-
-### Post
+#### Post
 | propertyName | Type | Description |
 |-|-|-|
 | id | Int | The ID of the post|
@@ -107,7 +106,7 @@ See Digital Wireframe above.
 | createdAt | Date | Swift Date describing time of creation of post |
 | createdBy | User | User that created the post
 
-# Networking
+## Networking
 
 * Log-in & Sign up
     - (Create/POST) Create a new profile
@@ -124,7 +123,7 @@ See Digital Wireframe above.
 * Favorites
     - (Read/GET) Query all posts which have been favorited by the user
 
-## Existing API Endpoints
+### Existing API Endpoints
 
 We'll also be creating the following classes to manage our API responses from the iTunes Search API.
 
@@ -135,7 +134,7 @@ GET: "/search"
     - term -> search term given by user
     - entity=song
 
-### SongResult
+#### SongResult
 | propertyName | Type | Description |
 |-|-|-|
 | artistName | String | Name of the artist |
@@ -149,7 +148,7 @@ GET: "/search"
 | primaryGenreName | String | The specific genre the track belongs to |
 | trackName | String | Name of the track |
 
-### iTunesAPIResponse
+#### iTunesAPIResponse
 | propertyName | Type | Description |
 |-|-|-|
 | resultsCount | Int | Number of results returned by API |
