@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */; };
+		A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */; };
+		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
 		D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3127FE5FBE0096F24D /* AppDelegate.swift */; };
 		D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */; };
 		D042BC3627FE5FBE0096F24D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3527FE5FBE0096F24D /* ViewController.swift */; };
@@ -17,7 +20,6 @@
 		D042BC5327FE5FC30096F24D /* ListenUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */; };
 		D042BC5527FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */; };
 		D042BC6227FE5FE50096F24D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
-		D042BC6527FE65270096F24D /* ParseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D042BC6427FE65270096F24D /* ParseSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.debug.xcconfig"; sourceTree = "<group>"; };
+		30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.release.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.release.xcconfig"; sourceTree = "<group>"; };
+		5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.release.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.release.xcconfig"; sourceTree = "<group>"; };
+		5DA78C8F6E88A1F959465753 /* Pods-ListenUp-ListenUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.release.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D042BC2E27FE5FBE0096F24D /* ListenUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListenUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D042BC3127FE5FBE0096F24D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +62,7 @@
 		D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITests.swift; sourceTree = "<group>"; };
 		D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D042BC6127FE5FE50096F24D /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D042BC6527FE65270096F24D /* ParseSwift in Frameworks */,
+				B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +100,8 @@
 				D042BC4727FE5FC30096F24D /* ListenUpTests */,
 				D042BC5127FE5FC30096F24D /* ListenUpUITests */,
 				D042BC2F27FE5FBE0096F24D /* Products */,
+				D3EAA543291C1A93A474FED7 /* Pods */,
+				F1B5C04C88B8AF2C05765D46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +147,30 @@
 			path = ListenUpUITests;
 			sourceTree = "<group>";
 		};
+		D3EAA543291C1A93A474FED7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */,
+				30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */,
+				92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */,
+				5DA78C8F6E88A1F959465753 /* Pods-ListenUp-ListenUpUITests.release.xcconfig */,
+				9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */,
+				5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F1B5C04C88B8AF2C05765D46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */,
+				F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */,
+				B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,18 +178,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D042BC5827FE5FC30096F24D /* Build configuration list for PBXNativeTarget "ListenUp" */;
 			buildPhases = (
+				B940EEEE5AF6E9F34E971BE4 /* [CP] Check Pods Manifest.lock */,
 				D042BC2A27FE5FBE0096F24D /* Sources */,
 				D042BC2B27FE5FBE0096F24D /* Frameworks */,
 				D042BC2C27FE5FBE0096F24D /* Resources */,
+				5DCD8DDA825CF9B2C5F4DD97 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ListenUp;
-			packageProductDependencies = (
-				D042BC6427FE65270096F24D /* ParseSwift */,
-			);
 			productName = ListenUp;
 			productReference = D042BC2E27FE5FBE0096F24D /* ListenUp.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D042BC5B27FE5FC30096F24D /* Build configuration list for PBXNativeTarget "ListenUpTests" */;
 			buildPhases = (
+				87FF01BBB9972EBE1D21EA99 /* [CP] Check Pods Manifest.lock */,
 				D042BC4027FE5FC20096F24D /* Sources */,
 				D042BC4127FE5FC20096F24D /* Frameworks */,
 				D042BC4227FE5FC20096F24D /* Resources */,
@@ -177,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D042BC5E27FE5FC30096F24D /* Build configuration list for PBXNativeTarget "ListenUpUITests" */;
 			buildPhases = (
+				C45845F7915B23CC338E0FAD /* [CP] Check Pods Manifest.lock */,
 				D042BC4A27FE5FC30096F24D /* Sources */,
 				D042BC4B27FE5FC30096F24D /* Frameworks */,
 				D042BC4C27FE5FC30096F24D /* Resources */,
+				E8900B59E8C971CC69D66718 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,9 +264,6 @@
 				Base,
 			);
 			mainGroup = D042BC2527FE5FBD0096F24D;
-			packageReferences = (
-				D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */,
-			);
 			productRefGroup = D042BC2F27FE5FBE0096F24D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +301,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5DCD8DDA825CF9B2C5F4DD97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ListenUp/Pods-ListenUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ListenUp/Pods-ListenUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ListenUp/Pods-ListenUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87FF01BBB9972EBE1D21EA99 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ListenUpTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B940EEEE5AF6E9F34E971BE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ListenUp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C45845F7915B23CC338E0FAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ListenUp-ListenUpUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8900B59E8C971CC69D66718 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D042BC2A27FE5FBE0096F24D /* Sources */ = {
@@ -444,6 +585,7 @@
 		};
 		D042BC5927FE5FC30096F24D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -472,6 +614,7 @@
 		};
 		D042BC5A27FE5FC30096F24D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -500,6 +643,7 @@
 		};
 		D042BC5C27FE5FC30096F24D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -520,6 +664,7 @@
 		};
 		D042BC5D27FE5FC30096F24D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +685,7 @@
 		};
 		D042BC5F27FE5FC30096F24D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -558,6 +704,7 @@
 		};
 		D042BC6027FE5FC30096F24D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DA78C8F6E88A1F959465753 /* Pods-ListenUp-ListenUpUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -614,25 +761,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/parse-community/Parse-Swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D042BC6427FE65270096F24D /* ParseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */;
-			productName = ParseSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D042BC2627FE5FBD0096F24D /* Project object */;
 }
