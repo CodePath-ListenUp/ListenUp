@@ -5,6 +5,7 @@
 //  Created by Tyler Dakin on 4/6/22.
 //
 
+import ParseSwift
 import UIKit
 
 @main
@@ -13,7 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        guard let parseServerURLFromString: URL = URL(string: parseServerURL) else {
+            fatalError("parseServerURL is not a valid URL")
+        }
+        let parseConfig = ParseConfiguration(applicationId: parseAppID, clientKey: parseClientKey, serverURL: parseServerURLFromString)
+        ParseSwift.initialize(configuration: parseConfig)
+        
         return true
     }
 

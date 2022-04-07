@@ -17,6 +17,7 @@
 		D042BC5327FE5FC30096F24D /* ListenUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */; };
 		D042BC5527FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */; };
 		D042BC6227FE5FE50096F24D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
+		D042BC6527FE65270096F24D /* ParseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D042BC6427FE65270096F24D /* ParseSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D042BC6527FE65270096F24D /* ParseSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,9 @@
 			dependencies = (
 			);
 			name = ListenUp;
+			packageProductDependencies = (
+				D042BC6427FE65270096F24D /* ParseSwift */,
+			);
 			productName = ListenUp;
 			productReference = D042BC2E27FE5FBE0096F24D /* ListenUp.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +223,9 @@
 				Base,
 			);
 			mainGroup = D042BC2527FE5FBD0096F24D;
+			packageReferences = (
+				D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */,
+			);
 			productRefGroup = D042BC2F27FE5FBE0096F24D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -606,6 +614,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/parse-community/Parse-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D042BC6427FE65270096F24D /* ParseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D042BC6327FE65270096F24D /* XCRemoteSwiftPackageReference "Parse-Swift" */;
+			productName = ParseSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D042BC2627FE5FBD0096F24D /* Project object */;
 }
