@@ -5,7 +5,7 @@
 //  Created by Tyler Dakin on 4/6/22.
 //
 
-import ParseSwift
+import Parse
 import UIKit
 
 @main
@@ -18,8 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let parseServerURLFromString: URL = URL(string: parseServerURL) else {
             fatalError("parseServerURL is not a valid URL")
         }
-        let parseConfig = ParseConfiguration(applicationId: parseAppID, clientKey: parseClientKey, serverURL: parseServerURLFromString)
-        ParseSwift.initialize(configuration: parseConfig)
+        let parseConfig = ParseClientConfiguration {
+            $0.applicationId = parseAppID
+            $0.clientKey = parseClientKey
+            $0.server = parseServerURL
+        }
+        Parse.initialize(with: parseConfig)
         
         return true
     }
