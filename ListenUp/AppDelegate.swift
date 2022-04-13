@@ -15,9 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        guard let parseServerURLFromString: URL = URL(string: parseServerURL) else {
-            fatalError("parseServerURL is not a valid URL")
-        }
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = parseAppID
             $0.clientKey = parseClientKey

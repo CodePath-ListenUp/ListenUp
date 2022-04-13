@@ -12,7 +12,7 @@
 		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
 		D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3127FE5FBE0096F24D /* AppDelegate.swift */; };
 		D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */; };
-		D042BC3627FE5FBE0096F24D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3527FE5FBE0096F24D /* ViewController.swift */; };
+		D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3527FE5FBE0096F24D /* LoginViewController.swift */; };
 		D042BC3927FE5FBE0096F24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D042BC3727FE5FBE0096F24D /* Main.storyboard */; };
 		D042BC3B27FE5FC20096F24D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D042BC3A27FE5FC20096F24D /* Assets.xcassets */; };
 		D042BC3E27FE5FC20096F24D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */; };
@@ -20,6 +20,7 @@
 		D042BC5327FE5FC30096F24D /* ListenUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */; };
 		D042BC5527FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */; };
 		D042BC6227FE5FE50096F24D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
+		D076900C2807887F0019216A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900B2807887F0019216A /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 		D042BC2E27FE5FBE0096F24D /* ListenUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListenUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D042BC3127FE5FBE0096F24D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D042BC3527FE5FBE0096F24D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D042BC3527FE5FBE0096F24D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D042BC3827FE5FBE0096F24D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D042BC3A27FE5FC20096F24D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D042BC3D27FE5FC20096F24D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITests.swift; sourceTree = "<group>"; };
 		D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D042BC6127FE5FE50096F24D /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,7 +123,8 @@
 				D042BC6127FE5FE50096F24D /* Private.swift */,
 				D042BC3127FE5FBE0096F24D /* AppDelegate.swift */,
 				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
-				D042BC3527FE5FBE0096F24D /* ViewController.swift */,
+				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
+				D076900B2807887F0019216A /* FeedViewController.swift */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
 				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
 				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
@@ -157,7 +160,6 @@
 				9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */,
 				5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -410,8 +412,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D042BC3627FE5FBE0096F24D /* ViewController.swift in Sources */,
+				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
+				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
 				D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */,
 				D042BC6227FE5FE50096F24D /* Private.swift in Sources */,
 			);
@@ -591,7 +594,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
+				DEVELOPMENT_TEAM = X72S6AGP32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -620,7 +623,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
+				DEVELOPMENT_TEAM = X72S6AGP32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

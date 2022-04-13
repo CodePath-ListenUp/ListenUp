@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ParseSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,11 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        if BaseParseUser.current() != nil {
-//            let main = UIStoryboard(name: "Main", bundle: nil)
-//            let feedNavigationController = main.instantiateViewController(withIdentifier: "LoggedInNavigationController")
-//            window?.rootViewController = feedNavigationController
-        }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
