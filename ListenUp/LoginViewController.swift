@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        passwordTextField.isSecureTextEntry = true
     }
 
     @IBAction func userSubmittedDetails(_ sender: UIButton) {
@@ -27,12 +29,23 @@ class LoginViewController: UIViewController {
         let userSignedUp = sender.tag == 0
         
         guard let usernameText = usernameTextField.text, let passwordText = passwordTextField.text else {
-            print("User did not enter valid text for either user or pass")
+            print("User did not enter valid text for either username or password")
             return
         }
         
         if userSignedUp {
+            let user = PFUser()
+            user.username = usernameText
+            user.password = passwordText
             
+            user.signUpInBackground { (success, error) in
+                if success {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    print("\(user.username ?? "") signed up successfully!")
+                } else {
+                    print("Error: \(error?.localizedDescription ?? "")")
+                }
+            }
         }
         else {
             PFUser.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
@@ -43,9 +56,6 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
         }
-        
     }
-    
-
 }
 
