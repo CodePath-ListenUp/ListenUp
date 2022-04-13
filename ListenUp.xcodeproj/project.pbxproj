@@ -21,6 +21,8 @@
 		D042BC5527FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */; };
 		D042BC6227FE5FE50096F24D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
 		D076900C2807887F0019216A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900B2807887F0019216A /* FeedViewController.swift */; };
+		D076900E28078C090019216A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900D28078C090019216A /* PostTableViewCell.swift */; };
+		D0769010280798FF0019216A /* SafariWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900F280798FF0019216A /* SafariWork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D042BC6127FE5FE50096F24D /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		D076900D28078C090019216A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		D076900F280798FF0019216A /* SafariWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWork.swift; sourceTree = "<group>"; };
 		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -125,7 +129,9 @@
 				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
 				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
+				D076900D28078C090019216A /* PostTableViewCell.swift */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
+				D076900F280798FF0019216A /* SafariWork.swift */,
 				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
 				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
 				D042BC3F27FE5FC20096F24D /* Info.plist */,
@@ -416,7 +422,9 @@
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
 				D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */,
+				D0769010280798FF0019216A /* SafariWork.swift in Sources */,
 				D042BC6227FE5FE50096F24D /* Private.swift in Sources */,
+				D076900E28078C090019216A /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
