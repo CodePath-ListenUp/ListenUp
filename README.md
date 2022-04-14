@@ -174,3 +174,9 @@ GET: "/search"
 |-|-|-|
 | resultsCount | Int | Number of results returned by API |
 | results | [SongResult] |Array of SongResult objects |
+
+### Progress Tracking
+
+#### Issue #3: User can sign up and log in to the app
+
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/login-and-signup.gif" width=320>
