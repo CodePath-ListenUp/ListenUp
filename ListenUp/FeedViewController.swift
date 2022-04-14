@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SafariServices
 import UIKit
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -40,6 +41,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("user tried to open song: \((tableView.cellForRow(at: indexPath) as! PostTableViewCell).trackNameLabel!.text)")
+        
+        
+        let url = URL(string: "https://songwhip.com/dimension/organ")!
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true)
     }
     
     @objc func addPost() {
