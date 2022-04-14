@@ -19,6 +19,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.allowsSelection = false
         
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
+        ]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +35,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.trackNameLabel?.text = indexPath.row == 0 ? "Super extra long and epic title that won't be used later and even more text because I need at least 3 lines to test this" : "Track Name"
         return cell
+    }
+    
+    @objc func addPost() {
+        print("user did press add button")
     }
 }
 
