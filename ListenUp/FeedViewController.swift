@@ -17,7 +17,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
@@ -35,6 +35,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.trackNameLabel?.text = indexPath.row == 0 ? "Super extra long and epic title that won't be used later and even more text because I need at least 3 lines to test this" : "Track Name"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("user tried to open song: \((tableView.cellForRow(at: indexPath) as! PostTableViewCell).trackNameLabel!.text)")
     }
     
     @objc func addPost() {
