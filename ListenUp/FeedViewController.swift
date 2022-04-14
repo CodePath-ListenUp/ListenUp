@@ -13,6 +13,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
+    var posts: [SongResult] = []
+    
     override func viewDidLoad() {
         navigationItem.title = "Feed"
         tableView.delegate = self
@@ -23,10 +25,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
         ]
+        
+        retrieveITUNESResults(rawSearchTerm: "Dimension Altar") { results in
+            self.posts = results
+            // Can't run UI code on background thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,7 +44,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
         
-        cell.trackNameLabel?.text = indexPath.row == 0 ? "Super extra long and epic title that won't be used later and even more text because I need at least 3 lines to test this" : "Track Name"
+        let post = posts[indexPath.row]
+        cell.albumArtworkView.image = UIImage(named: "default.jpg")!
+        cell.trackNameLabel?.text = post.trackName
+        cell.artistNameLabel?.text = post.artistName
+        
+//        guard let albumArtworkData = post.artworkImageData else {
+//            return cell
+//        }
+//
+//        cell.albumArtworkView.image = UIImage(data: albumArtworkData)
+
+        
+        guard let albumArtworkURL = URL(string: post.artworkUrl100) else {
+            return cell
+        }
+        
+        cell.albumArtworkView?.load(url: albumArtworkURL)
         return cell
     }
     
@@ -42,10 +68,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.deselectRow(at: indexPath, animated: true)
         print("user tried to open song: \((tableView.cellForRow(at: indexPath) as! PostTableViewCell).trackNameLabel!.text)")
         
+        let post = posts[indexPath.row]
         
-        let url = URL(string: "https://songwhip.com/dimension/organ")!
-        let svc = SFSafariViewController(url: url)
-        present(svc, animated: true)
+        getSongwhipFromLink(linkString: post.trackViewUrl) { result in
+            let url = URL(string: result.url)!
+            let svc = SFSafariViewController(url: url)
+            DispatchQueue.main.async {
+                self.present(svc, animated: true)
+            }
+            
+        }
+        
+        
     }
     
     @objc func addPost() {

@@ -10,6 +10,9 @@
 		99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */; };
 		A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */; };
 		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
+		D017C57C2807D37200E62C7F /* iTunesAPINetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */; };
+		D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */; };
+		D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */; };
 		D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3127FE5FBE0096F24D /* AppDelegate.swift */; };
 		D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */; };
 		D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3527FE5FBE0096F24D /* LoginViewController.swift */; };
@@ -51,6 +54,9 @@
 		92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPINetworking.swift; sourceTree = "<group>"; };
+		D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromURL.swift; sourceTree = "<group>"; };
+		D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongwhipNetworking.swift; sourceTree = "<group>"; };
 		D042BC2E27FE5FBE0096F24D /* ListenUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListenUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D042BC3127FE5FBE0096F24D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
 				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
+				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
+				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
+				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
 				D076900D28078C090019216A /* PostTableViewCell.swift */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
 				D076900F280798FF0019216A /* SafariWork.swift */,
@@ -420,10 +429,13 @@
 			files = (
 				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
+				D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */,
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
 				D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */,
 				D0769010280798FF0019216A /* SafariWork.swift in Sources */,
 				D042BC6227FE5FE50096F24D /* Private.swift in Sources */,
+				D017C57C2807D37200E62C7F /* iTunesAPINetworking.swift in Sources */,
+				D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */,
 				D076900E28078C090019216A /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
