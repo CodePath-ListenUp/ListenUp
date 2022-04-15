@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Parse
 import UIKit
 
 struct iTunesAPIResponse: Codable {
@@ -14,25 +15,6 @@ struct iTunesAPIResponse: Codable {
 }
 
 struct SongResult: Codable {
-    internal init(trackName: String, artistName: String, collectionName: String, trackCensoredName: String, collectionCensoredName: String, previewUrl: String, artworkUrl100: String, releaseDate: String, primaryGenreName: String, trackViewUrl: String) {
-        self.trackName = trackName
-        self.artistName = artistName
-        self.collectionName = collectionName
-        self.trackCensoredName = trackCensoredName
-        self.collectionCensoredName = collectionCensoredName
-        self.previewUrl = previewUrl
-        self.artworkUrl100 = artworkUrl100
-        self.releaseDate = releaseDate
-        self.primaryGenreName = primaryGenreName
-        self.trackViewUrl = trackViewUrl
-        
-//        guard let artworkURL = URL(string: artworkUrl100) else {
-//            return
-//        }
-//        
-//        self.artworkImageData = getImage(from: artworkURL)?.pngData()
-    }
-    
     let trackName: String
     let artistName: String
     let collectionName : String
@@ -44,6 +26,7 @@ struct SongResult: Codable {
     let releaseDate : String
     let primaryGenreName : String
     
+    // Unused atm
     var artworkImageData: Data?
 }
 
@@ -73,4 +56,68 @@ func retrieveITUNESResults(rawSearchTerm: String, completion: @escaping ([SongRe
             print("An unknown error occurred.")
         }
     }.resume()
+}
+
+// Idk if this will stay here but I need to make it somewhere
+class Post: PFObject, PFSubclassing, Codable {
+    static func parseClassName() -> String {
+        "Post"
+    }
+    
+    internal init(song: SongResult, createdBy: User) {
+        self.id = UUID().hashValue
+        self.upvoteCount = 0
+        self.downvoteCount = 0
+        self.createdBy = createdBy
+        
+        // Below are all the properties that get copied over from the SongResult that iTunes gives.
+        self.trackName = song.trackName
+        self.artistName = song.artistName
+        self.collectionName = song.collectionName
+        self.trackCensoredName = song.trackCensoredName
+        self.collectionCensoredName = song.collectionCensoredName
+        self.previewUrl = song.previewUrl
+        self.artworkUrl100 = song.artworkUrl100
+        self.trackViewUrl = song.trackViewUrl
+        self.releaseDate = song.releaseDate
+        self.primaryGenreName = song.primaryGenreName
+        
+        super.init()
+        
+        getSongwhipFromLink(linkString: song.trackViewUrl, completion: { result in
+            self.songLinkString = result.url
+        })
+    }
+    
+    let id: Int
+    
+    var songLinkString: String? = nil
+    var upvoteCount: Int
+    var downvoteCount: Int
+    var calculatedScore: Int {
+        upvoteCount - downvoteCount
+    }
+    let createdBy: User
+    
+    let trackName: String
+    let artistName: String
+    let collectionName : String
+    let trackCensoredName : String
+    let collectionCensoredName : String
+    let previewUrl : String
+    let artworkUrl100 : String
+    let trackViewUrl: String
+    let releaseDate : String
+    let primaryGenreName : String
+}
+
+class User: PFUser, Codable {
+    internal override init() {
+        super.init()
+    }
+    
+    var submittedPosts: [Post] = []
+    var upvotedPosts: [Post] = []
+    var favoritedPosts: [Post] = []
+    var downvotedPosts: [Post] = []
 }

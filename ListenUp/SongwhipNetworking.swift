@@ -9,23 +9,11 @@ import Foundation
 
 func getSongwhipFromLink(linkString: String, completion: @escaping (SongwhipResult) -> ()) {
     let url = URL(string: "https://songwhip.com")!
-    var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-    
-    components.queryItems = [
-        URLQueryItem(name: "url", value: linkString)
-    ]
-    
-    guard let query = components.url?.query else {
-        print("Could not create query")
-        return
-    }
-    
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     let str = "{\"url\":\"\(linkString)\"}"
     request.httpBody = Data(str.utf8)
     
-    print(String(data: request.httpBody!, encoding: .utf8))
     URLSession.shared.dataTask(with: request) { data, response, error in
         if let error = error {
             print(error.localizedDescription)
@@ -36,7 +24,7 @@ func getSongwhipFromLink(linkString: String, completion: @escaping (SongwhipResu
                 completion(decoded)
             }
             else {
-                print("Couldn't decode Songwhip result: \(String(data: data, encoding: .utf8))")
+                print("Couldn't decode Songwhip result: \(String(data: data, encoding: .utf8) ?? "Unknown")")
             }
         }
     }.resume()

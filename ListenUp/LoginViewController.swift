@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         }
         
         if userSignedUp {
-            let user = PFUser()
+            let user = User()
             user.username = usernameText
             user.password = passwordText
             
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
             }
         }
         else {
-            PFUser.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
+            User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
                 if let error = error {
                     print(error.localizedDescription)
                     return

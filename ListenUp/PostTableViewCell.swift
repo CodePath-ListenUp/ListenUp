@@ -16,6 +16,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var downvoteSymbol: UIImageView!
     @IBOutlet weak var heartIcon: UIImageView!
     
+    var post: Post? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,5 +28,4 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

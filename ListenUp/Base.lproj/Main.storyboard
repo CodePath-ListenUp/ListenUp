@@ -12,7 +12,7 @@
         <!--Listen Up-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,26 +138,26 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB2-pM-GoW" userLabel="controlsView">
                                                     <rect key="frame" x="375" y="0.0" width="31" height="80"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="axU-YR-D4S">
+                                                        <imageView clipsSubviews="YES" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="axU-YR-D4S">
                                                             <rect key="frame" x="2" y="4.5" width="27" height="17.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="axU-YR-D4S" secondAttribute="height" multiplier="1:1" id="ypx-xi-JmM"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YJh-DU-i1c">
+                                                        <imageView clipsSubviews="YES" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YJh-DU-i1c">
                                                             <rect key="frame" x="2" y="28" width="27" height="24.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="YJh-DU-i1c" secondAttribute="height" multiplier="1:1" id="fV1-mH-n0R"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mHg-qd-uOB">
+                                                        <imageView clipsSubviews="YES" tag="7" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mHg-qd-uOB">
                                                             <rect key="frame" x="2" y="58" width="27" height="17.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="mHg-qd-uOB" secondAttribute="height" multiplier="1:1" id="7Q8-HS-o40"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="2Sq-KK-pho"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="AmJ-dw-OS8"/>
@@ -172,6 +172,11 @@
                                                         <constraint firstItem="axU-YR-D4S" firstAttribute="leading" secondItem="CB2-pM-GoW" secondAttribute="leading" constant="2" id="rgJ-qJ-Z4t"/>
                                                         <constraint firstItem="axU-YR-D4S" firstAttribute="centerX" secondItem="CB2-pM-GoW" secondAttribute="centerX" id="xWp-pY-npQ"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLD-NN-eGF" userLabel="labelsView">
                                                     <rect key="frame" x="88" y="4" width="279" height="175"/>
@@ -192,7 +197,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="8OK-Gy-WQw" firstAttribute="top" secondItem="M5h-ct-zWK" secondAttribute="bottom" constant="4" id="3QS-WV-IgP"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="HFj-PH-NSg"/>
@@ -230,7 +234,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mCI-J4-kc3"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u9S-gM-aRy" firstAttribute="top" secondItem="mCI-J4-kc3" secondAttribute="top" id="WDf-Vv-vBe"/>
                             <constraint firstItem="mCI-J4-kc3" firstAttribute="trailing" secondItem="u9S-gM-aRy" secondAttribute="trailing" id="kwC-cH-0hK"/>
@@ -255,7 +259,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ziD-Qp-iMc"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="oJb-lq-CV0"/>
                 </viewController>
@@ -328,7 +332,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="0pt-1c-bUb"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="cd7-2t-bkR"/>
                 </viewController>
@@ -388,15 +392,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
