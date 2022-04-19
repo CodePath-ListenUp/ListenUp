@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1534BCB3280D9F030061800D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534BCB2280D9F030061800D /* NewPostViewController.swift */; };
+		1534BCB7280DA97D0061800D /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */; };
 		99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */; };
 		A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */; };
 		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1534BCB2280D9F030061800D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.debug.xcconfig"; sourceTree = "<group>"; };
 		30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.release.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.release.xcconfig"; sourceTree = "<group>"; };
 		5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.release.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,9 +137,11 @@
 				D042BC6127FE5FE50096F24D /* Private.swift */,
 				D042BC3127FE5FBE0096F24D /* AppDelegate.swift */,
 				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
+				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
 				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
 				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
+				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
 				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
 				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
 				D076900D28078C090019216A /* PostTableViewCell.swift */,
@@ -437,6 +443,8 @@
 				D017C57C2807D37200E62C7F /* iTunesAPINetworking.swift in Sources */,
 				D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */,
 				D076900E28078C090019216A /* PostTableViewCell.swift in Sources */,
+				1534BCB7280DA97D0061800D /* ResultTableViewCell.swift in Sources */,
+				1534BCB3280D9F030061800D /* NewPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +622,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X72S6AGP32;
+				DEVELOPMENT_TEAM = RY9935ZD32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -643,7 +651,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X72S6AGP32;
+				DEVELOPMENT_TEAM = RY9935ZD32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
