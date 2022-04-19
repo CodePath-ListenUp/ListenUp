@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -135,6 +136,17 @@
                                                         <constraint firstAttribute="width" secondItem="0By-MY-QAy" secondAttribute="height" multiplier="1:1" id="l2V-4m-mdV"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDC-rj-SIz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                        </preferredSymbolConfiguration>
+                                                    </buttonConfiguration>
+                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB2-pM-GoW" userLabel="controlsView">
                                                     <rect key="frame" x="375" y="0.0" width="31" height="80"/>
                                                     <subviews>
@@ -211,11 +223,16 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nDC-rj-SIz" firstAttribute="width" secondItem="0By-MY-QAy" secondAttribute="width" id="2rP-iN-Shw"/>
+                                                <constraint firstItem="nDC-rj-SIz" firstAttribute="top" secondItem="0By-MY-QAy" secondAttribute="top" id="9tB-gL-gay"/>
                                                 <constraint firstAttribute="bottom" secondItem="lLD-NN-eGF" secondAttribute="bottom" constant="4" id="Llj-qj-832"/>
                                                 <constraint firstItem="CB2-pM-GoW" firstAttribute="leading" secondItem="lLD-NN-eGF" secondAttribute="trailing" constant="8" id="PFZ-RI-qeR"/>
+                                                <constraint firstItem="nDC-rj-SIz" firstAttribute="centerX" secondItem="0By-MY-QAy" secondAttribute="centerX" id="SoN-KS-fef"/>
                                                 <constraint firstItem="0By-MY-QAy" firstAttribute="leading" secondItem="dz0-4l-lvY" secondAttribute="leading" id="eRw-MV-eZQ"/>
+                                                <constraint firstItem="nDC-rj-SIz" firstAttribute="leading" secondItem="0By-MY-QAy" secondAttribute="leading" id="fNS-lz-5yr"/>
                                                 <constraint firstItem="lLD-NN-eGF" firstAttribute="leading" secondItem="0By-MY-QAy" secondAttribute="trailing" constant="8" id="lQ0-NH-jdM"/>
                                                 <constraint firstAttribute="trailing" secondItem="CB2-pM-GoW" secondAttribute="trailing" constant="8" id="n1a-tq-Q6j"/>
+                                                <constraint firstItem="nDC-rj-SIz" firstAttribute="height" secondItem="0By-MY-QAy" secondAttribute="height" id="ruc-pk-zvz"/>
                                                 <constraint firstItem="lLD-NN-eGF" firstAttribute="top" secondItem="dz0-4l-lvY" secondAttribute="top" constant="4" id="uT5-3p-xwq"/>
                                                 <constraint firstItem="CB2-pM-GoW" firstAttribute="top" secondItem="dz0-4l-lvY" secondAttribute="top" id="wMa-ew-2Ao"/>
                                                 <constraint firstItem="0By-MY-QAy" firstAttribute="top" secondItem="dz0-4l-lvY" secondAttribute="top" id="zhp-64-08p"/>
@@ -226,6 +243,7 @@
                                             <outlet property="artistNameLabel" destination="M5h-ct-zWK" id="6qp-oM-3eH"/>
                                             <outlet property="downvoteSymbol" destination="mHg-qd-uOB" id="4aa-Cp-waQ"/>
                                             <outlet property="heartIcon" destination="YJh-DU-i1c" id="pc0-5r-qXN"/>
+                                            <outlet property="mediaButton" destination="nDC-rj-SIz" id="dEo-dp-j8t"/>
                                             <outlet property="trackNameLabel" destination="8OK-Gy-WQw" id="S3a-1z-BHf"/>
                                             <outlet property="upvoteSymbol" destination="axU-YR-D4S" id="6n9-YQ-DcM"/>
                                         </connections>
@@ -283,6 +301,11 @@
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="USU-Oq-CD5"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mm-5r-hkz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Play/Pause"/>
+                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-Y6-n2x" userLabel="labelsView">
                                                     <rect key="frame" x="88" y="4" width="273" height="175"/>
                                                     <subviews>
@@ -325,10 +348,15 @@
                                             <constraints>
                                                 <constraint firstItem="qMc-4q-NNR" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" id="07S-Ev-Kd8"/>
                                                 <constraint firstItem="qMc-4q-NNR" firstAttribute="leading" secondItem="wcV-Dk-Q0r" secondAttribute="leading" id="B7h-2r-IFn"/>
+                                                <constraint firstItem="4Mm-5r-hkz" firstAttribute="width" secondItem="qMc-4q-NNR" secondAttribute="width" id="Dia-tY-Pwc"/>
+                                                <constraint firstItem="4Mm-5r-hkz" firstAttribute="centerX" secondItem="qMc-4q-NNR" secondAttribute="centerX" id="FWA-Xy-nH1"/>
+                                                <constraint firstItem="4Mm-5r-hkz" firstAttribute="top" secondItem="qMc-4q-NNR" secondAttribute="top" id="Foo-0Z-GbI"/>
                                                 <constraint firstAttribute="trailing" secondItem="82h-vY-ae3" secondAttribute="trailing" constant="20" id="J9V-Nt-CTt"/>
                                                 <constraint firstItem="9uP-Y6-n2x" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" constant="4" id="MIV-Lq-1Vt"/>
                                                 <constraint firstItem="9uP-Y6-n2x" firstAttribute="leading" secondItem="qMc-4q-NNR" secondAttribute="trailing" constant="8" id="P1J-eK-Xs9"/>
+                                                <constraint firstItem="4Mm-5r-hkz" firstAttribute="leading" secondItem="qMc-4q-NNR" secondAttribute="leading" id="ea7-TU-7eF"/>
                                                 <constraint firstItem="82h-vY-ae3" firstAttribute="leading" secondItem="9uP-Y6-n2x" secondAttribute="trailing" constant="8" id="jeX-m3-2Yo"/>
+                                                <constraint firstItem="4Mm-5r-hkz" firstAttribute="height" secondItem="qMc-4q-NNR" secondAttribute="height" id="q7J-h3-gIB"/>
                                                 <constraint firstItem="82h-vY-ae3" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" constant="20" id="r2s-fE-olu"/>
                                                 <constraint firstAttribute="bottom" secondItem="9uP-Y6-n2x" secondAttribute="bottom" constant="4" id="yt7-0g-8ea"/>
                                             </constraints>
@@ -495,6 +523,7 @@
         <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

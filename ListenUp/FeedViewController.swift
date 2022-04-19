@@ -10,11 +10,16 @@ import Parse
 import SafariServices
 import UIKit
 
+let nonPlayingArtworkOpacity: Float = 0.4
+let playingArtworkOpacity: Float = 0.0
+
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
     var posts: [Post] = []
+    
+    var whatsPlaying: PostTableViewCell? = nil
     
     override func viewDidLoad() {
         navigationItem.title = "Feed"
@@ -97,6 +102,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         cell.albumArtworkView?.load(url: albumArtworkURL)
+        
+        // Source: https://stackoverflow.com/a/35019685
+        cell.darkeningLayer.frame = cell.albumArtworkView.bounds;
+        cell.darkeningLayer.backgroundColor = UIColor.black.cgColor
+        cell.darkeningLayer.opacity = nonPlayingArtworkOpacity
+        cell.albumArtworkView.layer.addSublayer(cell.darkeningLayer)
+        
+        //
+        // MARK: Media Button Work
+        //
+        
+        // To identify which cell's button got called, we can use tag to pass the indexPath row
+        cell.mediaButton.tag = indexPath.row
+        
+        cell.mediaButton.layer.shadowRadius = 10
+        cell.mediaButton.layer.shadowOpacity = 0.8
+        
+        // To prevent having two Storyboard connections, I'm using the outlet to make an action
+        cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
+        
         return cell
     }
     
@@ -221,6 +246,38 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
         }
+    }
+    
+    @objc func userPressedMediaButton(_ sender: UIButton) {
+        let post = posts[sender.tag]
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PostTableViewCell else {
+            print("Could not find post cell with given indexPath")
+            return
+        }
+        
+        if let oldPlay = whatsPlaying {
+            // The user was already playing something, we need to turn that off first
+            whatsPlaying?.isPlaying = false
+            whatsPlaying?.player.pause()
+            whatsPlaying?.darkeningLayer.opacity = nonPlayingArtworkOpacity
+            whatsPlaying?.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+            whatsPlaying = nil
+            
+            // Also, check that the one we're turning off isn't the user trying to turn it off themselves
+            // Otherwise, we must return early
+            if oldPlay == cell {
+                return
+            }
+        }
+        
+        // Now that nothing is playing, let's play the next song
+        // (we've already handled the case where the user stops a song above)
+        cell.isPlaying = true
+        whatsPlaying = cell
+        cell.mediaButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        cell.darkeningLayer.opacity = playingArtworkOpacity
+        cell.player.initPlayer(url: post.previewUrl)
+        cell.player.play()
     }
 }
 

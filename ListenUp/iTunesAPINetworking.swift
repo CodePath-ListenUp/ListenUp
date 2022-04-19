@@ -61,7 +61,7 @@ func retrieveITUNESResults(rawSearchTerm: String, completion: @escaping ([SongRe
 // Idk if this will stay here but I need to make it somewhere
 class Post: PFObject, PFSubclassing, Codable {
     static func parseClassName() -> String {
-        "Postd"
+        return "Postd"; #warning("change this back to \"Post\" at somepoint")
     }
     
     override init() {

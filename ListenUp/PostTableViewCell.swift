@@ -15,8 +15,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var upvoteSymbol: UIImageView!
     @IBOutlet weak var downvoteSymbol: UIImageView!
     @IBOutlet weak var heartIcon: UIImageView!
+    @IBOutlet weak var mediaButton: UIButton!
     
     var post: Post? = nil
+    
+    var isPlaying: Bool = false
+    let darkeningLayer = CALayer()
+    let player = MusicPlayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
