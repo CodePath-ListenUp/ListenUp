@@ -180,3 +180,9 @@ GET: "/search"
 #### Issue #3: User can sign up and log in to the app
 
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/login-and-signup.gif" width=320>
+
+#### Issue #4: User can view songs posted by others
+#### Issue #6: User can open the song in other streaming services
+#### Issue #8: User can post songs
+
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-2.gif" width=320>
