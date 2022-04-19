@@ -157,6 +157,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func addPost() {
         print("user did press add button")
+        
+        if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {self.present(newScreen, animated: true, completion: nil)}
     }
     
     @objc func userLoggedOut() {
