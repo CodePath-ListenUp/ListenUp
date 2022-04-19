@@ -14,7 +14,7 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var postSymbol: UIImageView!
     
-//    var result: Post? = nil
+    var result: SongResult? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()

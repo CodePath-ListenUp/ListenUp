@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         
+        Post.registerSubclass()
+        User.registerSubclass()
+        
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = parseAppID
             $0.clientKey = parseClientKey

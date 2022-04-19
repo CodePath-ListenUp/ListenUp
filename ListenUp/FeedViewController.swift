@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Parse
 import SafariServices
 import UIKit
 
@@ -28,30 +29,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             logoutButton
         ]
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
+            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost)),
+            UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.clockwise"), primaryAction:
+                                UIAction(handler: { action in
+                                    self.tableView.reloadData()
+                                }), menu: nil)
         ]
         
-        retrieveITUNESResults(rawSearchTerm: "Arkells") { results in
-            self.posts = results.map({ result in
-                return Post(song: result, createdBy: User.current()!) { post in
-                    post.id = 5
-                    post.saveInBackground { success, error in
-                        if success {
-                            print("ayo")
-                        }
-                        else {
-                            print(error?.localizedDescription)
-                            print(post.id)
-                        }
-                    }
+        let query = Post.query()
+        
+        query?.findObjectsInBackground(block: { returnedPosts, error in
+            guard let postsReturned = returnedPosts as? [Post] else {
+                print("An error occurred...")
+                if let error = error {
+                    print(error.localizedDescription)
                 }
-            })
-            // Can't run UI code on background thread
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+                else {
+                    print("Could not get description of error.")
+                }
+                return
             }
             
-        }
+            self.posts = postsReturned
+            self.sortPosts()
+            self.tableView.reloadData()
+            
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,7 +182,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func addPost() {
         print("user did press add button")
         
-        if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {self.present(newScreen, animated: true, completion: nil)}
+        if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {
+            newScreen.returningViewController = self
+            self.present(newScreen, animated: true, completion: nil)
+        }
     }
     
     @objc func userLoggedOut() {
@@ -201,6 +207,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func downvotePost(post: Post) {
         print("user downvoted \(post.trackName)")
+    }
+    
+    func sortPosts() {
+        self.posts.sort { post1, post2 in
+            
+            let scoreCompare = post1.calculatedScore > post2.calculatedScore
+            let scoreEqual = post1.calculatedScore == post2.calculatedScore
+            
+            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+                return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
+            }
+            
+            return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
+        }
     }
 }
 

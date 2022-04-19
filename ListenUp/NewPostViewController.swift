@@ -12,8 +12,10 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var searchResults: [Post] = []
+    var searchResults: [SongResult] = []
     var searchQuery = String()
+    
+    var returningViewController: FeedViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,26 +41,42 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
         
-        let result = searchResults[indexPath.row]
-
+        
+        var result: SongResult?
+        if indexPath.row >= searchResults.count {
+            cell.postSymbol.isUserInteractionEnabled = false
+            result = nil
+        }
+        else {
+            result = searchResults[indexPath.row]
+            cell.result = result!
+            cell.postSymbol.isUserInteractionEnabled = true
+        }
+        
+        guard let fineResult = result else {
+            return cell
+        }
+        
         cell.albumArtworkView.image = UIImage(named: "default.jpg")!
-        cell.trackNameLabel?.text = result.trackName
-        cell.artistNameLabel?.text = result.artistName
+        cell.trackNameLabel?.text = fineResult.trackName
+        cell.artistNameLabel?.text = fineResult.artistName
 
-        guard let albumArtworkURL = URL(string: result.artworkUrl100) else {
+        guard let albumArtworkURL = URL(string: fineResult.artworkUrl100) else {
             return cell
         }
 
         cell.albumArtworkView?.load(url: albumArtworkURL)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTriedToPostSong(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        cell.postSymbol.addGestureRecognizer(tapGesture)
         
         return cell
     }
     
     func getSearchResults(_ searchQuery: String) {
         retrieveITUNESResults(rawSearchTerm: searchQuery) { results in
-            self.searchResults = results.map({ result in
-                return Post(song: result, createdBy: User.current()!)
-            })
+            self.searchResults = results
             // Can't run UI code on background thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -83,16 +101,43 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             searchBar.resignFirstResponder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func userTriedToPostSong(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.ended {
+            let tapLocation = sender.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? ResultTableViewCell {
+                    guard let result = tappedCell.result else {
+                        print("post not set for tappedCell")
+                        return
+                    }
+                    
+                    // Do Post processing here (pun intended)
+                    let _ = Post(song: result, createdBy: User.current()!) { postReady in
+                        postReady.saveInBackground { success, error in
+                            guard success else {
+                                print("An error occurred when posting the user's chosen song...")
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                }
+                                else {
+                                    print("No further details could be found.")
+                                }
+                                return
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            if let parent = self.returningViewController {
+                                parent.posts.insert(postReady,at: 0)
+                                parent.tableView.reloadData()
+                            }
+                            self.dismiss(animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
-    */
 
 }
    

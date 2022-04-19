@@ -61,18 +61,22 @@ func retrieveITUNESResults(rawSearchTerm: String, completion: @escaping ([SongRe
 // Idk if this will stay here but I need to make it somewhere
 class Post: PFObject, PFSubclassing, Codable {
     static func parseClassName() -> String {
-        "Post"
+        "Postd"
+    }
+    
+    override init() {
+        super.init()
     }
     
     internal init(song: SongResult, createdBy: User, completion: ((Post)->())?) {
-        self.id = UUID().hashValue
+        super.init()
+        
+        self.postId = UUID().hashValue
         self.upvoteCount = 0
         self.downvoteCount = 0
         self.createdBy = createdBy
         
         // Below are all the properties that get copied over from the SongResult that iTunes gives.
-        
-        
         self.trackName = song.trackName
         self.artistName = song.artistName
         self.collectionName = song.collectionName
@@ -84,8 +88,6 @@ class Post: PFObject, PFSubclassing, Codable {
         self.releaseDate = song.releaseDate
         self.primaryGenreName = song.primaryGenreName
         
-        super.init()
-        
         // This is a neat technique to make our viewDidLoad wait until the songwhip link is grabbed before sending the post to Parse
         getSongwhipFromLink(linkString: song.trackViewUrl, completion: { result in
             self.songLinkString = result.url
@@ -96,26 +98,26 @@ class Post: PFObject, PFSubclassing, Codable {
         
     }
     
-    var id: Int
+    @NSManaged var postId: Int
     
-    var songLinkString: String? = nil
-    var upvoteCount: Int
-    var downvoteCount: Int
+    @NSManaged var songLinkString: String?
+    @NSManaged var upvoteCount: Int
+    @NSManaged var downvoteCount: Int
     var calculatedScore: Int {
         upvoteCount - downvoteCount
     }
-    let createdBy: User
+    @NSManaged var createdBy: User
     
-    let trackName: String
-    let artistName: String
-    let collectionName : String
-    let trackCensoredName : String
-    let collectionCensoredName : String
-    let previewUrl : String
-    let artworkUrl100 : String
-    let trackViewUrl: String
-    let releaseDate : String
-    let primaryGenreName : String
+    @NSManaged var trackName: String
+    @NSManaged var artistName: String
+    @NSManaged var collectionName : String
+    @NSManaged var trackCensoredName : String
+    @NSManaged var collectionCensoredName : String
+    @NSManaged var previewUrl : String
+    @NSManaged var artworkUrl100 : String
+    @NSManaged var trackViewUrl: String
+    @NSManaged var releaseDate : String
+    @NSManaged var primaryGenreName : String
 }
 
 class User: PFUser, Codable {
@@ -123,8 +125,8 @@ class User: PFUser, Codable {
         super.init()
     }
     
-    var submittedPosts: [Post] = []
-    var upvotedPosts: [Post] = []
-    var favoritedPosts: [Post] = []
-    var downvotedPosts: [Post] = []
+    @NSManaged var submittedPosts: [Post]
+    @NSManaged var upvotedPosts: [Post]
+    @NSManaged var favoritedPosts: [Post]
+    @NSManaged var downvotedPosts: [Post]
 }

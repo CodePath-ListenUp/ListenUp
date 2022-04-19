@@ -37,6 +37,10 @@ class LoginViewController: UIViewController {
             let user = User()
             user.username = usernameText
             user.password = passwordText
+            user.submittedPosts = []
+            user.upvotedPosts = []
+            user.favoritedPosts = []
+            user.downvotedPosts = []
             
             user.signUpInBackground { (success, error) in
                 if success {

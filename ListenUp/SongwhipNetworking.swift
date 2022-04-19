@@ -21,7 +21,6 @@ func getSongwhipFromLink(linkString: String, completion: @escaping (SongwhipResu
         }
         else if let data = data {
             if let decoded = try? JSONDecoder().decode(SongwhipResult.self, from: data) {
-                print("decoded successfully")
                 completion(decoded)
             }
             else {
