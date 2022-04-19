@@ -24,21 +24,21 @@ An app for sharing songs with others.
 
 **Required Must-have Stories**
 
-* User can sign up and log in to app
-* User can view other posted songs
-* User can listen to previews of songs
-* User can open the song in other streaming services
-* User can favorite songs
-* User can post songs
-* User can view their favorite songs
+- [✅] User can sign up and log in to app
+- [✅] User can view other posted songs
+- [✅] User can listen to previews of songs
+- [✅] User can open the song in other streaming services
+- [✅] User can post songs
+- [] User can favorite songs
+- [] User can view their favorite songs
 
 **Optional Nice-to-have Stories**
 
-* User can share streaming links from in the app
-* User can switch between grid view and list view
-* User can filter by genre (or other tags, potentially)
-* User can comment on posted songs
-* User can open the app from the share page in other apps to quickly create a post
+- [] User can share streaming links from in the app
+- [] User can switch between grid view and list view
+- [] User can filter by genre (or other tags, potentially)
+- [] User can comment on posted songs
+- [] User can open the app from the share page in other apps to quickly create a post
 
 ### 2. Screen Archetypes
 
