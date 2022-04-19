@@ -64,13 +64,15 @@ class Post: PFObject, PFSubclassing, Codable {
         "Post"
     }
     
-    internal init(song: SongResult, createdBy: User) {
+    internal init(song: SongResult, createdBy: User, completion: ((Post)->())?) {
         self.id = UUID().hashValue
         self.upvoteCount = 0
         self.downvoteCount = 0
         self.createdBy = createdBy
         
         // Below are all the properties that get copied over from the SongResult that iTunes gives.
+        
+        
         self.trackName = song.trackName
         self.artistName = song.artistName
         self.collectionName = song.collectionName
@@ -84,12 +86,17 @@ class Post: PFObject, PFSubclassing, Codable {
         
         super.init()
         
+        // This is a neat technique to make our viewDidLoad wait until the songwhip link is grabbed before sending the post to Parse
         getSongwhipFromLink(linkString: song.trackViewUrl, completion: { result in
             self.songLinkString = result.url
+            if let completionFunc = completion {
+                completionFunc(self)
+            }
         })
+        
     }
     
-    let id: Int
+    var id: Int
     
     var songLinkString: String? = nil
     var upvoteCount: Int

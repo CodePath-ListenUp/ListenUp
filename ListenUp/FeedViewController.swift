@@ -33,12 +33,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         retrieveITUNESResults(rawSearchTerm: "Arkells") { results in
             self.posts = results.map({ result in
-                return Post(song: result, createdBy: User.current()!)
+                return Post(song: result, createdBy: User.current()!) { post in
+                    post.id = 5
+                    post.saveInBackground { success, error in
+                        if success {
+                            print("ayo")
+                        }
+                        else {
+                            print(error?.localizedDescription)
+                            print(post.id)
+                        }
+                    }
+                }
             })
             // Can't run UI code on background thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            
         }
     }
     
@@ -146,11 +158,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post = posts[indexPath.row]
         
-        getSongwhipFromLink(linkString: post.trackViewUrl) { result in
-            let url = URL(string: result.url)!
+        if let songwhipStr = post.songLinkString, let url = URL(string: songwhipStr) {
             let svc = SFSafariViewController(url: url)
             DispatchQueue.main.async {
                 self.present(svc, animated: true)
+            }
+        }
+        else {
+            getSongwhipFromLink(linkString: post.trackViewUrl) { result in
+                self.posts[indexPath.row].songLinkString = result.url
+                let url = URL(string: result.url)!
+                let svc = SFSafariViewController(url: url)
+                DispatchQueue.main.async {
+                    self.present(svc, animated: true)
+                }
             }
         }
     }
