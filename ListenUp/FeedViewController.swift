@@ -9,16 +9,25 @@ import Foundation
 import Parse
 import SafariServices
 import UIKit
+import AVFAudio
 
 let nonPlayingArtworkOpacity: Float = 0.4
 let playingArtworkOpacity: Float = 0.0
+
+// idk where else to put this rn
+func overrideAccentColor(basedOn condition: Bool, with override: UIColor) -> UIColor {
+    return condition ? override : UIColor(named: "AccentColor")!
+}
+
+let upvoteColor = UIColor.systemOrange
+let downvoteColor = UIColor.systemIndigo
+let favoriteColor = UIColor.systemPink
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
     var posts: [Post] = []
-    
     var whatsPlaying: PostTableViewCell? = nil
     
     override func viewDidLoad() {
@@ -34,11 +43,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             logoutButton
         ]
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost)),
-            UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.clockwise"), primaryAction:
-                                UIAction(handler: { action in
-                                    self.tableView.reloadData()
-                                }), menu: nil)
+            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
         ]
         
         let query = Post.query()
@@ -97,6 +102,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             view?.addGestureRecognizer(tapGesture)
         }
         
+        if let user = User.current() {
+            user.fetchIfNeededInBackground { success, error in
+                // lol this is kinda backwards but oh well
+                guard let error = error else {
+                    let favoriteStatus = post.isContainedIn(arr: user.favoritedPosts)
+                    cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.upvotedPosts), with: upvoteColor)
+                    cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.downvotedPosts), with: downvoteColor)
+                    cell.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
+                    cell.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+                    return
+                }
+                print("error: \(error.localizedDescription)")
+            }
+        }
         guard let albumArtworkURL = URL(string: post.artworkUrl100) else {
             return cell
         }
@@ -132,7 +151,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         let downvote = UIContextualAction(style: .normal, title: "Downvote") { action, view, completionHandler in
-            self.downvotePost(post: post)
+            let downvoted = self.downvotePost(post: post)
+            cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
+            cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
+            action.image = UIImage(systemName: downvoted ? "arrow.uturn.backward" : "chevron.down")
             completionHandler(true)
         }
         downvote.image = UIImage(systemName: "chevron.down")
@@ -147,7 +169,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return nil
         }
         let upvote = UIContextualAction(style: .normal, title: "Upvote") { action, view, completionHandler in
-            self.upvotePost(post: post)
+            let upvoted = self.upvotePost(post: post)
+            
+            cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
+            cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
+            action.image = UIImage(systemName: upvoted ? "arrow.uturn.backward" : "chevron.up")
             completionHandler(true)
         }
         upvote.image = UIImage(systemName: "chevron.up")
@@ -168,11 +194,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     switch sender.view?.tag ?? 0 {
                     case 5:
-                        upvotePost(post: post)
+                        let upvoted = upvotePost(post: post)
+                        tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
+                        tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
                     case 6:
                         heartPost(post: post)
                     case 7:
-                        downvotePost(post: post)
+                        let downvoted = downvotePost(post: post)
+                        tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
+                        tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
                     default:
                         print("No action set in userDidTapElement for tag \(sender.view?.tag ?? 0)")
                     }
@@ -224,14 +254,90 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         delegate.window?.rootViewController = loginViewController
     }
     
-    func upvotePost(post: Post) {
+    // These are just quick and dirty implementations of these for now
+    
+    // upvote:
+    //      - A given user should only be able to upvote a post once, if they have not already
+    //      - If the given user has downvoted the post already, their downvote should be subtracted and undone
+    //      - The post should be added to the given user's upvotedPosts array
+    //      - If the user has already upvoted, their upvote should be subtracted and undone (including removing the post from their upvotedPosts array)
+    // Keep in mind that posts should be identified by their objectId property. SongResult objects should be identified by their trackId property
+    
+    func upvotePost(post: Post) -> Bool {
+        guard let user = User.current() else {
+            print("User is not signed in, can't vote")
+            return false
+        }
+        
         print("user upvoted \(post.trackName)")
+        // Check if user has upvoted this post already
+        if post.isContainedIn(arr: user.upvotedPosts) {
+            post.upvoteCount -= 1
+            user.upvotedPosts.removeAll { inPost in
+                inPost.objectId == post.objectId
+            }
+            post.saveEventually()
+            user.saveEventually()
+            return false
+        }
+        else {
+            // Check if user has the post downvoted
+            if post.isContainedIn(arr: user.downvotedPosts) {
+                // Remove downvote before continuing
+                post.downvoteCount -= 1
+                user.downvotedPosts.removeAll { inPost in
+                    inPost.objectId == post.objectId
+                }
+                post.saveEventually()
+                user.saveEventually()
+            }
+            // Proceed to add upvote
+            post.upvoteCount += 1
+            user.upvotedPosts.append(post)
+            post.saveEventually()
+            user.saveEventually()
+            return true
+        }
     }
     func heartPost(post: Post) {
         print("user favorited \(post.trackName)")
+        User.current()!.favoritedPosts.append(post)
+        User.current()!.saveInBackground()
     }
-    func downvotePost(post: Post) {
-        print("user downvoted \(post.trackName)")
+    func downvotePost(post: Post) -> Bool {
+        guard let user = User.current() else {
+            print("User is not signed in, can't vote")
+            return false
+        }
+        
+        // Check if user has downvoted this post already
+        if post.isContainedIn(arr: user.downvotedPosts) {
+            post.downvoteCount -= 1
+            user.downvotedPosts.removeAll { inPost in
+                inPost.objectId == post.objectId
+            }
+            post.saveEventually()
+            user.saveEventually()
+            return false
+        }
+        else {
+            // Check if user has the post upvoted
+            if post.isContainedIn(arr: user.upvotedPosts) {
+                // Remove upvote before continuing
+                post.upvoteCount -= 1
+                user.upvotedPosts.removeAll { inPost in
+                    inPost.objectId == post.objectId
+                }
+                post.saveEventually()
+                user.saveEventually()
+            }
+            // Proceed to add downvote
+            post.downvoteCount += 1
+            user.downvotedPosts.append(post)
+            post.saveEventually()
+            user.saveEventually()
+            return true
+        }
     }
     
     func sortPosts() {
@@ -257,10 +363,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let oldPlay = whatsPlaying {
             // The user was already playing something, we need to turn that off first
-            whatsPlaying?.isPlaying = false
-            whatsPlaying?.player.pause()
-            whatsPlaying?.darkeningLayer.opacity = nonPlayingArtworkOpacity
-            whatsPlaying?.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+            whatsPlaying?.enterPausedState()
             whatsPlaying = nil
             
             // Also, check that the one we're turning off isn't the user trying to turn it off themselves
@@ -276,8 +379,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         whatsPlaying = cell
         cell.mediaButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         cell.darkeningLayer.opacity = playingArtworkOpacity
-        cell.player.initPlayer(url: post.previewUrl)
+        cell.player.initPlayer(url: post.previewUrl) {
+            cell.enterPausedState()
+        }
         cell.player.play()
+    }
+}
+
+extension PostTableViewCell {
+    func enterPausedState() {
+        self.isPlaying = false
+        self.player.pause()
+        self.darkeningLayer.opacity = nonPlayingArtworkOpacity
+        self.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
     }
 }
 

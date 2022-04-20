@@ -16,6 +16,7 @@ struct iTunesAPIResponse: Codable {
 
 struct SongResult: Codable {
     let trackName: String
+    let trackId: Int
     let artistName: String
     let collectionName : String
     let trackCensoredName : String

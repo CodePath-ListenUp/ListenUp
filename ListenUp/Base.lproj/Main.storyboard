@@ -389,10 +389,10 @@
             </objects>
             <point key="canvasLocation" x="4650.7246376811599" y="99.776785714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="78N-Bj-Jta">
             <objects>
-                <viewController id="ECV-3x-Ylz" sceneMemberID="viewController">
+                <viewController id="ECV-3x-Ylz" customClass="FavoritesViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Pf-ox-ER8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -431,7 +431,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6w8-Z2-DmV">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" name="AccentColor"/>
+                        <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
                         <segue destination="mCg-Vd-S8R" kind="relationship" relationship="viewControllers" id="IeC-5r-E8w"/>
@@ -443,11 +445,11 @@
             </objects>
             <point key="canvasLocation" x="1892.753623188406" y="99.776785714285708"/>
         </scene>
-        <!--Item-->
+        <!--Feed-->
         <scene sceneID="3CJ-S3-mUi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mCg-Vd-S8R" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="y7P-3D-OPz"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="music.note.list" catalog="system" selectedImage="music.note.list" id="y7P-3D-OPz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fyl-ci-xwf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -478,11 +480,11 @@
             </objects>
             <point key="canvasLocation" x="3713.04347826087" y="1484.5982142857142"/>
         </scene>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="6pO-iN-gyn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bLa-yS-I4C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="f0s-Ke-u9G"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" selectedImage="heart.fill" id="f0s-Ke-u9G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kkz-lp-vrf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -497,11 +499,13 @@
             </objects>
             <point key="canvasLocation" x="2803" y="799"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="Dei-Vr-vc9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ipz-0e-YiO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zUi-We-Hbb"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.2.fill" catalog="system" id="zUi-We-Hbb">
+                        <imageReference key="selectedImage" image="gearshape.2.fill" catalog="system" renderingMode="template"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ig-bB-hOi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -521,11 +525,14 @@
         <image name="blurred rice box copy" width="952" height="952"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.69653749465942383" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
