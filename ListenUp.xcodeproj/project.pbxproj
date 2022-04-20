@@ -16,6 +16,8 @@
 		D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */; };
 		D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */; };
 		D032A6B2280F39CA0024A4BE /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */; };
+		D032A6B42810801A0024A4BE /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032A6B32810801A0024A4BE /* FavoritesViewController.swift */; };
+		D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */; };
 		D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3127FE5FBE0096F24D /* AppDelegate.swift */; };
 		D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */; };
 		D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC3527FE5FBE0096F24D /* LoginViewController.swift */; };
@@ -63,6 +65,8 @@
 		D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromURL.swift; sourceTree = "<group>"; };
 		D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongwhipNetworking.swift; sourceTree = "<group>"; };
 		D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		D032A6B32810801A0024A4BE /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostRelationFuncs.swift; sourceTree = "<group>"; };
 		D042BC2E27FE5FBE0096F24D /* ListenUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListenUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D042BC3127FE5FBE0096F24D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,10 +146,12 @@
 				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
 				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
+				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
 				D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */,
 				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
 				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
 				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
+				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
 				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
 				D076900D28078C090019216A /* PostTableViewCell.swift */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
@@ -438,6 +444,8 @@
 			files = (
 				D032A6B2280F39CA0024A4BE /* MusicPlayer.swift in Sources */,
 				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
+				D032A6B42810801A0024A4BE /* FavoritesViewController.swift in Sources */,
+				D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */,
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
 				D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */,
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
