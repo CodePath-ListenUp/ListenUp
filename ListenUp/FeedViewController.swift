@@ -354,6 +354,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func updateVotingUI(cell: PostTableViewCell) {
+        cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: true, with: upvoteColor)
+        cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
+    }
+    
     @objc func userPressedMediaButton(_ sender: UIButton) {
         let post = posts[sender.tag]
         guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? PostTableViewCell else {
@@ -384,6 +389,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         cell.player.play()
     }
+    
+    
 }
 
 extension PostTableViewCell {
