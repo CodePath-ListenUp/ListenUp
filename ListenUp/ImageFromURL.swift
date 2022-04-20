@@ -26,6 +26,7 @@ func getImage(from url: URL) -> UIImage? {
     
     return returning
 }
+
 func getImage(from link: String) -> UIImage? {
     guard let url = URL(string: link) else { return nil }
     return getImage(from: url)
