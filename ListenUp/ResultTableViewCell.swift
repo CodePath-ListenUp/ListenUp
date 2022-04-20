@@ -13,9 +13,21 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var postSymbol: UIImageView!
+    @IBOutlet weak var mediaButton: UIButton!
     
     var result: SongResult? = nil
+    
+    var isPlaying: Bool = false
+    let darkeningLayer = CALayer()
+    let player = MusicPlayer()
 
+    func enterPausedState() {
+        self.isPlaying = false
+        self.player.pause()
+        self.darkeningLayer.opacity = nonPlayingArtworkOpacity
+        self.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import AVFAudio
+import Parse
+import UIKit
 
 class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -14,6 +17,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var searchResults: [SongResult] = []
     var searchQuery = String()
+    var whatsPlaying: ResultTableViewCell? = nil
     
     var returningViewController: FeedViewController? = nil
     
@@ -24,12 +28,22 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchBar.delegate = self
         
         tableView.allowsSelection = false
         
         searchBar.becomeFirstResponder()
+    }
+    
+    // Temporary block of code for context menu
+    // Context Menu items received from ShareContextMenu.swift
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil,
+                                              previewProvider: nil,
+                                              actionProvider: { suggestedActions in
+            
+            return UIMenu(title: "", children: getContextMenuChildren(self, self.searchResults[indexPath.row]))
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,7 +85,57 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         tapGesture.numberOfTapsRequired = 1
         cell.postSymbol.addGestureRecognizer(tapGesture)
         
+        // Source: https://stackoverflow.com/a/35019685
+        cell.darkeningLayer.frame = cell.albumArtworkView.bounds;
+        cell.darkeningLayer.backgroundColor = UIColor.black.cgColor
+        cell.darkeningLayer.opacity = nonPlayingArtworkOpacity
+        cell.albumArtworkView.layer.addSublayer(cell.darkeningLayer)
+        
+        //
+        // MARK: Media Button Work
+        //
+        
+        // To identify which cell's button got called, we can use tag to pass the indexPath row
+        cell.mediaButton.tag = indexPath.row
+        
+        cell.mediaButton.layer.shadowRadius = 10
+        cell.mediaButton.layer.shadowOpacity = 0.8
+        
+        // To prevent having two Storyboard connections, I'm using the outlet to make an action
+        cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func userPressedMediaButton(_ sender: UIButton) {
+        let post = searchResults[sender.tag]
+        guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ResultTableViewCell else {
+            print("Could not find post cell with given indexPath")
+            return
+        }
+        
+        if let oldPlay = whatsPlaying {
+            // The user was already playing something, we need to turn that off first
+            whatsPlaying?.enterPausedState()
+            whatsPlaying = nil
+            
+            // Also, check that the one we're turning off isn't the user trying to turn it off themselves
+            // Otherwise, we must return early
+            if oldPlay == cell {
+                return
+            }
+        }
+        
+        // Now that nothing is playing, let's play the next song
+        // (we've already handled the case where the user stops a song above)
+        cell.isPlaying = true
+        whatsPlaying = cell
+        cell.mediaButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        cell.darkeningLayer.opacity = playingArtworkOpacity
+        cell.player.initPlayer(url: post.previewUrl) {
+            cell.enterPausedState()
+        }
+        cell.player.play()
     }
     
     func getSearchResults(_ searchQuery: String) {
@@ -85,9 +149,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         getSearchResults(searchText)
-        
         tableView.reloadData()
     }
     
@@ -138,6 +200,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        whatsPlaying?.enterPausedState()
+    }
 }
-   
