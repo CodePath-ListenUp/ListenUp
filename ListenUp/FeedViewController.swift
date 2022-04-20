@@ -60,8 +60,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             }
             
-            self.posts = postsReturned
-            self.sortPosts()
+            self.posts = sortPosts(arr: postsReturned)
             self.tableView.reloadData()
             
         })
@@ -106,11 +105,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             user.fetchIfNeededInBackground { success, error in
                 // lol this is kinda backwards but oh well
                 guard let error = error else {
-                    let favoriteStatus = post.isContainedIn(arr: user.favoritedPosts)
                     cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.upvotedPosts), with: upvoteColor)
                     cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.downvotedPosts), with: downvoteColor)
-                    cell.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
-                    cell.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+                    cell.updateHeartUI(favoriteStatus: post.isContainedIn(arr: user.favoritedPosts))
                     return
                 }
                 print("error: \(error.localizedDescription)")
@@ -198,7 +195,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
                         tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
                     case 6:
-                        heartPost(post: post)
+                        let loved = heartPost(post: post)
+                        tappedCell.updateHeartUI(favoriteStatus: loved)
                     case 7:
                         let downvoted = downvotePost(post: post)
                         tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
@@ -299,10 +297,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return true
         }
     }
-    func heartPost(post: Post) {
-        print("user favorited \(post.trackName)")
-        User.current()!.favoritedPosts.append(post)
-        User.current()!.saveInBackground()
+    func heartPost(post: Post) -> Bool {
+        guard let user = User.current() else {
+            print("User is not signed in, can't favorite")
+            return false
+        }
+        
+        if post.isContainedIn(arr: user.favoritedPosts) {
+            // user has this post as a favorite already
+            user.favoritedPosts.removeAll { inPost in
+                post.objectId == inPost.objectId
+            }
+            user.saveEventually()
+            return false
+        }
+        else {
+            // user does not have this post as a favorite yet
+            user.favoritedPosts.append(post)
+            user.saveEventually()
+            return true
+        }
     }
     func downvotePost(post: Post) -> Bool {
         guard let user = User.current() else {
@@ -338,25 +352,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             user.saveEventually()
             return true
         }
-    }
-    
-    func sortPosts() {
-        self.posts.sort { post1, post2 in
-            
-            let scoreCompare = post1.calculatedScore > post2.calculatedScore
-            let scoreEqual = post1.calculatedScore == post2.calculatedScore
-            
-            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
-                return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
-            }
-            
-            return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
-        }
-    }
-    
-    func updateVotingUI(cell: PostTableViewCell) {
-        cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: true, with: upvoteColor)
-        cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
     }
     
     @objc func userPressedMediaButton(_ sender: UIButton) {
@@ -400,7 +395,31 @@ extension PostTableViewCell {
         self.darkeningLayer.opacity = nonPlayingArtworkOpacity
         self.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
     }
+    
+    func updateHeartUI(favoriteStatus: Bool) {
+        self.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
+        self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+    }
 }
 
-
-
+// This should get moved to a different file at some point
+// Some file for Post related functions I guess
+func sortPosts(arr: [Post]) -> [Post] {
+    return arr.sorted { post1, post2 in
+        
+        do {
+            try post1.fetchIfNeeded()
+            try post2.fetchIfNeeded()
+        }
+        catch { print(error.localizedDescription) }
+        
+        let scoreCompare = post1.calculatedScore > post2.calculatedScore
+        let scoreEqual = post1.calculatedScore == post2.calculatedScore
+        
+        guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+            return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
+        }
+        
+        return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
+    }
+}
