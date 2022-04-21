@@ -307,7 +307,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
                                                         <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="default">
                                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         </preferredSymbolConfiguration>
                                                     </buttonConfiguration>
