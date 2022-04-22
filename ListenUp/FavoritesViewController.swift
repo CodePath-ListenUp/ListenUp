@@ -8,13 +8,8 @@
 import Parse
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoritesViewController: ParentPostList {
 
-    var posts: [Post] = []
-    @IBOutlet weak var tableView: UITableView!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,12 +17,16 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.allowsSelection = true
         
         if let user = User.current() {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
                 
                 posts = sortPosts(arr: postsFav)
+                print(posts.map({ post in
+                    return post.trackName
+                }))
                 tableView.reloadData()
             }
         }
@@ -40,18 +39,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell else {
-            return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        }
-        
-        return cell
-    }
 
+    //
+    // A demonstration of how to override a template function
+    //
+    // If you need to add functionality, just copy the func declaration verbatim with override in front. Then, call super.functionName(params: params) at some point. Put the extra functionality in wherever you need it.
+    override func heartPost(post: Post) -> Bool {
+        let hearted = super.heartPost(post: post)
+        // Do any extra actions here
+        return hearted
+    }
 
 }

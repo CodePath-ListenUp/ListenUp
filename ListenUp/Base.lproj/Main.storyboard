@@ -548,7 +548,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oJb-lq-CV0"/>
                     <connections>
-                        <outlet property="tableView" destination="oe4-vc-iqG" id="FFh-4v-GDa"/>
+                        <outlet property="tableView" destination="oe4-vc-iqG" id="FXW-np-wrQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4m-2o-rrj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
