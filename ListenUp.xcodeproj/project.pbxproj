@@ -30,6 +30,8 @@
 		D042BC5327FE5FC30096F24D /* ListenUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */; };
 		D042BC5527FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */; };
 		D042BC6227FE5FE50096F24D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
+		D0558825281644EC00668AC5 /* ColorsAndUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */; };
+		D05588272816483200668AC5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05588262816483200668AC5 /* SettingsViewController.swift */; };
 		D076900C2807887F0019216A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900B2807887F0019216A /* FeedViewController.swift */; };
 		D076900E28078C090019216A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900D28078C090019216A /* PostTableViewCell.swift */; };
 		D0769010280798FF0019216A /* SafariWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900F280798FF0019216A /* SafariWork.swift */; };
@@ -85,6 +87,8 @@
 		D042BC5227FE5FC30096F24D /* ListenUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITests.swift; sourceTree = "<group>"; };
 		D042BC5427FE5FC30096F24D /* ListenUpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenUpUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D042BC6127FE5FE50096F24D /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndUserDefaults.swift; sourceTree = "<group>"; };
+		D05588262816483200668AC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D076900D28078C090019216A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		D076900F280798FF0019216A /* SafariWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWork.swift; sourceTree = "<group>"; };
@@ -155,12 +159,14 @@
 				1561AF162810C9B7006CF036 /* ShareContextMenu.swift */,
 				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
 				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
+				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
 				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
 				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
 				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
 				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
 				D076900D28078C090019216A /* PostTableViewCell.swift */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
+				D05588262816483200668AC5 /* SettingsViewController.swift */,
 				D076900F280798FF0019216A /* SafariWork.swift */,
 				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
 				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
@@ -448,10 +454,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0558825281644EC00668AC5 /* ColorsAndUserDefaults.swift in Sources */,
 				D032A6B2280F39CA0024A4BE /* MusicPlayer.swift in Sources */,
 				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
 				D032A6B42810801A0024A4BE /* FavoritesViewController.swift in Sources */,
 				D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */,
+				D05588272816483200668AC5 /* SettingsViewController.swift in Sources */,
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
 				D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */,
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
@@ -642,7 +650,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RY9935ZD32;
+				DEVELOPMENT_TEAM = X72S6AGP32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -671,7 +679,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RY9935ZD32;
+				DEVELOPMENT_TEAM = X72S6AGP32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

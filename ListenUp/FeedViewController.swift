@@ -16,7 +16,7 @@ let playingArtworkOpacity: Float = 0.0
 
 // idk where else to put this rn
 func overrideAccentColor(basedOn condition: Bool, with override: UIColor) -> UIColor {
-    return condition ? override : UIColor(named: "AccentColor")!
+    return condition ? override : accentColor
 }
 
 let upvoteColor = UIColor.systemOrange
@@ -37,11 +37,6 @@ class FeedViewController: ParentPostList {
         
         tableView.allowsSelection = true
         
-        let logoutButton = UIBarButtonItem(title: "TempLogOut", style: .plain, target: self, action: #selector(userLoggedOut))
-        logoutButton.tintColor = UIColor.systemRed
-        navigationItem.leftBarButtonItems = [
-            logoutButton
-        ]
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
         ]
@@ -79,19 +74,23 @@ class FeedViewController: ParentPostList {
     }
     
     @objc func userLoggedOut() {
-        User.logOut()
-        
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
-        
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return }
-        
-        delegate.window?.rootViewController = loginViewController
+        logUserOut()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         return
     }
+}
+
+func logUserOut() {
+    User.logOut()
+    
+    let main = UIStoryboard(name: "Main", bundle: nil)
+    let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+    
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else { return }
+    
+    delegate.window?.rootViewController = loginViewController
 }
 
 extension PostTableViewCell {

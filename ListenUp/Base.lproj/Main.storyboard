@@ -601,8 +601,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mCg-Vd-S8R" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="music.note.list" catalog="system" selectedImage="music.note.list" id="y7P-3D-OPz"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fyl-ci-xwf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Fyl-ci-xwf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -614,30 +614,14 @@
             </objects>
             <point key="canvasLocation" x="2802.898550724638" y="99.776785714285708"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Zal-ig-lIB">
-            <objects>
-                <viewController id="Jel-tA-Iix" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KWs-2C-eEG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="0pt-1c-bUb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="cd7-2t-bkR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oOd-Z1-kw2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3713.04347826087" y="1484.5982142857142"/>
-        </scene>
         <!--Favorites-->
         <scene sceneID="6pO-iN-gyn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bLa-yS-I4C" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" selectedImage="heart.fill" id="f0s-Ke-u9G"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kkz-lp-vrf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kkz-lp-vrf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -657,18 +641,34 @@
                         <imageReference key="selectedImage" image="gearshape.2.fill" catalog="system" renderingMode="template"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ig-bB-hOi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7ig-bB-hOi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Jel-tA-Iix" kind="relationship" relationship="rootViewController" id="EOK-uk-Gdy"/>
+                        <segue destination="EyF-Yu-oC0" kind="relationship" relationship="rootViewController" id="XBX-jm-VOk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HaD-Ru-INU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2802.898550724638" y="1484.5982142857142"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="CQU-tg-UWe">
+            <objects>
+                <viewController id="EyF-Yu-oC0" customClass="SettingsViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vOb-pk-Z7q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="VuX-gj-kPK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nYQ-oJ-8Id"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHH-yA-bQG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3732" y="1501"/>
         </scene>
     </scenes>
     <resources>

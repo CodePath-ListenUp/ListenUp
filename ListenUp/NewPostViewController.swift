@@ -178,7 +178,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
                         return
                     }
                     
-                    ProgressHUD.animationType = .systemActivityIndicator
+                    ProgressHUD.animationType = .lineScaling
+                    ProgressHUD.colorAnimation = accentColor
                     ProgressHUD.show("POSTING")
                     
                     // Do Post processing here (pun intended)
