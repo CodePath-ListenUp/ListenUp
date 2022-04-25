@@ -9,6 +9,7 @@ target 'ListenUp' do
   pod 'Parse'
   pod 'IQKeyboardManagerSwift' 
   pod 'ProgressHUD'
+  pod 'MarqueeLabel'
   target 'ListenUpTests' do
     inherit! :search_paths
     # Pods for testing

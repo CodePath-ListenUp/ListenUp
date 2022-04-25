@@ -27,9 +27,6 @@ class FeedViewController: ParentPostList {
     
 //    @IBOutlet weak var tableView: UITableView!
     
-    
-    
-    
     override func viewDidLoad() {
         navigationItem.title = "Feed"
         tableView.delegate = self
