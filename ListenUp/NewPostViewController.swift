@@ -38,17 +38,6 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        tableView.separatorColor = UIColor.clear
     }
     
-    // Temporary block of code for context menu
-    // Context Menu items received from ShareContextMenu.swift
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil,
-                                              previewProvider: nil,
-                                              actionProvider: { suggestedActions in
-            
-            return UIMenu(title: "", children: getContextMenuChildren(self, self.searchResults[indexPath.row]))
-        })
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
@@ -106,7 +95,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         // To prevent having two Storyboard connections, I'm using the outlet to make an action
         cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
         
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 92, bottom: 0, right: 0)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
         
         return cell
     }

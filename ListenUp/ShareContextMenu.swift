@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-func getContextMenuChildren(_ controller: UIViewController, _ item: SongResult) -> [UIAction] {
+func getContextMenuChildren(_ controller: UIViewController, _ item: Post) -> [UIAction] {
     let shareAction =
         UIAction(title: NSLocalizedString("Share", comment: ""),
                  image: UIImage(systemName: "square.and.arrow.up")) { action in

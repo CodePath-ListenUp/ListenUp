@@ -195,6 +195,7 @@ GET: "/search"
 
 - Issue #5: User can listen to previews of songs
 - Issue #7: User can favorite songs
+- Issue #9: User can share streaming links from inside the app
 - Issue #12: User can view favorited posts
 - Minor Bug Fixes!
 - Revamped UI for Post Screen

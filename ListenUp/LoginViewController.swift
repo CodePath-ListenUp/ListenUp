@@ -19,9 +19,15 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         passwordTextField.isSecureTextEntry = true
+        
+        self.title = ""
+        
+        usernameTextField.layer.cornerRadius = 8.0
+        passwordTextField.layer.cornerRadius = 8.0
     }
 
     @IBAction func userSubmittedDetails(_ sender: UIButton) {
+        sender.layer.cornerRadius = 8
         // Buttons:
         // tag = 0: Sign Up
         // tag = 1: Log In

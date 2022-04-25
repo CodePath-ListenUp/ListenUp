@@ -27,9 +27,6 @@ class FeedViewController: ParentPostList {
     
 //    @IBOutlet weak var tableView: UITableView!
     
-    
-    
-    
     override func viewDidLoad() {
         navigationItem.title = "Feed"
         tableView.delegate = self
@@ -70,6 +67,7 @@ class FeedViewController: ParentPostList {
         if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {
             newScreen.returningViewController = self
             self.present(newScreen, animated: true, completion: nil)
+            whatsPlaying?.enterPausedState()
         }
     }
     
@@ -78,7 +76,7 @@ class FeedViewController: ParentPostList {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        return
+        whatsPlaying?.enterPausedState()
     }
 }
 

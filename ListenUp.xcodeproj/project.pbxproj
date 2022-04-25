@@ -148,29 +148,29 @@
 		D042BC3027FE5FBE0096F24D /* ListenUp */ = {
 			isa = PBXGroup;
 			children = (
-				D042BC6127FE5FE50096F24D /* Private.swift */,
 				D042BC3127FE5FBE0096F24D /* AppDelegate.swift */,
-				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
-				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
-				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
+				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
+				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
+				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
-				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
+				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
+				D042BC3F27FE5FC20096F24D /* Info.plist */,
+				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
+				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
+				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
+				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
 				D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */,
+				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
+				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
+				D076900D28078C090019216A /* PostTableViewCell.swift */,
+				D042BC6127FE5FE50096F24D /* Private.swift */,
+				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
+				D076900F280798FF0019216A /* SafariWork.swift */,
+				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
+				D05588262816483200668AC5 /* SettingsViewController.swift */,
 				1561AF162810C9B7006CF036 /* ShareContextMenu.swift */,
 				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
-				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
-				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
-				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
-				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
-				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
-				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
-				D076900D28078C090019216A /* PostTableViewCell.swift */,
-				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
-				D05588262816483200668AC5 /* SettingsViewController.swift */,
-				D076900F280798FF0019216A /* SafariWork.swift */,
-				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
-				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
-				D042BC3F27FE5FC20096F24D /* Info.plist */,
+				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
 			);
 			path = ListenUp;
 			sourceTree = "<group>";
@@ -650,7 +650,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X72S6AGP32;
+				DEVELOPMENT_TEAM = RY9935ZD32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -679,7 +679,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X72S6AGP32;
+				DEVELOPMENT_TEAM = RY9935ZD32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

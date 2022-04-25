@@ -49,5 +49,9 @@ class FavoritesViewController: ParentPostList {
         // Do any extra actions here
         return hearted
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        whatsPlaying?.enterPausedState()
+    }
 
 }

@@ -23,6 +23,7 @@ protocol PostListDelegate//: UITableViewDelegate, UITableViewDataSource
 class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSource, PostListDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    var indexPathbackup = IndexPath()
     
     var posts: [Post] = []
     var whatsPlaying: PostTableViewCell? = nil
@@ -30,6 +31,41 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
+    
+    // Code for context menu
+    // Context Menu items received from ShareContextMenu.swift
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        self.indexPathbackup = indexPath
+        let post = self.posts[indexPath.row]
+        let identifier = NSString(string: post.trackCensoredName)
+        return UIContextMenuConfiguration(identifier: identifier,
+                                              previewProvider: nil,
+                                              actionProvider: { suggestedActions in
+            
+            return UIMenu(title: "", children: getContextMenuChildren(self, self.posts[indexPath.row]))
+        })
+    }
+    
+    private func makeTargetedPreview(for configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let row = indexPathbackup.row as Optional else {return nil}
+        guard let cell = tableView.cellForRow(at: .init(row: row, section: 0)) as? PostTableViewCell else { return nil }
+
+        let visiblePath = UIBezierPath(roundedRect: cell.albumArtworkView.bounds, cornerRadius: 8)
+        let parameters = UIPreviewParameters()
+        parameters.visiblePath = visiblePath
+        parameters.backgroundColor = .clear
+
+        return UITargetedPreview(view: cell.albumArtworkView, parameters: parameters)
+    }
+
+    func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration)
+    }
+
+    func tableView(_ tableView: UITableView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return makeTargetedPreview(for: configuration)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as? PostTableViewCell else {
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
@@ -97,7 +133,8 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // To prevent having two Storyboard connections, I'm using the outlet to make an action
         cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
-
+        
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
         
         return cell
     }
