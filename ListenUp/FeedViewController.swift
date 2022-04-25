@@ -75,6 +75,7 @@ class FeedViewController: ParentPostList {
         if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {
             newScreen.returningViewController = self
             self.present(newScreen, animated: true, completion: nil)
+            whatsPlaying?.enterPausedState()
         }
     }
     
@@ -90,7 +91,7 @@ class FeedViewController: ParentPostList {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        return
+        whatsPlaying?.enterPausedState()
     }
 }
 

@@ -97,7 +97,8 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // To prevent having two Storyboard connections, I'm using the outlet to make an action
         cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
-
+        
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 92, bottom: 0, right: 0)
         
         return cell
     }
