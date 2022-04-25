@@ -29,12 +29,12 @@ An app for sharing songs with others.
 - [✅] User can listen to previews of songs
 - [✅] User can open the song in other streaming services
 - [✅] User can post songs
-- [] User can favorite songs
-- [] User can view their favorite songs
+- [✅] User can favorite songs
+- [✅] User can view their favorite songs
 
 **Optional Nice-to-have Stories**
 
-- [] User can share streaming links from in the app
+- [✅] User can share streaming links from in the app
 - [] User can switch between grid view and list view
 - [] User can filter by genre (or other tags, potentially)
 - [] User can comment on posted songs
@@ -190,3 +190,13 @@ GET: "/search"
 - Issue #8: User can post songs
 
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-2.gif" width=320>
+
+#### Sprint 3:
+
+- Issue #5: User can listen to previews of songs
+- Issue #7: User can favorite songs
+- Issue #12: User can view favorited posts
+- Minor Bug Fixes!
+- Revamped UI for Post Screen
+
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-3.gif" width=320>
