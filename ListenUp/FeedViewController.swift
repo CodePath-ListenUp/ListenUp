@@ -37,7 +37,7 @@ class FeedViewController: ParentPostList {
         
         tableView.allowsSelection = true
         
-        navigationItem.rightBarButtonItems = [
+        navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
         ]
         
