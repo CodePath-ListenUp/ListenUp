@@ -31,6 +31,11 @@ class ResultTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        albumArtworkView.layer.cornerRadius = 8.0
+        albumArtworkView.clipsToBounds = true
+        mediaButton.layer.cornerRadius = 8.0
+        mediaButton.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

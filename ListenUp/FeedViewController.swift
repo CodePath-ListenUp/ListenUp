@@ -88,6 +88,10 @@ class FeedViewController: ParentPostList {
         
         delegate.window?.rootViewController = loginViewController
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        return
+    }
 }
 
 extension PostTableViewCell {

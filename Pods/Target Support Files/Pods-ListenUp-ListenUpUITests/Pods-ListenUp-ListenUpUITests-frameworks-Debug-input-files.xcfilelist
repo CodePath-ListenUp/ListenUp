@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-Li
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework

@@ -142,7 +142,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
                                                         <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="default">
                                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         </preferredSymbolConfiguration>
                                                     </buttonConfiguration>
@@ -294,15 +294,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurred rice box copy" translatesAutoresizingMaskIntoConstraints="NO" id="qMc-4q-NNR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <rect key="frame" x="4" y="4" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="qMc-4q-NNR" secondAttribute="height" multiplier="1:1" id="46I-uG-mft"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="E4h-4U-Lzt"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="USU-Oq-CD5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mm-5r-hkz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mm-5r-hkz">
+                                                    <rect key="frame" x="4" y="4" width="80" height="80"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
@@ -313,20 +313,20 @@
                                                     </buttonConfiguration>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-Y6-n2x" userLabel="labelsView">
-                                                    <rect key="frame" x="88" y="4" width="273" height="175"/>
+                                                    <rect key="frame" x="92" y="4" width="256" height="175"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4n-Td-9pL">
-                                                            <rect key="frame" x="0.0" y="29" width="273" height="142"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                            <rect key="frame" x="0.0" y="29" width="256" height="142"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-6q-fM5">
-                                                            <rect key="frame" x="0.0" y="4" width="273" height="21"/>
+                                                            <rect key="frame" x="0.0" y="4" width="256" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="1kZ-YH-B9x"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -335,7 +335,7 @@
                                                         <constraint firstItem="m0r-6q-fM5" firstAttribute="top" secondItem="9uP-Y6-n2x" secondAttribute="top" constant="4" id="4mG-GW-Ap6"/>
                                                         <constraint firstAttribute="bottom" secondItem="Q4n-Td-9pL" secondAttribute="bottom" constant="4" id="8ef-bx-DpC"/>
                                                         <constraint firstItem="Q4n-Td-9pL" firstAttribute="top" secondItem="m0r-6q-fM5" secondAttribute="bottom" constant="4" id="EJf-AB-gQV"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="Sps-D8-gFZ"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Sps-D8-gFZ"/>
                                                         <constraint firstItem="Q4n-Td-9pL" firstAttribute="top" secondItem="m0r-6q-fM5" secondAttribute="bottom" constant="4" id="TRU-uU-7My"/>
                                                         <constraint firstItem="m0r-6q-fM5" firstAttribute="leading" secondItem="9uP-Y6-n2x" secondAttribute="leading" id="vY8-1y-4ey"/>
                                                         <constraint firstAttribute="trailing" secondItem="m0r-6q-fM5" secondAttribute="trailing" id="vy3-Qj-zc2"/>
@@ -344,16 +344,16 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="82h-vY-ae3">
-                                                    <rect key="frame" x="369" y="20.5" width="25" height="25"/>
+                                                    <rect key="frame" x="368" y="79" width="26" height="25.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="S9w-j6-B6p"/>
-                                                        <constraint firstAttribute="height" constant="25.5" id="SGA-r9-7Gu"/>
+                                                        <constraint firstAttribute="width" constant="26" id="S9w-j6-B6p"/>
+                                                        <constraint firstAttribute="height" constant="26" id="SGA-r9-7Gu"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qMc-4q-NNR" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" id="07S-Ev-Kd8"/>
-                                                <constraint firstItem="qMc-4q-NNR" firstAttribute="leading" secondItem="wcV-Dk-Q0r" secondAttribute="leading" id="B7h-2r-IFn"/>
+                                                <constraint firstItem="qMc-4q-NNR" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" constant="4" id="07S-Ev-Kd8"/>
+                                                <constraint firstItem="qMc-4q-NNR" firstAttribute="leading" secondItem="wcV-Dk-Q0r" secondAttribute="leading" constant="4" id="B7h-2r-IFn"/>
                                                 <constraint firstItem="4Mm-5r-hkz" firstAttribute="width" secondItem="qMc-4q-NNR" secondAttribute="width" id="Dia-tY-Pwc"/>
                                                 <constraint firstItem="4Mm-5r-hkz" firstAttribute="centerX" secondItem="qMc-4q-NNR" secondAttribute="centerX" id="FWA-Xy-nH1"/>
                                                 <constraint firstItem="4Mm-5r-hkz" firstAttribute="top" secondItem="qMc-4q-NNR" secondAttribute="top" id="Foo-0Z-GbI"/>
@@ -361,9 +361,9 @@
                                                 <constraint firstItem="9uP-Y6-n2x" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" constant="4" id="MIV-Lq-1Vt"/>
                                                 <constraint firstItem="9uP-Y6-n2x" firstAttribute="leading" secondItem="qMc-4q-NNR" secondAttribute="trailing" constant="8" id="P1J-eK-Xs9"/>
                                                 <constraint firstItem="4Mm-5r-hkz" firstAttribute="leading" secondItem="qMc-4q-NNR" secondAttribute="leading" id="ea7-TU-7eF"/>
-                                                <constraint firstItem="82h-vY-ae3" firstAttribute="leading" secondItem="9uP-Y6-n2x" secondAttribute="trailing" constant="8" id="jeX-m3-2Yo"/>
+                                                <constraint firstItem="82h-vY-ae3" firstAttribute="leading" secondItem="9uP-Y6-n2x" secondAttribute="trailing" constant="20" id="jeX-m3-2Yo"/>
+                                                <constraint firstItem="82h-vY-ae3" firstAttribute="centerY" secondItem="wcV-Dk-Q0r" secondAttribute="centerY" id="k8L-B2-dbt"/>
                                                 <constraint firstItem="4Mm-5r-hkz" firstAttribute="height" secondItem="qMc-4q-NNR" secondAttribute="height" id="q7J-h3-gIB"/>
-                                                <constraint firstItem="82h-vY-ae3" firstAttribute="top" secondItem="wcV-Dk-Q0r" secondAttribute="top" constant="20" id="r2s-fE-olu"/>
                                                 <constraint firstAttribute="bottom" secondItem="9uP-Y6-n2x" secondAttribute="bottom" constant="4" id="yt7-0g-8ea"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -428,7 +428,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
                                                         <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="default">
                                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                         </preferredSymbolConfiguration>
                                                     </buttonConfiguration>

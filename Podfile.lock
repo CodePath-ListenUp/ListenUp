@@ -5,22 +5,26 @@ PODS:
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
     - Bolts/Tasks (= 1.9.1)
+  - ProgressHUD (13.6)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Parse
+  - ProgressHUD
 
 SPEC REPOS:
   trunk:
     - Bolts
     - IQKeyboardManagerSwift
     - Parse
+    - ProgressHUD
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
 
-PODFILE CHECKSUM: e38539c0e9ef23232e4daae3b57fb4349bbd0111
+PODFILE CHECKSUM: b690ddba56d60fc0cf84602909d836b756a364bf
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

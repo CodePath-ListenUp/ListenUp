@@ -9,6 +9,7 @@ import UIKit
 import AVFAudio
 import Parse
 import UIKit
+import ProgressHUD
 
 class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -33,6 +34,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.allowsSelection = false
         
         searchBar.becomeFirstResponder()
+        
+//        tableView.separatorColor = UIColor.clear
     }
     
     // Temporary block of code for context menu
@@ -54,7 +57,6 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell") as? ResultTableViewCell else {
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
-        
         
         var result: SongResult?
         if indexPath.row >= searchResults.count {
@@ -103,6 +105,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // To prevent having two Storyboard connections, I'm using the outlet to make an action
         cell.mediaButton.addTarget(self, action: #selector(userPressedMediaButton), for: .touchUpInside)
+        
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 92, bottom: 0, right: 0)
         
         return cell
     }
@@ -169,9 +173,13 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? ResultTableViewCell {
                     guard let result = tappedCell.result else {
+                        ProgressHUD.showFailed()
                         print("post not set for tappedCell")
                         return
                     }
+                    
+                    ProgressHUD.animationType = .systemActivityIndicator
+                    ProgressHUD.show("POSTING")
                     
                     // Do Post processing here (pun intended)
                     let _ = Post(song: result, createdBy: User.current()!) { postReady in
@@ -203,5 +211,6 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillDisappear(_ animated: Bool) {
         whatsPlaying?.enterPausedState()
+        ProgressHUD.dismiss()
     }
 }
