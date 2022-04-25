@@ -32,7 +32,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         return posts.count
     }
     
-    // Temporary block of code for context menu
+    // Code for context menu
     // Context Menu items received from ShareContextMenu.swift
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         self.indexPathbackup = indexPath
