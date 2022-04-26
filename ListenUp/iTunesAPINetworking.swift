@@ -59,24 +59,25 @@ func retrieveITUNESResults(rawSearchTerm: String, completion: @escaping ([SongRe
     }.resume()
 }
 
-// Idk if this will stay here but I need to make it somewhere
 class Post: PFObject, PFSubclassing, Codable {
     static func parseClassName() -> String {
-        return "Postd"; #warning("change this back to \"Post\" at somepoint")
+        return "Post"; 
     }
     
     override init() {
         super.init()
     }
     
+    
+    
     internal init(song: SongResult, createdBy: User, completion: ((Post)->())?) {
         super.init()
-        
+
         self.postId = UUID().hashValue
         self.upvoteCount = 0
         self.downvoteCount = 0
         self.createdBy = createdBy
-        
+
         // Below are all the properties that get copied over from the SongResult that iTunes gives.
         self.trackName = song.trackName
         self.artistName = song.artistName
@@ -84,11 +85,19 @@ class Post: PFObject, PFSubclassing, Codable {
         self.trackCensoredName = song.trackCensoredName
         self.collectionCensoredName = song.collectionCensoredName
         self.previewUrl = song.previewUrl
+
+        // URL template:
+        //https://is4-ssl.mzstatic.com/image/thumb/Music114/v4/ce/c7/96/cec796f8-9521-b1f0-7300-17c710d35242/source/100x100bb.jpg
+
+        self.artworkUrl750 = song.artworkUrl100.replacingOccurrences(of: "100x100bb.jpg", with: "750x750bb.jpg")
+
         self.artworkUrl100 = song.artworkUrl100
+
+
         self.trackViewUrl = song.trackViewUrl
         self.releaseDate = song.releaseDate
         self.primaryGenreName = song.primaryGenreName
-        
+
         // This is a neat technique to make our viewDidLoad wait until the songwhip link is grabbed before sending the post to Parse
         getSongwhipFromLink(linkString: song.trackViewUrl, completion: { result in
             self.songLinkString = result.url
@@ -116,6 +125,7 @@ class Post: PFObject, PFSubclassing, Codable {
     @NSManaged var collectionCensoredName : String
     @NSManaged var previewUrl : String
     @NSManaged var artworkUrl100 : String
+    @NSManaged var artworkUrl750 : String
     @NSManaged var trackViewUrl: String
     @NSManaged var releaseDate : String
     @NSManaged var primaryGenreName : String

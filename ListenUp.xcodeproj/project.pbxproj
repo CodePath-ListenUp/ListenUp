@@ -33,6 +33,8 @@
 		D0558825281644EC00668AC5 /* ColorsAndUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */; };
 		D05588272816483200668AC5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05588262816483200668AC5 /* SettingsViewController.swift */; };
 		D05D87FB281828F10035C86D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D87FA281828F10035C86D /* TabBarController.swift */; };
+		D05D87FD281865CB0035C86D /* PageViewTemplateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */; };
+		D05D87FF281867360035C86D /* PagedPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D87FE281867360035C86D /* PagedPostViewController.swift */; };
 		D076900C2807887F0019216A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900B2807887F0019216A /* FeedViewController.swift */; };
 		D076900E28078C090019216A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900D28078C090019216A /* PostTableViewCell.swift */; };
 		D0769010280798FF0019216A /* SafariWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900F280798FF0019216A /* SafariWork.swift */; };
@@ -91,6 +93,8 @@
 		D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndUserDefaults.swift; sourceTree = "<group>"; };
 		D05588262816483200668AC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D05D87FA281828F10035C86D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewTemplateController.swift; sourceTree = SOURCE_ROOT; };
+		D05D87FE281867360035C86D /* PagedPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedPostViewController.swift; sourceTree = "<group>"; };
 		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D076900D28078C090019216A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		D076900F280798FF0019216A /* SafariWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWork.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		D042BC3027FE5FBE0096F24D /* ListenUp */ = {
 			isa = PBXGroup;
 			children = (
+				D05D87FE281867360035C86D /* PagedPostViewController.swift */,
+				D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */,
 				D05D87FA281828F10035C86D /* TabBarController.swift */,
 				D042BC3127FE5FBE0096F24D /* AppDelegate.swift */,
 				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
@@ -459,6 +465,7 @@
 			files = (
 				D0558825281644EC00668AC5 /* ColorsAndUserDefaults.swift in Sources */,
 				D032A6B2280F39CA0024A4BE /* MusicPlayer.swift in Sources */,
+				D05D87FF281867360035C86D /* PagedPostViewController.swift in Sources */,
 				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
 				D032A6B42810801A0024A4BE /* FavoritesViewController.swift in Sources */,
 				D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */,
@@ -469,6 +476,7 @@
 				D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */,
 				D0769010280798FF0019216A /* SafariWork.swift in Sources */,
 				D042BC6227FE5FE50096F24D /* Private.swift in Sources */,
+				D05D87FD281865CB0035C86D /* PageViewTemplateController.swift in Sources */,
 				D02D51812810D1FA007AEC1D /* PostListTemplateController.swift in Sources */,
 				D05D87FB281828F10035C86D /* TabBarController.swift in Sources */,
 				D017C57C2807D37200E62C7F /* iTunesAPINetworking.swift in Sources */,

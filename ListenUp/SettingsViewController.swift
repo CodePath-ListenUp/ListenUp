@@ -10,12 +10,29 @@ import UIKit
 
 
 struct SettingsView: View {
+    let parent: SettingsViewController
+    
+    @State private var preferredLayout: Bool = UserDefaults.standard.bool(forKey: "prefersPagedFeed")
+    
     var body: some View {
         List {
             Section("Feed") {
-                Text("Preferred Layout")
+                SettingToggleCell(settingName: "Paged Layout", toggleStatus: $preferredLayout)
+                    .onChange(of: preferredLayout) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "prefersPagedFeed")
+                        
+                        guard let tabBarC = parent.tabBarController as? TabBarController else {
+                            return
+                        }
+                        
+                        tabBarC.setupAppropriateViews()
+                    }
                 Text("Sort Order")
+                Text("Genre Filter")
+                Text("Accent Color")
+                Text("Avoid Explicit Content")
                 Text("Display Score")
+                    .disabled(preferredLayout)
             }
             Section("Account") {
                 Button(action: {
@@ -34,16 +51,29 @@ struct SettingsView: View {
     }
 }
 
+struct SettingToggleCell: View {
+    let settingName: String
+    @Binding var toggleStatus: Bool
+    
+    var body: some View {
+        HStack {
+            Text(settingName)
+            Spacer()
+            Toggle("", isOn: $toggleStatus)
+        }
+    }
+}
 
 class SettingsViewController: UIViewController {
     
-    let settingsView = UIHostingController(rootView: SettingsView())
+    var settingsView = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
         
+        settingsView = UIHostingController(rootView: SettingsView(parent: self))
         addChild(settingsView)
         view.addSubview(settingsView.view)
         setupContraints()

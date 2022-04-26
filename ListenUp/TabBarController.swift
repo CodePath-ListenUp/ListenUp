@@ -12,15 +12,51 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let viewControllers = viewControllers else {
+        guard var viewControllerArray = viewControllers else {
             return
         }
         
-        print(viewControllers)
+        isModalInPresentation = true
         
-        if UserDefaults.standard.bool(forKey: "prefersPagedFeed") {
-            
-        }
+        print(viewControllerArray)
+        
+        setupAppropriateViews()
+        
     }
 
+    func setupAppropriateViews() {
+        if UserDefaults.standard.bool(forKey: "prefersPagedFeed") {
+            let vc = PageViewTemplateController()
+            let navOuter = UINavigationController(rootViewController: vc)
+            vc.title = "Feed"
+            vc.feedType = .all(genre: .all) // when genres get implemented, this is how we'll specify it
+            navOuter.navigationBar.prefersLargeTitles = false
+            navOuter.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "music.note.list"), selectedImage: UIImage(systemName:"music.note.list"))
+            self.viewControllers?[0] = navOuter
+        }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let feedNav = storyboard.instantiateViewController(withIdentifier: "feedNav")
+            let favNav = storyboard.instantiateViewController(withIdentifier: "favNav")
+            
+            self.viewControllers?[0] = feedNav
+            self.viewControllers?[1] = favNav
+        }
+        
+        //if UserDefaults.standard.bool(forKey: "prefersPagedFavorites") {
+        //            let vc = PageViewTemplateController()
+        //            let navOuter = UINavigationController(rootViewController: vc)
+        //            vc.title = "Feed"
+        //            if let user = User.current() {
+        //                vc.feedType = .favorites(user: user)
+        //            }
+        //            else {
+        //                vc.feedType = .all(genre: .all)
+        //            }
+        //            navOuter.navigationBar.prefersLargeTitles = false
+        //            navOuter.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "music.note.list"), selectedImage: UIImage(systemName:"music.note.list"))
+        //            self.viewControllers?[0] = navOuter
+        //        }
+    }
 }

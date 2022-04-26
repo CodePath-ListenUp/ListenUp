@@ -628,53 +628,44 @@
             </objects>
             <point key="canvasLocation" x="1892.753623188406" y="99.776785714285708"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="eFg-2W-3fw">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="BYn-MH-Wgo" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RmF-Wl-FoR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3257" y="-555"/>
-        </scene>
-        <!--View Controller-->
+        <!--Paged Post View Controller-->
         <scene sceneID="nGq-ED-YPW">
             <objects>
-                <viewController id="0UX-am-5KM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PagedPostViewController" id="0UX-am-5KM" customClass="PagedPostViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yig-yV-H8Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="owt-gq-dd7">
-                                <rect key="frame" x="20" y="160" width="374" height="374"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="owt-gq-dd7" secondAttribute="height" multiplier="1:1" id="FZg-nd-YjV"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIp-Yc-NXS" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="20" y="554" width="374" height="22"/>
+                                <rect key="frame" x="20" y="478" width="374" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hQQ-mm-1Di"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BX-i6-SSS">
-                                <rect key="frame" x="20" y="586" width="374" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BX-i6-SSS" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="20" y="510" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aeq-uO-igw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-Ba-2Pu" userLabel="secondaryControls">
-                                <rect key="frame" x="0.0" y="754" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="678" width="414" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-0O-xbq" userLabel="centerButton">
                                         <rect key="frame" x="151.5" y="-26.5" width="111" height="111"/>
@@ -719,14 +710,8 @@
                                     <constraint firstAttribute="width" secondItem="Zoc-Ba-2Pu" secondAttribute="height" multiplier="207:29" id="s8P-LF-U2Y"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMD-qh-o5w">
-                                <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                                <items>
-                                    <navigationItem title="Feed" largeTitleDisplayMode="always" id="2A1-8p-Hu2"/>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXs-7W-F92">
-                                <rect key="frame" x="0.0" y="650" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="574" width="414" height="94"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-HL-WcU" userLabel="centerButton">
                                         <rect key="frame" x="160" y="0.0" width="94" height="94"/>
@@ -773,50 +758,60 @@
                                     <constraint firstAttribute="bottom" secondItem="eNz-rz-4zS" secondAttribute="bottom" id="wjC-VG-MzE"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="owt-gq-dd7">
+                                <rect key="frame" x="20" y="64" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="owt-gq-dd7" secondAttribute="height" multiplier="1:1" id="FZg-nd-YjV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5JW-Fy-940"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="0io-OP-cC1"/>
-                            <constraint firstItem="OMD-qh-o5w" firstAttribute="top" secondItem="5JW-Fy-940" secondAttribute="top" id="47A-1V-NhA"/>
                             <constraint firstItem="aIp-Yc-NXS" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" constant="-20" id="4N2-KL-vL8"/>
+                            <constraint firstItem="aIp-Yc-NXS" firstAttribute="top" secondItem="owt-gq-dd7" secondAttribute="bottom" constant="40" id="5Pj-f8-nVs"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="top" secondItem="dXs-7W-F92" secondAttribute="bottom" constant="10" id="D4T-ln-8H6"/>
                             <constraint firstItem="2BX-i6-SSS" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="EVQ-Md-bOc"/>
-                            <constraint firstItem="OMD-qh-o5w" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="J3n-0d-qj1"/>
                             <constraint firstItem="5JW-Fy-940" firstAttribute="trailing" secondItem="2BX-i6-SSS" secondAttribute="trailing" constant="20" id="LRx-BV-ams"/>
-                            <constraint firstItem="OMD-qh-o5w" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="OVc-m9-0Oq"/>
+                            <constraint firstItem="owt-gq-dd7" firstAttribute="top" secondItem="5JW-Fy-940" secondAttribute="top" constant="20" id="QZS-Ni-eGf"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="R1B-BJ-hdu"/>
                             <constraint firstItem="dXs-7W-F92" firstAttribute="top" secondItem="2BX-i6-SSS" secondAttribute="bottom" constant="20" id="R3y-zA-is5"/>
                             <constraint firstItem="dXs-7W-F92" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="RkC-px-95J"/>
                             <constraint firstItem="dXs-7W-F92" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="Tqg-75-NUM"/>
                             <constraint firstItem="owt-gq-dd7" firstAttribute="centerX" secondItem="Yig-yV-H8Z" secondAttribute="centerX" id="bxT-p6-G48"/>
                             <constraint firstItem="aIp-Yc-NXS" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="hcd-5E-MeA"/>
-                            <constraint firstItem="owt-gq-dd7" firstAttribute="top" secondItem="OMD-qh-o5w" secondAttribute="bottom" constant="20" id="lCN-Kd-dJ2"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="lWO-bG-DKA"/>
                             <constraint firstItem="2BX-i6-SSS" firstAttribute="top" secondItem="aIp-Yc-NXS" secondAttribute="bottom" constant="10" id="oVV-fB-glx"/>
-                            <constraint firstItem="aIp-Yc-NXS" firstAttribute="top" secondItem="owt-gq-dd7" secondAttribute="bottom" constant="20" id="z4e-WP-2A4"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="zMN-yE-BQi"/>
                             <constraint firstItem="owt-gq-dd7" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="zjt-OO-FPY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="albumArtworkView" destination="owt-gq-dd7" id="dW1-ZH-Om0"/>
+                        <outlet property="artistNameLabel" destination="aIp-Yc-NXS" id="Bus-5G-hYl"/>
+                        <outlet property="downvoteSymbol" destination="eNz-rz-4zS" id="pCh-Rg-Njo"/>
+                        <outlet property="heartIcon" destination="3Ma-0O-xbq" id="QrU-QP-MaM"/>
+                        <outlet property="mediaButton" destination="eEO-HL-WcU" id="6z7-Vc-szF"/>
+                        <outlet property="shareButton" destination="IDe-Un-fxE" id="wLp-sq-meT"/>
+                        <outlet property="songwhipButton" destination="fJ1-4w-Tt5" id="YGQ-nt-y8K"/>
+                        <outlet property="trackNameLabel" destination="2BX-i6-SSS" id="LRI-Xe-Tgr"/>
+                        <outlet property="upvoteSymbol" destination="gCt-Tf-b9t" id="vD2-rV-yGW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLi-g8-tS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ABN-de-l8w">
-                    <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="">
-                        <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="72" weight="regular"/>
-                    </buttonConfiguration>
-                </button>
             </objects>
             <point key="canvasLocation" x="3947.826086956522" y="-573.21428571428567"/>
         </scene>
         <!--Feed-->
         <scene sceneID="3CJ-S3-mUi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mCg-Vd-S8R" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="feedNav" automaticallyAdjustsScrollViewInsets="NO" id="mCg-Vd-S8R" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="music.note.list" catalog="system" selectedImage="music.note.list" id="y7P-3D-OPz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Fyl-ci-xwf">
@@ -835,7 +830,7 @@
         <!--Favorites-->
         <scene sceneID="6pO-iN-gyn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bLa-yS-I4C" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="favNav" automaticallyAdjustsScrollViewInsets="NO" id="bLa-yS-I4C" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" selectedImage="heart.fill" id="f0s-Ke-u9G"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kkz-lp-vrf">
@@ -904,6 +899,9 @@
         </designable>
         <designable name="SDk-Tg-ne5">
             <size key="intrinsicContentSize" width="76.5" height="17"/>
+        </designable>
+        <designable name="aIp-Yc-NXS">
+            <size key="intrinsicContentSize" width="57" height="29"/>
         </designable>
         <designable name="m0r-6q-fM5">
             <size key="intrinsicContentSize" width="76.5" height="17"/>
