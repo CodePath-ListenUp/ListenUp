@@ -71,9 +71,11 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
         
-        guard let post = posts[indexPath.row] else {
+        guard indexPath.row < posts.count else {
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
+        let post = posts[indexPath.row]
+        
         cell.post = post
         cell.albumArtworkView.image = UIImage(named: "default.jpg")!
         cell.trackNameLabel?.text = post.trackName

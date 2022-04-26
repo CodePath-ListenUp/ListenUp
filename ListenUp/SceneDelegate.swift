@@ -24,6 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let loggedInNavigationController = main.instantiateViewController(withIdentifier: "LoggedInNavigationController")
             window?.rootViewController = loggedInNavigationController
         }
+        
+        // Use this to set the tintColor initially
+//        self.window?.tintColor = .red
 
     }
 
