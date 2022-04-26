@@ -71,7 +71,9 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         }
         
-        let post = posts[indexPath.row]
+        guard let post = posts[indexPath.row] else {
+            return UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        }
         cell.post = post
         cell.albumArtworkView.image = UIImage(named: "default.jpg")!
         cell.trackNameLabel?.text = post.trackName
@@ -96,6 +98,17 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             tapGesture.numberOfTapsRequired = 1
             view?.addGestureRecognizer(tapGesture)
         }
+        
+        let doubleTapToFavorite = UITapGestureRecognizer(target: self, action: #selector(favoritePostButItsJustASelectorProxy(_ :)))
+        doubleTapToFavorite.numberOfTapsRequired = 2
+        cell.addGestureRecognizer(doubleTapToFavorite)
+        
+        let singleTapToOpen = UITapGestureRecognizer(target: self, action: #selector(openPost(_ :)))
+        singleTapToOpen.numberOfTapsRequired = 1
+        singleTapToOpen.require(toFail: doubleTapToFavorite)
+        cell.addGestureRecognizer(singleTapToOpen)
+        
+        
         
         if let user = User.current() {
             user.fetchIfNeededInBackground { success, error in
@@ -147,6 +160,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let downvote = UIContextualAction(style: .normal, title: "Downvote") { action, view, completionHandler in
             let downvoted = self.downvotePost(post: post)
+            cell.upvoteSymbol.scaleBounce(duration: 0.2)
             cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
             cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
             action.image = UIImage(systemName: downvoted ? "arrow.uturn.backward" : "chevron.down")
@@ -166,6 +180,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         let upvote = UIContextualAction(style: .normal, title: "Upvote") { action, view, completionHandler in
             let upvoted = self.upvotePost(post: post)
             
+            cell.upvoteSymbol.scaleBounce(duration: 0.2)
             cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
             cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
             action.image = UIImage(systemName: upvoted ? "arrow.uturn.backward" : "chevron.up")
@@ -178,26 +193,11 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let post = posts[indexPath.row]
-        
-        if let songwhipStr = post.songLinkString, let url = URL(string: songwhipStr) {
-            let svc = SFSafariViewController(url: url)
-            DispatchQueue.main.async {
-                self.present(svc, animated: true)
-            }
-        }
-        else {
-            getSongwhipFromLink(linkString: post.trackViewUrl) { result in
-                self.posts[indexPath.row].songLinkString = result.url
-                let url = URL(string: result.url)!
-                let svc = SFSafariViewController(url: url)
-                DispatchQueue.main.async {
-                    self.present(svc, animated: true)
-                }
-            }
-        }
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        
+//        let post = posts[indexPath.row]
+//        
+//        openPost(post: post, indexPath: indexPath)
     }
     
     @objc func userDidTapElement(_ sender: UITapGestureRecognizer) {
@@ -214,12 +214,14 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
                     case 5:
                         let upvoted = upvotePost(post: post)
                         tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
+                        tappedCell.upvoteSymbol.scaleBounce(duration: 0.2)
                         tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
                     case 6:
-                        let loved = heartPost(post: post)
+                        let loved = heartPost(post: post, cell: tappedCell)
                         tappedCell.updateHeartUI(favoriteStatus: loved)
                     case 7:
                         let downvoted = downvotePost(post: post)
+                        tappedCell.upvoteSymbol.scaleBounce(duration: 0.2)
                         tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
                         tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
                     default:
@@ -266,12 +268,12 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             return true
         }
     }
-    func heartPost(post: Post) -> Bool {
+    func heartPost(post: Post, cell: PostTableViewCell) -> Bool {
         guard let user = User.current() else {
             print("User is not signed in, can't favorite")
             return false
         }
-        
+        cell.heartIcon.scaleBounce(duration: 0.2)
         if post.isContainedIn(arr: user.favoritedPosts) {
             // user has this post as a favorite already
             user.favoritedPosts.removeAll { inPost in
@@ -320,6 +322,58 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             post.saveEventually()
             user.saveEventually()
             return true
+        }
+    }
+    
+    @objc func favoritePostButItsJustASelectorProxy(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.ended {
+            let tapLocation = sender.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? PostTableViewCell {
+                    guard let post = tappedCell.post else {
+                        print("post not set for tappedCell")
+                        return
+                    }
+                    
+                    let loved = heartPost(post: post, cell: tappedCell)
+                    tappedCell.updateHeartUI(favoriteStatus: loved)
+                }
+            }
+        }
+    }
+    
+    @objc func openPost(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.ended {
+            let tapLocation = sender.location(in: self.tableView)
+            if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? PostTableViewCell {
+                    guard let post = tappedCell.post else {
+                        print("post not set for tappedCell")
+                        return
+                    }
+                    
+                    openPost(post: post, indexPath: tapIndexPath)
+                }
+            }
+        }
+    }
+    
+    func openPost(post: Post, indexPath: IndexPath) {
+        if let songwhipStr = post.songLinkString, let url = URL(string: songwhipStr) {
+            let svc = SFSafariViewController(url: url)
+            DispatchQueue.main.async {
+                self.present(svc, animated: true)
+            }
+        }
+        else {
+            getSongwhipFromLink(linkString: post.trackViewUrl) { result in
+                self.posts[indexPath.row].songLinkString = result.url
+                let url = URL(string: result.url)!
+                let svc = SFSafariViewController(url: url)
+                DispatchQueue.main.async {
+                    self.present(svc, animated: true)
+                }
+            }
         }
     }
     

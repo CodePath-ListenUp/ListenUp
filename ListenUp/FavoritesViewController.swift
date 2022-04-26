@@ -18,7 +18,7 @@ class FavoritesViewController: ParentPostList {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         
         if let user = User.current() {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
@@ -44,8 +44,8 @@ class FavoritesViewController: ParentPostList {
     // A demonstration of how to override a template function
     //
     // If you need to add functionality, just copy the func declaration verbatim with override in front. Then, call super.functionName(params: params) at some point. Put the extra functionality in wherever you need it.
-    override func heartPost(post: Post) -> Bool {
-        let hearted = super.heartPost(post: post)
+    override func heartPost(post: Post, cell: PostTableViewCell) -> Bool {
+        let hearted = super.heartPost(post: post, cell: cell)
         // Do any extra actions here
         return hearted
     }

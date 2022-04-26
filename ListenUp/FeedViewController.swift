@@ -32,7 +32,7 @@ class FeedViewController: ParentPostList {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
@@ -124,5 +124,20 @@ func sortPosts(arr: [Post]) -> [Post] {
         }
         
         return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
+    }
+}
+
+extension UIView {
+    func scaleBounce(duration: CGFloat) {
+        let duration = duration / 2.0
+        UIView.animate(withDuration: duration,
+            animations: {
+            self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        },
+        completion: { _ in
+            UIView.animate(withDuration: duration) {
+                self.transform = CGAffineTransform.identity
+            }
+        })
     }
 }
