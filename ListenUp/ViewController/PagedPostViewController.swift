@@ -32,6 +32,10 @@ class PagedPostViewController: UIViewController {
         albumArtworkView.load(url: URL(string: post.artworkUrl750)!)
         
         // Button setup here
+        mediaButton.addTarget(self, action: #selector(userTappedMediaButton), for: .touchUpInside)
     }
     
+    @objc func userTappedMediaButton() {
+        print("media button")
+    }
 }
