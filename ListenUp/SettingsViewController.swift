@@ -16,6 +16,10 @@ struct SettingsView: View {
     
     var body: some View {
         List {
+            Section("⚠️ Warning ⚠️") {
+                Text("Please consider all settings very experimental for the time being.")
+                    .padding()
+            }
             Section("Feed") {
                 SettingToggleCell(settingName: "Paged Layout", toggleStatus: $preferredLayout)
                     .onChange(of: preferredLayout) { newValue in

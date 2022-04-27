@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Jelly Club-->
+        <!--JellyClub-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurred rice box copy" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-Ht-yfN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconTemporary" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-Ht-yfN">
                                 <rect key="frame" x="50" y="190" width="314" height="314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Hts-Ht-yfN" secondAttribute="height" multiplier="1:1" id="WQ6-Qv-qln"/>
@@ -114,7 +114,7 @@
                             <constraint firstItem="IeV-4o-J1R" firstAttribute="trailing" secondItem="Hts-Ht-yfN" secondAttribute="trailing" id="xqr-BE-m9m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Jelly Club" id="SEP-VQ-NdP"/>
+                    <navigationItem key="navigationItem" title="JellyClub" id="SEP-VQ-NdP"/>
                     <connections>
                         <outlet property="passwordTextField" destination="Jvc-XQ-Fxk" id="Lub-aW-sHA"/>
                         <outlet property="usernameTextField" destination="IeV-4o-J1R" id="Xi6-ma-jy6"/>
@@ -908,6 +908,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="appIconTemporary" width="1024" height="1024"/>
         <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
         <image name="blurred rice box copy" width="952" height="952"/>
