@@ -39,5 +39,42 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func upvote() {
+        guard let post = self.post else {
+            print("post has not been set yet")
+            return
+        }
+        let upvoted = upvotePost(post: post)
+        self.upvoteSymbol.scaleBounce(duration: 0.2)
+        styleUpvoteSymbol(value: upvoted)
+        self.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
+    }
+    func styleUpvoteSymbol(value: Bool) {
+//        self.upvoteSymbol.image = UIImage(systemName: value ? "chevron.up.square.fill" : "chevron.up.square")
+        self.upvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: upvoteColor)
+    }
+    
+    func favorite() {
+        guard let post = self.post else {
+            print("post has not been set yet")
+            return
+        }
+        
+        let loved = heartPost(post: post)
+        self.heartIcon.scaleBounce(duration: 0.2)
+        self.updateHeartUI(favoriteStatus: loved)
+    }
+    
+    func downvote() {
+        guard let post = self.post else {
+            print("post has not been set yet")
+            return
+        }
+        
+        let downvoted = downvotePost(post: post)
+        self.downvoteSymbol.scaleBounce(duration: 0.2)
+        self.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
+        self.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
+    }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Parse
+import ProgressHUD
 import SwiftUI
 import UIKit
 
@@ -36,8 +37,12 @@ class LoginViewController: UIViewController {
         
         guard let usernameText = usernameTextField.text, let passwordText = passwordTextField.text else {
             print("User did not enter valid text for either username or password")
+            ProgressHUD.showError("Please enter both username and password")
             return
         }
+        
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show("Getting set up...")
         
         if userSignedUp {
             let user = User()
@@ -49,6 +54,7 @@ class LoginViewController: UIViewController {
             user.downvotedPosts = []
             
             user.signUpInBackground { (success, error) in
+                ProgressHUD.dismiss()
                 if success {
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                     print("\(user.username ?? "") signed up successfully!")
@@ -59,6 +65,7 @@ class LoginViewController: UIViewController {
         }
         else {
             User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
+                ProgressHUD.dismiss()
                 if let error = error {
                     print(error.localizedDescription)
                     return

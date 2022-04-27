@@ -6,6 +6,7 @@
 //
 
 import Parse
+import ProgressHUD
 import UIKit
 
 class FavoritesViewController: ParentPostList {
@@ -20,20 +21,29 @@ class FavoritesViewController: ParentPostList {
         
         tableView.allowsSelection = false
         
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show()
+        
         if let user = User.current() {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
                 
                 posts = sortPosts(arr: postsFav)
                 guard posts.count > 0 else {
+                    ProgressHUD.dismiss()
                     return
                 }
                 print(posts.map({ post in
                     return post.trackName
                 }))
+                ProgressHUD.dismiss()
                 tableView.reloadData()
+            }
+            else {
+                ProgressHUD.dismiss()
             }
         }
         else {
+            ProgressHUD.dismiss()
             print("User is not signed in... can't make posts.")
             let ac = UIAlertController(title: "Not Signed In", message: "You must sign in to see your favorites.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -43,15 +53,7 @@ class FavoritesViewController: ParentPostList {
         
     }
 
-    //
-    // A demonstration of how to override a template function
-    //
-    // If you need to add functionality, just copy the func declaration verbatim with override in front. Then, call super.functionName(params: params) at some point. Put the extra functionality in wherever you need it.
-    override func heartPost(post: Post, cell: PostTableViewCell) -> Bool {
-        let hearted = super.heartPost(post: post, cell: cell)
-        // Do any extra actions here
-        return hearted
-    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         whatsPlaying?.enterPausedState()

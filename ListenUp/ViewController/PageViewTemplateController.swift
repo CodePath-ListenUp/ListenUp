@@ -24,6 +24,7 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
     var feedType: FeedType!
     var posts: [Post] = []
     
+    // Source: https://stackoverflow.com/a/59581292
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .vertical, options: nil)
     }

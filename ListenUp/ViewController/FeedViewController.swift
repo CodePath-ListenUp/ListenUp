@@ -7,6 +7,7 @@
 
 import Foundation
 import Parse
+import ProgressHUD
 import SafariServices
 import UIKit
 import AVFAudio
@@ -14,20 +15,13 @@ import AVFAudio
 let nonPlayingArtworkOpacity: Float = 0.4
 let playingArtworkOpacity: Float = 0.0
 
-// idk where else to put this rn
-func overrideAccentColor(basedOn condition: Bool, with override: UIColor) -> UIColor {
-    return condition ? override : accentColor
-}
-
-let upvoteColor = UIColor.systemOrange
-let downvoteColor = UIColor.systemIndigo
-let favoriteColor = UIColor.systemPink
-
 class FeedViewController: ParentPostList {
     
 //    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         navigationItem.title = "Feed"
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,6 +34,9 @@ class FeedViewController: ParentPostList {
         
         posts = []
         whatsPlaying = nil
+        
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show()
         
         let query = Post.query()
         
@@ -56,6 +53,7 @@ class FeedViewController: ParentPostList {
             }
             
             self.posts = sortPosts(arr: postsReturned)
+            ProgressHUD.dismiss()
             self.tableView.reloadData()
             
         })

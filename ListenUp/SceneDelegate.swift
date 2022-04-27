@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         // Use this to set the tintColor initially
-//        self.window?.tintColor = .red
+        self.window?.tintColor = jellyColor
 
     }
 

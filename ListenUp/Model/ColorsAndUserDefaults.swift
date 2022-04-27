@@ -6,17 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
 import UIKit
 
 // Colors and UserDefaults - my upcoming album
 
+let upvoteColor = UIColor.systemOrange
+let downvoteColor = UIColor.systemIndigo
+let favoriteColor = UIColor.systemPink
 
-var accentColor : UIColor {
-    get {
-        return UserDefaults.standard.colorForKey(key: "accentColor") ?? UIColor(named: "AccentColor")!
-    }
-    set {
-        UserDefaults.standard.setColor(color: newValue, forKey: "accentColor")
+
+func overrideAccentColor(basedOn condition: Bool, with override: UIColor) -> UIColor {
+    return condition ? override : jellyColor
+}
+
+func refreshForAccentColor() {
+    let thisApp = UIApplication.shared
+    
+    thisApp.delegate?.window??.tintColor = jellyColor
+}
+
+var jellyColor : UIColor = UserDefaults.standard.colorForKey(key: "accentColor") ?? UIColor(Color.blue) {
+    didSet {
+        UserDefaults.standard.setColor(color: jellyColor, forKey: "accentColor")
+        refreshForAccentColor()
     }
 }
 

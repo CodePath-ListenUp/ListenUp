@@ -28,6 +28,14 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     var posts: [Post] = []
     var whatsPlaying: PostTableViewCell? = nil
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do anything here that needs to be done for all post lists upon first appearance
+        navigationController?.navigationBar.tintColor = jellyColor
+        tabBarController?.tabBar.tintColor = jellyColor
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -116,7 +124,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             user.fetchIfNeededInBackground { success, error in
                 // lol this is kinda backwards but oh well
                 guard let error = error else {
-                    cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.upvotedPosts), with: upvoteColor)
+                    cell.styleUpvoteSymbol(value: post.isContainedIn(arr: user.upvotedPosts))
                     cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: post.isContainedIn(arr: user.downvotedPosts), with: downvoteColor)
                     cell.updateHeartUI(favoriteStatus: post.isContainedIn(arr: user.favoritedPosts))
                     return
@@ -155,17 +163,13 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell, let post = cell.post else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell else {
             print("No post could be found for the swiped cell")
             return nil
         }
         
         let downvote = UIContextualAction(style: .normal, title: "Downvote") { action, view, completionHandler in
-            let downvoted = self.downvotePost(post: post)
-            cell.upvoteSymbol.scaleBounce(duration: 0.2)
-            cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
-            cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
-            action.image = UIImage(systemName: downvoted ? "arrow.uturn.backward" : "chevron.down")
+            cell.downvote()
             completionHandler(true)
         }
         downvote.image = UIImage(systemName: "chevron.down")
@@ -175,17 +179,12 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell, let post = cell.post else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell else {
             print("No post could be found for the swiped cell")
             return nil
         }
         let upvote = UIContextualAction(style: .normal, title: "Upvote") { action, view, completionHandler in
-            let upvoted = self.upvotePost(post: post)
-            
-            cell.upvoteSymbol.scaleBounce(duration: 0.2)
-            cell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
-            cell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
-            action.image = UIImage(systemName: upvoted ? "arrow.uturn.backward" : "chevron.up")
+            cell.upvote()
             completionHandler(true)
         }
         upvote.image = UIImage(systemName: "chevron.up")
@@ -207,25 +206,20 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             let tapLocation = sender.location(in: self.tableView)
             if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? PostTableViewCell {
-                    guard let post = tappedCell.post else {
-                        print("post not set for tappedCell")
-                        return
-                    }
-                    
                     switch sender.view?.tag ?? 0 {
                     case 5:
-                        let upvoted = upvotePost(post: post)
-                        tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
-                        tappedCell.upvoteSymbol.scaleBounce(duration: 0.2)
-                        tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
+                        // Old code, had to manage UI changes outside of upvotePost call
+//                        let upvoted = upvotePost(post: post)
+//                        tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: upvoted, with: upvoteColor)
+//                        tappedCell.upvoteSymbol.scaleBounce(duration: 0.2)
+//                        tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: downvoteColor)
+                        
+                        // New code, one unified function for both data and UI changes, all attached to the Post cell
+                        tappedCell.upvote()
                     case 6:
-                        let loved = heartPost(post: post, cell: tappedCell)
-                        tappedCell.updateHeartUI(favoriteStatus: loved)
+                        tappedCell.favorite()
                     case 7:
-                        let downvoted = downvotePost(post: post)
-                        tappedCell.upvoteSymbol.scaleBounce(duration: 0.2)
-                        tappedCell.downvoteSymbol.tintColor = overrideAccentColor(basedOn: downvoted, with: downvoteColor)
-                        tappedCell.upvoteSymbol.tintColor = overrideAccentColor(basedOn: false, with: upvoteColor)
+                        tappedCell.downvote()
                     default:
                         print("No action set in userDidTapElement for tag \(sender.view?.tag ?? 0)")
                     }
@@ -234,111 +228,14 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func upvotePost(post: Post) -> Bool {
-        guard let user = User.current() else {
-            print("User is not signed in, can't vote")
-            return false
-        }
-        
-        print("user upvoted \(post.trackName)")
-        // Check if user has upvoted this post already
-        if post.isContainedIn(arr: user.upvotedPosts) {
-            post.upvoteCount -= 1
-            user.upvotedPosts.removeAll { inPost in
-                inPost.objectId == post.objectId
-            }
-            post.saveEventually()
-            user.saveEventually()
-            return false
-        }
-        else {
-            // Check if user has the post downvoted
-            if post.isContainedIn(arr: user.downvotedPosts) {
-                // Remove downvote before continuing
-                post.downvoteCount -= 1
-                user.downvotedPosts.removeAll { inPost in
-                    inPost.objectId == post.objectId
-                }
-                post.saveEventually()
-                user.saveEventually()
-            }
-            // Proceed to add upvote
-            post.upvoteCount += 1
-            user.upvotedPosts.append(post)
-            post.saveEventually()
-            user.saveEventually()
-            return true
-        }
-    }
-    func heartPost(post: Post, cell: PostTableViewCell) -> Bool {
-        guard let user = User.current() else {
-            print("User is not signed in, can't favorite")
-            return false
-        }
-        cell.heartIcon.scaleBounce(duration: 0.2)
-        if post.isContainedIn(arr: user.favoritedPosts) {
-            // user has this post as a favorite already
-            user.favoritedPosts.removeAll { inPost in
-                post.objectId == inPost.objectId
-            }
-            user.saveEventually()
-            return false
-        }
-        else {
-            // user does not have this post as a favorite yet
-            user.favoritedPosts.append(post)
-            user.saveEventually()
-            return true
-        }
-    }
-    func downvotePost(post: Post) -> Bool {
-        guard let user = User.current() else {
-            print("User is not signed in, can't vote")
-            return false
-        }
-        
-        // Check if user has downvoted this post already
-        if post.isContainedIn(arr: user.downvotedPosts) {
-            post.downvoteCount -= 1
-            user.downvotedPosts.removeAll { inPost in
-                inPost.objectId == post.objectId
-            }
-            post.saveEventually()
-            user.saveEventually()
-            return false
-        }
-        else {
-            // Check if user has the post upvoted
-            if post.isContainedIn(arr: user.upvotedPosts) {
-                // Remove upvote before continuing
-                post.upvoteCount -= 1
-                user.upvotedPosts.removeAll { inPost in
-                    inPost.objectId == post.objectId
-                }
-                post.saveEventually()
-                user.saveEventually()
-            }
-            // Proceed to add downvote
-            post.downvoteCount += 1
-            user.downvotedPosts.append(post)
-            post.saveEventually()
-            user.saveEventually()
-            return true
-        }
-    }
     
+    // this is just turns the favorite action into a selector
     @objc func favoritePostButItsJustASelectorProxy(_ sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.ended {
             let tapLocation = sender.location(in: self.tableView)
             if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) as? PostTableViewCell {
-                    guard let post = tappedCell.post else {
-                        print("post not set for tappedCell")
-                        return
-                    }
-                    
-                    let loved = heartPost(post: post, cell: tappedCell)
-                    tappedCell.updateHeartUI(favoriteStatus: loved)
+                    tappedCell.favorite()
                 }
             }
         }

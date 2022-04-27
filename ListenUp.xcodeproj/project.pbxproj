@@ -13,6 +13,8 @@
 		99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */; };
 		A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */; };
 		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
+		D016767F28197C1300F5DDF6 /* PostInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */; };
+		D01676812819902700F5DDF6 /* AccentColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01676802819902700F5DDF6 /* AccentColorPicker.swift */; };
 		D017C57C2807D37200E62C7F /* iTunesAPINetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */; };
 		D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */; };
 		D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */; };
@@ -69,6 +71,8 @@
 		92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInteractionFunctions.swift; sourceTree = "<group>"; };
+		D01676802819902700F5DDF6 /* AccentColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPicker.swift; sourceTree = "<group>"; };
 		D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPINetworking.swift; sourceTree = "<group>"; };
 		D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromURL.swift; sourceTree = "<group>"; };
 		D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongwhipNetworking.swift; sourceTree = "<group>"; };
@@ -132,17 +136,17 @@
 		D016767B2818CCC100F5DDF6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D05D87FE281867360035C86D /* PagedPostViewController.swift */,
-				D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */,
-				D05D87FA281828F10035C86D /* TabBarController.swift */,
 				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
 				D076900B2807887F0019216A /* FeedViewController.swift */,
 				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
 				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
+				D05D87FE281867360035C86D /* PagedPostViewController.swift */,
+				D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */,
 				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
 				D076900D28078C090019216A /* PostTableViewCell.swift */,
 				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
 				D05588262816483200668AC5 /* SettingsViewController.swift */,
+				D05D87FA281828F10035C86D /* TabBarController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -152,6 +156,7 @@
 			children = (
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
 				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
+				D01676802819902700F5DDF6 /* AccentColorPicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		D016767D2818CCCE00F5DDF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */,
 				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
 				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
 				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
@@ -491,6 +497,7 @@
 				D032A6B2280F39CA0024A4BE /* MusicPlayer.swift in Sources */,
 				D05D87FF281867360035C86D /* PagedPostViewController.swift in Sources */,
 				D042BC3627FE5FBE0096F24D /* LoginViewController.swift in Sources */,
+				D016767F28197C1300F5DDF6 /* PostInteractionFunctions.swift in Sources */,
 				D032A6B42810801A0024A4BE /* FavoritesViewController.swift in Sources */,
 				D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */,
 				D05588272816483200668AC5 /* SettingsViewController.swift in Sources */,
@@ -499,6 +506,7 @@
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
 				D042BC3427FE5FBE0096F24D /* SceneDelegate.swift in Sources */,
 				D0769010280798FF0019216A /* SafariWork.swift in Sources */,
+				D01676812819902700F5DDF6 /* AccentColorPicker.swift in Sources */,
 				D042BC6227FE5FE50096F24D /* Private.swift in Sources */,
 				D05D87FD281865CB0035C86D /* PageViewTemplateController.swift in Sources */,
 				D02D51812810D1FA007AEC1D /* PostListTemplateController.swift in Sources */,

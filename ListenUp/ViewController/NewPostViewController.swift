@@ -168,8 +168,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                     
                     ProgressHUD.animationType = .lineScaling
-                    ProgressHUD.colorAnimation = accentColor
-                    ProgressHUD.show("POSTING")
+                    ProgressHUD.colorAnimation = jellyColor
+                    ProgressHUD.show("Posting...")
                     
                     // Do Post processing here (pun intended)
                     let _ = Post(song: result, createdBy: User.current()!) { postReady in
