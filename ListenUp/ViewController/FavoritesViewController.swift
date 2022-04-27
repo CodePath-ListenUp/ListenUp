@@ -24,6 +24,9 @@ class FavoritesViewController: ParentPostList {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
                 
                 posts = sortPosts(arr: postsFav)
+                guard posts.count > 0 else {
+                    return
+                }
                 print(posts.map({ post in
                     return post.trackName
                 }))

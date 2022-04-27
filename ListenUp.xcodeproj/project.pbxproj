@@ -93,7 +93,7 @@
 		D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAndUserDefaults.swift; sourceTree = "<group>"; };
 		D05588262816483200668AC5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D05D87FA281828F10035C86D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewTemplateController.swift; sourceTree = SOURCE_ROOT; };
+		D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PageViewTemplateController.swift; path = ListenUp/ViewController/PageViewTemplateController.swift; sourceTree = SOURCE_ROOT; };
 		D05D87FE281867360035C86D /* PagedPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedPostViewController.swift; sourceTree = "<group>"; };
 		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D076900D28078C090019216A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +129,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D016767B2818CCC100F5DDF6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D05D87FE281867360035C86D /* PagedPostViewController.swift */,
+				D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */,
+				D05D87FA281828F10035C86D /* TabBarController.swift */,
+				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
+				D076900B2807887F0019216A /* FeedViewController.swift */,
+				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
+				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
+				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
+				D076900D28078C090019216A /* PostTableViewCell.swift */,
+				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
+				D05588262816483200668AC5 /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D016767C2818CCCB00F5DDF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
+				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D016767D2818CCCE00F5DDF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
+				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
+				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
+				D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */,
+				D042BC6127FE5FE50096F24D /* Private.swift */,
+				D076900F280798FF0019216A /* SafariWork.swift */,
+				1561AF162810C9B7006CF036 /* ShareContextMenu.swift */,
+				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
+				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D042BC2527FE5FBD0096F24D = {
 			isa = PBXGroup;
 			children = (
@@ -154,32 +197,13 @@
 		D042BC3027FE5FBE0096F24D /* ListenUp */ = {
 			isa = PBXGroup;
 			children = (
-				D05D87FE281867360035C86D /* PagedPostViewController.swift */,
-				D05D87FC281865CB0035C86D /* PageViewTemplateController.swift */,
-				D05D87FA281828F10035C86D /* TabBarController.swift */,
+				D016767D2818CCCE00F5DDF6 /* Model */,
+				D016767C2818CCCB00F5DDF6 /* View */,
+				D016767B2818CCC100F5DDF6 /* ViewController */,
 				D042BC3127FE5FBE0096F24D /* AppDelegate.swift */,
 				D042BC3A27FE5FC20096F24D /* Assets.xcassets */,
-				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
-				D032A6B32810801A0024A4BE /* FavoritesViewController.swift */,
-				D076900B2807887F0019216A /* FeedViewController.swift */,
-				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
-				D042BC3F27FE5FC20096F24D /* Info.plist */,
-				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
-				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
-				D042BC3527FE5FBE0096F24D /* LoginViewController.swift */,
-				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
-				D032A6B1280F39CA0024A4BE /* MusicPlayer.swift */,
-				1534BCB2280D9F030061800D /* NewPostViewController.swift */,
-				D02D51802810D1FA007AEC1D /* PostListTemplateController.swift */,
-				D076900D28078C090019216A /* PostTableViewCell.swift */,
-				D042BC6127FE5FE50096F24D /* Private.swift */,
-				1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */,
-				D076900F280798FF0019216A /* SafariWork.swift */,
 				D042BC3327FE5FBE0096F24D /* SceneDelegate.swift */,
-				D05588262816483200668AC5 /* SettingsViewController.swift */,
-				1561AF162810C9B7006CF036 /* ShareContextMenu.swift */,
-				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
-				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
+				D042BC3F27FE5FC20096F24D /* Info.plist */,
 			);
 			path = ListenUp;
 			sourceTree = "<group>";
