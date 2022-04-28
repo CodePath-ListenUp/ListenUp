@@ -130,3 +130,29 @@ func downvotePost(post: Post) -> Bool {
         return true
     }
 }
+
+// MARK: Generate Feed Posts
+// A general function to generate the posts for a feed view (whether page or list)
+// The function offers a completion so the caller can define what happens to the
+//     returned posts.
+
+func generatePostsForFeed(completion: @escaping ([Post]) -> ()) {
+    let query = Post.query()
+    
+    query?.findObjectsInBackground(block: { returnedPosts, error in
+        guard let postsReturned = returnedPosts as? [Post] else {
+            print("An error occurred...")
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else {
+                print("Could not get description of error.")
+            }
+            return
+        }
+        
+        sortPosts(arr: postsReturned, completion: { posts in
+            completion(posts)
+        })
+    })
+}

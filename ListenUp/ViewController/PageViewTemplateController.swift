@@ -45,33 +45,10 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
         ProgressHUD.show()
         
         switch feedType {
+            // genre will probably end up being global... so I might remove it from the FeedType enum
         case .all(let genre):
-            print(genre)
-        case .favorites(let user),
-                .upvoted(let user),
-                .downvoted(let user):
-            print(user.username ?? "Username not defined")
-        default:
-            print("Unknown feed type")
-        }
-        
-        var postControllers: [PagedPostViewController] = []
-        
-        let query = Post.query()
-        
-        query?.findObjectsInBackground(block: { returnedPosts, error in
-            guard let postsReturned = returnedPosts as? [Post] else {
-                print("An error occurred...")
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                else {
-                    print("Could not get description of error.")
-                }
-                return
-            }
-            
-            sortPosts(arr: postsReturned) { sortedPosts in
+            var postControllers: [PagedPostViewController] = []
+            generatePostsForFeed { sortedPosts in
                 self.posts = sortedPosts
                 
                 if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagedPostViewController") as? PagedPostViewController {
@@ -85,9 +62,13 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
                 ProgressHUD.dismiss()
                 self.setViewControllers(postControllers, direction: .forward, animated: true)
             }
-        })
-        
-       
+        case .favorites(let user),
+                .upvoted(let user),
+                .downvoted(let user):
+            print(user.username ?? "Username not defined")
+        default:
+            print("Unknown feed type")
+        }
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

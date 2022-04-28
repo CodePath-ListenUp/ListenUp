@@ -38,26 +38,11 @@ class FeedViewController: ParentPostList {
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
         
-        let query = Post.query()
-        
-        query?.findObjectsInBackground(block: { returnedPosts, error in
-            guard let postsReturned = returnedPosts as? [Post] else {
-                print("An error occurred...")
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                else {
-                    print("Could not get description of error.")
-                }
-                return
-            }
-            
-            sortPosts(arr: postsReturned, completion: { posts in
-                self.posts = posts
-                ProgressHUD.dismiss()
-                self.tableView.reloadData()
-            })
-        })
+        generatePostsForFeed { generatedPosts in
+            self.posts = generatedPosts
+            ProgressHUD.dismiss()
+            self.tableView.reloadData()
+        }
     }
 
     @objc func addPost() {

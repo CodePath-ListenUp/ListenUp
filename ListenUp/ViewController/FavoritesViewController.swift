@@ -49,8 +49,6 @@ class FavoritesViewController: ParentPostList {
                     self.tableView.reloadData()
                 }
                 
-                
-                
             }
             else {
                 ProgressHUD.dismiss()
