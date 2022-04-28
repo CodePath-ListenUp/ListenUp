@@ -56,7 +56,7 @@ class TabBarController: UITabBarController {
         //            }
         //            navOuter.navigationBar.prefersLargeTitles = false
         //            navOuter.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "music.note.list"), selectedImage: UIImage(systemName:"music.note.list"))
-        //            self.viewControllers?[0] = navOuter
+        //            self.viewControllers?[1] = navOuter
         //        }
     }
 }

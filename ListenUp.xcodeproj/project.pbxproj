@@ -73,6 +73,7 @@
 		B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInteractionFunctions.swift; sourceTree = "<group>"; };
 		D01676802819902700F5DDF6 /* AccentColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPicker.swift; sourceTree = "<group>"; };
+		D0167682281A4AC900F5DDF6 /* ListenUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListenUp.entitlements; sourceTree = "<group>"; };
 		D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPINetworking.swift; sourceTree = "<group>"; };
 		D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFromURL.swift; sourceTree = "<group>"; };
 		D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongwhipNetworking.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 		D042BC3027FE5FBE0096F24D /* ListenUp */ = {
 			isa = PBXGroup;
 			children = (
+				D0167682281A4AC900F5DDF6 /* ListenUp.entitlements */,
 				D016767D2818CCCE00F5DDF6 /* Model */,
 				D016767C2818CCCB00F5DDF6 /* View */,
 				D016767B2818CCC100F5DDF6 /* ViewController */,
@@ -693,6 +695,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
@@ -726,6 +729,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = K5Y29Z4JQZ;

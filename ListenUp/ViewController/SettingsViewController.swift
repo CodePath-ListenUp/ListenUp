@@ -27,7 +27,7 @@ struct SettingsView: View {
                         .padding()
                 }
                 Section("Feed") {
-                    SettingToggleCell(settingName: "Paged Layout", systemImage: "doc.richtext", toggleStatus: $preferredLayout)
+                    SettingToggleCell(settingName: "Paged Layout", systemImage: "doc.richtext", toggleStatus: $preferredLayout, color: $color)
                         .onChange(of: preferredLayout) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "prefersPagedFeed")
                             
@@ -40,12 +40,13 @@ struct SettingsView: View {
                     Text("Sort Order")
                     Text("Genre Filter")
                     NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
-                        SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull")
+                        SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color)
                     }
                     Text("Avoid Explicit Content")
                     Text("Display Score")
                         .disabled(preferredLayout)
                 }
+                .tint(color)
                 Section("Account") {
                     Button(action: {
                         presentingLogOutConfirmation = true
@@ -89,10 +90,16 @@ struct SettingsView: View {
 struct SettingNavigationCell: View {
     let title: String
     let systemImage: String
+    @Binding var color: Color
     
     var body: some View {
         HStack {
-            Label(title, systemImage: systemImage)
+            Label("", systemImage: systemImage)
+                .labelStyle(.iconOnly)
+                .foregroundColor(color)
+            Label(title, systemImage: "")
+                .labelStyle(.titleOnly)
+                .foregroundColor(.init(uiColor: .label))
             Spacer()
         }
     }
@@ -102,10 +109,16 @@ struct SettingToggleCell: View {
     let settingName: String
     let systemImage: String
     @Binding var toggleStatus: Bool
+    @Binding var color: Color
     
     var body: some View {
         HStack {
-            Label(settingName, systemImage: systemImage)
+            Label("", systemImage: systemImage)
+                .labelStyle(.iconOnly)
+                .foregroundColor(color)
+            Label(settingName, systemImage: "")
+                .labelStyle(.titleOnly)
+                .foregroundColor(.init(uiColor: .label))
             Spacer()
             Toggle("", isOn: $toggleStatus)
         }
