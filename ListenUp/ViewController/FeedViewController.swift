@@ -52,10 +52,11 @@ class FeedViewController: ParentPostList {
                 return
             }
             
-            self.posts = sortPosts(arr: postsReturned)
-            ProgressHUD.dismiss()
-            self.tableView.reloadData()
-            
+            sortPosts(arr: postsReturned, completion: { posts in
+                self.posts = posts
+                ProgressHUD.dismiss()
+                self.tableView.reloadData()
+            })
         })
     }
 
@@ -105,46 +106,59 @@ extension PostTableViewCell {
 
 // This should get moved to a different file at some point
 // Some file for Post related functions I guess
-func sortPosts(arr: [Post]) -> [Post] {
-    return arr.sorted { post1, post2 in
+func sortPosts(arr: [Post], completion: (@escaping ([Post]) -> ())) {
+    var arrVar = arr
+    func fetchIt(index: Int, completion: @escaping () -> ()) {
         
-        do {
-            try post1.fetchIfNeeded()
-            try post2.fetchIfNeeded()
-        }
-        catch { print(error.localizedDescription) }
+            arrVar[index].fetchIfNeededInBackground(block: { post, error in
+                if index+1 < arrVar.count {
+                    fetchIt(index: index+1) {
+                        completion()
+                    }
+                }
+                else {
+                    completion()
+                }
+            })
         
-        switch sortOrder {
-        case .score:
-            let scoreCompare = post1.calculatedScore > post2.calculatedScore
-            let scoreEqual = post1.calculatedScore == post2.calculatedScore
-            // If scores are equal, we rely on least downvoted
-            return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
-        case .downvotes:
-            let downvoteCompare = post1.downvoteCount > post2.downvoteCount
-            let downEqual = post1.downvoteCount == post2.downvoteCount
-            // This is supposed to be a "controversial" sort
-            // Most downvotes or, if equal, least score
-            return downvoteCompare || post1.calculatedScore < post2.calculatedScore && downEqual
-        case .recent:
-            let scoreCompare = post1.calculatedScore > post2.calculatedScore
-            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
-                return scoreCompare
+    }
+    
+    fetchIt(index: 0) {
+        arrVar.sort { post1, post2 in
+            
+            switch sortOrder {
+            case .score:
+                let scoreCompare = post1.calculatedScore > post2.calculatedScore
+                let scoreEqual = post1.calculatedScore == post2.calculatedScore
+                // If scores are equal, we rely on least downvoted
+                return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
+            case .downvotes:
+                let downvoteCompare = post1.downvoteCount > post2.downvoteCount
+                let downEqual = post1.downvoteCount == post2.downvoteCount
+                // This is supposed to be a "controversial" sort
+                // Most downvotes or, if equal, least score
+                return downvoteCompare || post1.calculatedScore < post2.calculatedScore && downEqual
+            case .recent:
+                let scoreCompare = post1.calculatedScore > post2.calculatedScore
+                guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+                    return scoreCompare
+                }
+                
+                // Extremely unlikely that these are ever equal, so I'll take the improper sort
+                return date1.timeIntervalSince1970 > date2.timeIntervalSince1970
+                
+            case .oldest:
+                let scoreCompare = post1.calculatedScore > post2.calculatedScore
+                guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+                    return scoreCompare
+                }
+                
+                // Extremely unlikely that these are ever equal, so I'll take the improper sort
+                return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
             }
-            
-            // Extremely unlikely that these are ever equal, so I'll take the improper sort
-            return date1.timeIntervalSince1970 > date2.timeIntervalSince1970
-            
-        case .oldest:
-            let scoreCompare = post1.calculatedScore > post2.calculatedScore
-            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
-                return scoreCompare
-            }
-            
-            // Extremely unlikely that these are ever equal, so I'll take the improper sort
-            return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
+                    
         }
-        
+        completion(arrVar)
     }
 }
 

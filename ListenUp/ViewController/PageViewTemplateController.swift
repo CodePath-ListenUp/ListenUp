@@ -71,19 +71,20 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
                 return
             }
             
-            self.posts = sortPosts(arr: postsReturned)
-            
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagedPostViewController") as? PagedPostViewController {
-                guard let first = self.posts.first else {
-                    return
+            sortPosts(arr: postsReturned) { sortedPosts in
+                self.posts = sortedPosts
+                
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagedPostViewController") as? PagedPostViewController {
+                    guard let first = self.posts.first else {
+                        return
+                    }
+                    vc.post = first
+                    postControllers.append(vc)
                 }
-                vc.post = first
-                postControllers.append(vc)
+                
+                ProgressHUD.dismiss()
+                self.setViewControllers(postControllers, direction: .forward, animated: true)
             }
-            
-            ProgressHUD.dismiss()
-            self.setViewControllers(postControllers, direction: .forward, animated: true)
-            
         })
         
        

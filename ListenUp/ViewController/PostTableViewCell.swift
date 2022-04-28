@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var albumArtworkView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var trackNameLabel: UILabel!
+    @IBOutlet weak var trackNameLabel: MarqueeLabel!
     @IBOutlet weak var upvoteSymbol: UIImageView!
     @IBOutlet weak var downvoteSymbol: UIImageView!
     @IBOutlet weak var heartIcon: UIImageView!

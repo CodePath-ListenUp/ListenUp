@@ -11,14 +11,8 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard var viewControllerArray = viewControllers else {
-            return
-        }
         
         isModalInPresentation = true
-        
-        print(viewControllerArray)
         
         setupAppropriateViews()
         

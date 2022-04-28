@@ -21,29 +21,36 @@ class FavoritesViewController: ParentPostList {
         
         tableView.allowsSelection = false
         
+        
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
         
         if let user = User.current() {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
-                postsFav.forEach { post in
-                    do {
-                        try post.fetchIfNeeded()
-                    }
-                    catch {
-                        print(error.localizedDescription)
+                
+                func fetchIt(index: Int, completion: @escaping () -> ()) {
+                    postsFav[index].fetchIfNeededInBackground { post, error in
+                        if index+1 < postsFav.count {
+                            fetchIt(index: index+1) {
+                                completion()
+                            }
+                        }
+                        else { completion() }
                     }
                 }
-                posts = postsFav.reversed()
-                guard posts.count > 0 else {
+                
+                fetchIt(index: 0) {
+                    self.posts = postsFav.reversed()
+                    guard self.posts.count > 0 else {
+                        ProgressHUD.dismiss()
+                        return
+                    }
                     ProgressHUD.dismiss()
-                    return
+                    self.tableView.reloadData()
                 }
-                print(posts.map({ post in
-                    return post.trackName
-                }))
-                ProgressHUD.dismiss()
-                tableView.reloadData()
+                
+                
+                
             }
             else {
                 ProgressHUD.dismiss()
