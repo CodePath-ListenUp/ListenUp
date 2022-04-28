@@ -20,6 +20,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     var searchQuery = String()
     var whatsPlaying: ResultTableViewCell? = nil
     
+    var searchAttempt = 0
+    
     var returningViewController: FeedViewController? = nil
     
     override func viewDidLoad() {
@@ -33,6 +35,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.allowsSelection = false
         
+        searchBar.searchTextField.placeholder = "Search Songs"
         searchBar.becomeFirstResponder()
         
 //        tableView.separatorColor = UIColor.clear
@@ -131,19 +134,49 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.player.play()
     }
     
-    func getSearchResults(_ searchQuery: String) {
+    func getSearchResults(_ searchQuery: String, currAttempt: Int) {
         retrieveITUNESResults(rawSearchTerm: searchQuery) { results in
-            self.searchResults = results
-            // Can't run UI code on background thread
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            if currAttempt == self.searchAttempt {
+                print("query working: \(searchQuery)")
+                // Can't run UI code on background thread
+                DispatchQueue.main.async {
+                    self.searchResults = results
+                    self.tableView.reloadData()
+                }
             }
+            else {
+                print("avoiding possibly useless table reload: \(searchQuery)")
+            }
+            
         }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        getSearchResults(searchText)
-        tableView.reloadData()
+//        if searchText == "" {
+//            searchAttempt = 0
+//        }
+        searchAttempt += 1
+        let saveSearchAttempt = searchAttempt
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            if searchText != "" && self.searchAttempt == saveSearchAttempt {
+                self.getSearchResults(searchText.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "", currAttempt: saveSearchAttempt)
+                print("Allowed search attempt \(saveSearchAttempt)")
+            }
+            else {
+                print("Prevented search attempt \(saveSearchAttempt)")
+            }
+        }
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        searchAttempt += 1
+        if searchBar.text != "" {
+            self.getSearchResults(searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "", currAttempt:≥ searchAttempt)
+        }
+        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

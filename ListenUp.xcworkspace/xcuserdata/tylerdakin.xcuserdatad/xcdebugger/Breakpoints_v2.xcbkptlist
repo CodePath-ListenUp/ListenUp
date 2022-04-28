@@ -245,8 +245,8 @@
             filePath = "ListenUp/Model/PostInteractionFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "preferredSortOrder()"
             landmarkType = "7">
          </BreakpointContent>
@@ -261,8 +261,8 @@
             filePath = "ListenUp/Model/PostInteractionFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "preferredSortOrder()"
             landmarkType = "7">
          </BreakpointContent>

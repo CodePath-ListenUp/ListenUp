@@ -41,7 +41,7 @@ func retrieveITUNESResults(rawSearchTerm: String, completion: @escaping ([SongRe
         print("Could not construct endpoint")
         return
     }
-    print(combinedEndpoint)
+//    print(combinedEndpoint)
     
     URLSession.shared.dataTask(with: combinedEndpoint) { data, response, error in
         if let error = error {

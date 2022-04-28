@@ -5,6 +5,13 @@
 //  Created by Tyler Dakin on 4/27/22.
 //
 
+// MARK: File Description
+//
+// This document is designed to hold all the administrative stuff for processing interactions with Posts
+// It's a good place for models, functions that affect posts, and other stuff like that.
+// If you add something new (that doesn't have a category), try to add a pragma mark to keep the doc organized.
+//
+
 import Foundation
 
 // MARK: Sort
@@ -156,3 +163,35 @@ func generatePostsForFeed(completion: @escaping ([Post]) -> ()) {
         })
     })
 }
+
+// MARK: Genre
+var filteringGenre: String = UserDefaults.standard.string(forKey: "preferredGenreFilter") ?? "all" {
+    didSet {
+        UserDefaults.standard.set(filteringGenre, forKey: "preferredGenreFilter")
+    }
+}
+
+let anExtensiveListOfGenres = [
+    "Alternative",
+    "Blues",
+    "Children's Music",
+    "Christian",
+    "Classical",
+    "Comedy",
+    "Country",
+    "Dance",
+    "Electronic",
+    "Hip-Hop/Rap",
+    "Holiday",
+    "Jazz",
+    "K-Pop",
+    "Latin",
+    "Metal",
+    "Pop",
+    "R&B/Soul",
+    "Reggae",
+    "Rock",
+    "Singer/Songwriter",
+    "Soundtrack",
+    "Worldwide"
+]
