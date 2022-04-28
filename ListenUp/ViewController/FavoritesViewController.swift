@@ -26,8 +26,15 @@ class FavoritesViewController: ParentPostList {
         
         if let user = User.current() {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
-                
-                posts = sortPosts(arr: postsFav)
+                postsFav.forEach { post in
+                    do {
+                        try post.fetchIfNeeded()
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                posts = postsFav.reversed()
                 guard posts.count > 0 else {
                     ProgressHUD.dismiss()
                     return

@@ -7,13 +7,48 @@
 
 import SwiftUI
 
+//enum AccentColor: String, Comparable {
+//    static func < (lhs: AccentColor, rhs: AccentColor) -> Bool {
+//        lhs.rawValue < rhs.rawValue
+//    }
+//
+//    case cherry = "Cherry"
+//    case strawberry = "Strawberry"
+//    case grape = "Grape"
+//    case peach = "Peach"
+//    case apple = "Apple"
+//    case blueberry = "Blueberry"
+//}
+
+//struct JellyColor: Comparable, RawRepresentable {
+//    init?(rawValue: String) {
+//        self.name = rawValue
+//    }
+//
+//    var rawValue: String
+//
+//    typealias RawValue = String
+//
+//    static func < (lhs: JellyColor, rhs: JellyColor) -> Bool {
+//        lhs.name < rhs.name
+//    }
+//
+//    var color: Color
+//    var uiColor: UIColor { UIColor(color) }
+//    var name: String
+//
+//    init(_ color: Color, name: String) {
+//        self.color = color
+//        self.name = name
+//    }
+//}
+
 struct AccentColorPicker: View {
     let parent: SettingsViewController
     @Binding var colorPicked: Color
     
     let possibleColors: [String:Color] = [
-        "Cherry":.red,
-//        "Cherry": Color.init(red: 155.0/255.0, green: 20.0/255.0, blue: 23.0/255.0),
+        "Cherry": Color.init(red: 155.0/255.0, green: 20.0/255.0, blue: 23.0/255.0),
         "Strawberry": Color.init(red: 252.0/255.0, green: 90.0/255.0, blue: 141.0/255.0),
         "Grape": .purple,
         "Peach": Color(red: 255.0/255.0, green: 186.0/255.0, blue: 97.0/255.0),

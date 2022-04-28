@@ -114,14 +114,37 @@ func sortPosts(arr: [Post]) -> [Post] {
         }
         catch { print(error.localizedDescription) }
         
-        let scoreCompare = post1.calculatedScore > post2.calculatedScore
-        let scoreEqual = post1.calculatedScore == post2.calculatedScore
-        
-        guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+        switch sortOrder {
+        case .score:
+            let scoreCompare = post1.calculatedScore > post2.calculatedScore
+            let scoreEqual = post1.calculatedScore == post2.calculatedScore
+            // If scores are equal, we rely on least downvoted
             return scoreCompare || post1.downvoteCount < post2.downvoteCount && scoreEqual
+        case .downvotes:
+            let downvoteCompare = post1.downvoteCount > post2.downvoteCount
+            let downEqual = post1.downvoteCount == post2.downvoteCount
+            // This is supposed to be a "controversial" sort
+            // Most downvotes or, if equal, least score
+            return downvoteCompare || post1.calculatedScore < post2.calculatedScore && downEqual
+        case .recent:
+            let scoreCompare = post1.calculatedScore > post2.calculatedScore
+            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+                return scoreCompare
+            }
+            
+            // Extremely unlikely that these are ever equal, so I'll take the improper sort
+            return date1.timeIntervalSince1970 > date2.timeIntervalSince1970
+            
+        case .oldest:
+            let scoreCompare = post1.calculatedScore > post2.calculatedScore
+            guard let date1 = post1.createdAt, let date2 = post2.createdAt else {
+                return scoreCompare
+            }
+            
+            // Extremely unlikely that these are ever equal, so I'll take the improper sort
+            return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
         }
         
-        return scoreCompare || date1.timeIntervalSinceNow > date2.timeIntervalSinceNow && scoreEqual
     }
 }
 

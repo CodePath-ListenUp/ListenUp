@@ -16,8 +16,11 @@ struct SettingsView: View {
     @State private var preferredLayout: Bool = UserDefaults.standard.bool(forKey: "prefersPagedFeed")
     
     @State private var presentingLogOutConfirmation = false
+    @State private var showingSortOrderAction = false
     
-    @State private var color = Color(uiColor: jellyColor)
+    @State private var color: Color = Color(uiColor: jellyColor)
+    
+    @State private var sortOrderString = sortOrder.rawValue
     
     var body: some View {
         NavigationView {
@@ -37,7 +40,21 @@ struct SettingsView: View {
                             
                             tabBarC.setupAppropriateViews()
                         }
-                    Text("Sort Order")
+                    SettingChoiceCell(settingName: "Sort Order", systemImage: "line.3.horizontal.decrease.circle.fill", choice: $sortOrderString, color: $color) {
+                        showingSortOrderAction = true
+                    }
+                    .confirmationDialog("Text", isPresented: $showingSortOrderAction) {
+                        ForEach(SortOrder.allCases, id: \.rawValue) { sort in
+                            Button {
+                                print(SortOrder.allCases)
+                                UserDefaults.standard.setPreferredSortOrder(sort)
+                                sortOrderString = sortOrder.rawValue
+                            } label: {
+                                Text(sort.rawValue)
+                            }
+
+                        }
+                    }
                     Text("Genre Filter")
                     NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
                         SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color)
@@ -125,7 +142,37 @@ struct SettingToggleCell: View {
     }
 }
 
-// This cell is designed to open a link in a Safari View Controller
+// This cell is designed to perform an action given to it.
+// The fact that it will perform an action is suggested to the user by
+// the name and the chevron on the right
+struct SettingChoiceCell: View {
+    let settingName: String
+    let systemImage: String
+    @Binding var choice: String
+    @Binding var color: Color
+    let action: (() -> ())?
+    
+    var view: some View {
+        HStack {
+            SettingNavigationCell(title: settingName, systemImage: systemImage, color: $color)
+            Text(choice)
+                .font(.subheadline)
+        }
+    }
+    
+    var body: some View {
+        if action != nil {
+            Button(action: {action!()}) {
+                view
+            }
+        }
+        else {
+            view
+        }
+    }
+}
+
+// This cell is designed to open a link, because of it's blue color
 struct SettingLinkCell: View {
     let linkTitle: String
     let systemImage: String

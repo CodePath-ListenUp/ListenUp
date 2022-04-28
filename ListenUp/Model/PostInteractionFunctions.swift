@@ -7,6 +7,38 @@
 
 import Foundation
 
+// MARK: Sort
+enum SortOrder: String, CaseIterable {
+    case score = "Highest Score"
+    case downvotes = "Most Downvotes"
+    case recent = "Most Recent"
+    case oldest = "Oldest"
+}
+
+var sortOrder: SortOrder { UserDefaults.standard.preferredSortOrder() }
+
+// Let's make UserDefaults functions to set our SortOrder
+extension UserDefaults {
+    func setPreferredSortOrder(_ newSort: SortOrder) {
+        UserDefaults.standard.set(newSort.rawValue, forKey: "preferredSortOrder")
+        print("Just set ")
+    }
+    func preferredSortOrder() -> SortOrder {
+        if let str = UserDefaults.standard.string(forKey: "preferredSortOrder") {
+            guard let sort = SortOrder(rawValue: str) else {
+                print("\(str) is not a sortOrder... Did someone write to this Default manually?")
+                return .score
+            }
+            return sort
+        }
+        else {
+            return .score
+        }
+        
+    }
+}
+
+// MARK: upvote, downvote, heart interactions
 func upvotePost(post: Post) -> Bool {
     guard let user = User.current() else {
         print("User is not signed in, can't vote")
