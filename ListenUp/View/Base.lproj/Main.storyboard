@@ -45,10 +45,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VbF-xT-4B3">
+                            <view contentMode="scaleToFill" restorationIdentifier="signUpView" translatesAutoresizingMaskIntoConstraints="NO" id="VbF-xT-4B3">
                                 <rect key="frame" x="50" y="682" width="314" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDD-am-jtx">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="signUpButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDD-am-jtx">
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
                                         <color key="backgroundColor" name="AccentColor"/>
                                         <color key="tintColor" systemColor="labelColor"/>
@@ -128,6 +128,7 @@
                     <navigationItem key="navigationItem" title="JellyClub" id="SEP-VQ-NdP"/>
                     <connections>
                         <outlet property="passwordTextField" destination="Jvc-XQ-Fxk" id="Lub-aW-sHA"/>
+                        <outlet property="signupView" destination="VbF-xT-4B3" id="bIG-wR-6It"/>
                         <outlet property="usernameTextField" destination="IeV-4o-J1R" id="Xi6-ma-jy6"/>
                         <segue destination="mkf-UC-AHn" kind="presentation" identifier="loginSegue" destinationCreationSelector="loginSegue" id="joU-QE-gFh"/>
                     </connections>
