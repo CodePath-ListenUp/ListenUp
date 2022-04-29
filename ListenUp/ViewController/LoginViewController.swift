@@ -5,13 +5,13 @@
 //  Created by Tyler Dakin on 4/6/22.
 //
 
+import AuthenticationServices
 import Parse
 import ProgressHUD
 import SwiftUI
 import UIKit
 
-//new code till line 24
-import AuthenticationServices
+var didRegisterAppleAuthDelegate = false
 
 class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
     func restoreAuthentication(withAuthData authData: [String : String]?) -> Bool {
@@ -24,6 +24,8 @@ class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
 }
 
 class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
@@ -79,6 +81,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             print("UserID: " + userID)
             
             // if needed, save it to user defaults by uncommenting the line below
+            // Tyler's edit: probably unnecessary/unwanted. UserDefaults are insecure and we haven't been tying UD to users so far :)
             //UserDefaults.standard.set(appleIDCredential.user, forKey: "userID")
             
             // optional, might be nil
@@ -111,20 +114,22 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
                 authorizationCode = String(bytes: code, encoding: .utf8)
                 print("Authorization Code: " + (authorizationCode ?? "no auth code") )
             }
-
+            
             // do what you want with the data here
-            PFUser.logInWithAuthType(inBackground: "apple", authData: ["token": String(identityToken!), "id": userID]).continueWith { task -> Any? in
-                    if ((task.error) != nil){
-                        //DispatchQueue.main.async {
-                            print("Could not login.\nPlease try again.")
-                            print("Error with parse login after SIWA: \(task.error!.localizedDescription)")
-                        //}
-                        return task
-                    }
-                    print("Successfuly signed in with Apple")
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                    return nil
+            User.logInWithAuthType(inBackground: "apple", authData: ["token": String(identityToken!), "id": userID]).continueWith { task -> Any? in
+                if ((task.error) != nil){
+                    //DispatchQueue.main.async {
+                        print("Could not login.\nPlease try again.")
+                        print("Error with parse login after SIWA: \(task.error!.localizedDescription)")
+                    //}
+                    return task
                 }
+                print("Successfuly signed in with Apple")
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                }
+                return nil
+            }
             
         }
     }
@@ -175,6 +180,11 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         // delegate functions will be called when user data is
         // successfully retrieved or error occured
         authController.delegate = self
+        
+        if !didRegisterAppleAuthDelegate {
+            User.register(AuthDelegate(), forAuthType: "apple")
+            didRegisterAppleAuthDelegate = true
+        }
           
         // show the Sign-in with Apple dialog
         authController.performRequests()

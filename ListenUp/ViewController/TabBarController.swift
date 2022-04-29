@@ -14,7 +14,10 @@ class TabBarController: UITabBarController {
         
         isModalInPresentation = true
         
-        setupAppropriateViews()
+        DispatchQueue.main.async {
+            self.setupAppropriateViews()
+        }
+        
         
     }
 

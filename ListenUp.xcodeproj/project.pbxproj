@@ -702,7 +702,7 @@
 				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JellyClub;
@@ -736,7 +736,7 @@
 				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JellyClub;
