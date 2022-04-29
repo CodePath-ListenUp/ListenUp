@@ -86,8 +86,19 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.post = post
         cell.albumArtworkView.image = UIImage(named: "default.jpg")!
-        cell.trackNameLabel?.text = post.trackName
+        let clean = UserDefaults.standard.bool(forKey: "prefersCleanContent")
+        cell.trackNameLabel?.text = clean ? post.trackCensoredName : post.trackName
         cell.artistNameLabel?.text = post.artistName
+        
+//        let showsScoreLabel = UserDefaults.standard.bool(forKey: "showsScoreLabel")
+//        if !showsScoreLabel {
+            cell.scoreLabel?.removeFromSuperview()
+//            cell.scoreLabel?.text = ""
+//        }
+//        else {
+//            cell.scoreLabel?.text = String(post.calculatedScore)
+//            cell.scoreLabel.sizeThatFits(CGSize(width: 26, height: 26))
+//        }
         
         // Just another implementation for the images that we probably won't use
 //        guard let albumArtworkData = post.artworkImageData else {
@@ -309,6 +320,6 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         // These actions will occur every time the user switches back to the screen (via the tab bar for example)
-        viewDidLoad() 
+        viewDidLoad()
     }
 }

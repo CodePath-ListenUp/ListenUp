@@ -57,6 +57,7 @@ struct AccentColorPicker: View {
     ]
     
     var body: some View {
+        
         List(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
             if let color = possibleColors[possibleColor] {
                 Button(action: {
@@ -73,6 +74,7 @@ struct AccentColorPicker: View {
         .onDisappear {
             parent.viewDidLoad()
         }
+        .navigationTitle(Text("Accent Color"))
     }
 }
 

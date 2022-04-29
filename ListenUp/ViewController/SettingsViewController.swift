@@ -14,6 +14,8 @@ struct SettingsView: View {
     let parent: SettingsViewController
     
     @State private var preferredLayout: Bool = UserDefaults.standard.bool(forKey: "prefersPagedFeed")
+    @State private var prefersCleanContent: Bool = UserDefaults.standard.bool(forKey: "prefersCleanContent")
+    @State private var displaysScore: Bool = UserDefaults.standard.bool(forKey: "showsScoreLabel")
     
     @State private var presentingLogOutConfirmation = false
     @State private var showingSortOrderAction = false
@@ -25,10 +27,6 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("⚠️ Warning ⚠️") {
-                    Text("Please consider all settings very experimental for the time being.")
-                        .padding()
-                }
                 Section("Feed") {
                     SettingToggleCell(settingName: "Paged Layout", systemImage: "doc.richtext", toggleStatus: $preferredLayout, color: $color)
                         .onChange(of: preferredLayout) { newValue in
@@ -39,6 +37,10 @@ struct SettingsView: View {
                             }
                             
                             tabBarC.setupAppropriateViews()
+                        }
+                    SettingToggleCell(settingName: "Censor Explicit Names", systemImage: "ear.trianglebadge.exclamationmark", toggleStatus: $prefersCleanContent, color: $color)
+                        .onChange(of: prefersCleanContent) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "prefersCleanContent")
                         }
                     SettingChoiceCell(settingName: "Sort Order", systemImage: "line.3.horizontal.decrease.circle.fill", choice: $sortOrderString, color: $color) {
                         showingSortOrderAction = true
@@ -55,13 +57,21 @@ struct SettingsView: View {
 
                         }
                     }
-                    Text("Genre Filter")
+
                     NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
                         SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color)
                     }
-                    Text("Avoid Explicit Content")
-                    Text("Display Score")
-                        .disabled(preferredLayout)
+                    
+                    NavigationLink { GenrePickerView() } label: {
+                        SettingNavigationCell(title: "Genre Filter", systemImage: "guitars", color: $color) {
+                            Text("Coming Soon").font(.subheadline).foregroundColor(color)
+                        }
+                    }
+                    .disabled(true)
+//                    SettingToggleCell(settingName: "Display Post Scores", systemImage: "27.square.fill", toggleStatus: $displaysScore, color: $color)
+//                        .onChange(of: displaysScore) { newValue in
+//                            UserDefaults.standard.set(newValue, forKey: "showsScoreLabel")
+//                        }
                 }
                 .tint(color)
                 Section("Account") {
@@ -104,10 +114,18 @@ struct SettingsView: View {
 // This cell is designed to take the user to another screen made by the app
 // (not a URL)
 // In theory, this would be encapsulated in a NavigationLink
-struct SettingNavigationCell: View {
+struct SettingNavigationCell<Content: View>: View {
+    internal init(title: String, systemImage: String, color: Binding<Color>, accessory: () -> Content) {
+        self.title = title
+        self.systemImage = systemImage
+        self._color = color
+        self.accessory = accessory()
+    }
+    
     let title: String
     let systemImage: String
     @Binding var color: Color
+    @ViewBuilder var accessory: Content
     
     var body: some View {
         HStack {
@@ -118,7 +136,16 @@ struct SettingNavigationCell: View {
                 .labelStyle(.titleOnly)
                 .foregroundColor(.init(uiColor: .label))
             Spacer()
+//            if let content = accessory {
+                accessory
+//            }
         }
+    }
+}
+
+extension SettingNavigationCell where Content == EmptyView {
+    init(title: String, systemImage: String, color: Binding<Color>) {
+        self.init(title: title, systemImage: systemImage, color: color, accessory: {EmptyView()})
     }
 }
 
@@ -142,6 +169,8 @@ struct SettingToggleCell: View {
     }
 }
 
+
+
 // This cell is designed to perform an action given to it.
 // The fact that it will perform an action is suggested to the user by
 // the name and the chevron on the right
@@ -154,9 +183,17 @@ struct SettingChoiceCell: View {
     
     var view: some View {
         HStack {
-            SettingNavigationCell(title: settingName, systemImage: systemImage, color: $color)
-            Text(choice)
-                .font(.subheadline)
+            SettingNavigationCell(title: settingName, systemImage: systemImage, color: $color, accessory: {
+                HStack {
+                    Spacer()
+                    
+                    Text(choice)
+                        .font(.subheadline)
+                    NavigationLink.empty.frame(maxWidth: 10, alignment: .trailing) //needs the maxWidth: 10 limit in order to match the others
+                   
+                }
+            })
+            
         }
     }
     
@@ -199,6 +236,14 @@ struct SettingLinkCell: View {
     }
 }
 
+extension NavigationLink where Label == EmptyView, Destination == EmptyView {
+
+   /// Useful in cases where a `NavigationLink` is needed but there should not be
+   /// a destination. e.g. for programmatic navigation.
+   static var empty: NavigationLink {
+       self.init(destination: EmptyView(), label: { EmptyView() })
+   }
+}
 
 
 class SettingsViewController: UIViewController {

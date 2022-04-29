@@ -62,6 +62,11 @@ class FeedViewController: ParentPostList {
     override func viewDidDisappear(_ animated: Bool) {
         whatsPlaying?.enterPausedState()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // These actions will occur every time the user switches back to the screen (via the tab bar for example)
+        viewDidLoad()
+    }
 }
 
 func logUserOut() {
@@ -84,8 +89,10 @@ extension PostTableViewCell {
     }
     
     func updateHeartUI(favoriteStatus: Bool) {
-        self.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
-        self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+        DispatchQueue.main.async {
+            self.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
+            self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+        }
     }
 }
 

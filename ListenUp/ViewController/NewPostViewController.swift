@@ -65,8 +65,10 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
         
+        let clean = UserDefaults.standard.bool(forKey: "prefersCleanContent")
+        
         cell.albumArtworkView.image = UIImage(named: "default.jpg")!
-        cell.trackNameLabel?.text = fineResult.trackName
+        cell.trackNameLabel?.text = clean ? fineResult.trackCensoredName : fineResult.trackName
         cell.artistNameLabel?.text = fineResult.artistName
 
         guard let albumArtworkURL = URL(string: fineResult.artworkUrl100) else {
@@ -174,7 +176,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         searchBar.showsCancelButton = false
         searchAttempt += 1
         if searchBar.text != "" {
-            self.getSearchResults(searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "", currAttempt:≥ searchAttempt)
+            self.getSearchResults(searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? "", currAttempt: searchAttempt)
         }
         
     }

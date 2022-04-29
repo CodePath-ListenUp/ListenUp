@@ -17,6 +17,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var downvoteSymbol: UIImageView!
     @IBOutlet weak var heartIcon: UIImageView!
     @IBOutlet weak var mediaButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var post: Post? = nil
     

@@ -71,4 +71,8 @@ class FavoritesViewController: ParentPostList {
         whatsPlaying?.enterPausedState()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        // These actions will occur every time the user switches back to the screen (via the tab bar for example)
+        viewDidLoad()
+    }
 }

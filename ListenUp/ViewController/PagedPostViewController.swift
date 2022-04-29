@@ -27,7 +27,8 @@ class PagedPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        trackNameLabel.text = post.trackName
+        let clean = UserDefaults.standard.bool(forKey: "prefersCleanContent")
+        trackNameLabel.text = clean ? post.trackCensoredName : post.trackName
         artistNameLabel.text = post.artistName
         albumArtworkView.load(url: URL(string: post.artworkUrl750)!)
         
