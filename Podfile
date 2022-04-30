@@ -7,6 +7,7 @@ target 'ListenUp' do
 
   # Pods for ListenUp
   pod 'Parse'
+  pod 'Bolts'
   pod 'IQKeyboardManagerSwift' 
   pod 'ProgressHUD'
   pod 'MarqueeLabel'

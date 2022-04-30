@@ -30,21 +30,13 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         return self.view.window!
     }
     
-
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signupView: UIView!
+    @IBOutlet weak var appIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        passwordTextField.isSecureTextEntry = true
-        
-        self.title = ""
-        
-        usernameTextField.layer.cornerRadius = 8.0
-        passwordTextField.layer.cornerRadius = 8.0
+        self.title = "JellyClub"
         
         // new code till line 181
         addSIWAButton()
@@ -65,7 +57,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         NSLayoutConstraint.activate([
             signInWithAppleButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50.0),
             signInWithAppleButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50.0),
-            signInWithAppleButton.topAnchor.constraint(equalTo: signupView.bottomAnchor , constant: 20),
+            signInWithAppleButton.topAnchor.constraint(equalTo: appIcon.bottomAnchor , constant: 20),
             signInWithAppleButton.heightAnchor.constraint(equalToConstant: 50.0)
         ])
 
@@ -190,52 +182,52 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         authController.performRequests()
     }
 
-    @IBAction func userSubmittedDetails(_ sender: UIButton) {
-        sender.layer.cornerRadius = 8
-        // Buttons:
-        // tag = 0: Sign Up
-        // tag = 1: Log In
-        
-        let userSignedUp = sender.tag == 0
-        
-        guard let usernameText = usernameTextField.text, let passwordText = passwordTextField.text else {
-            print("User did not enter valid text for either username or password")
-            ProgressHUD.showError("Please enter both username and password")
-            return
-        }
-        
-        ProgressHUD.animationType = .lineScaling
-        ProgressHUD.show("Getting set up...")
-        
-        if userSignedUp {
-            let user = User()
-            user.username = usernameText
-            user.password = passwordText
-            user.submittedPosts = []
-            user.upvotedPosts = []
-            user.favoritedPosts = []
-            user.downvotedPosts = []
-            
-            user.signUpInBackground { (success, error) in
-                ProgressHUD.dismiss()
-                if success {
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                    print("\(user.username ?? "") signed up successfully!")
-                } else {
-                    print("Error: \(error?.localizedDescription ?? "")")
-                }
-            }
-        }
-        else {
-            User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
-                ProgressHUD.dismiss()
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-            }
-        }
-    }
+//    @IBAction func userSubmittedDetails(_ sender: UIButton) {
+//        sender.layer.cornerRadius = 8
+//        // Buttons:
+//        // tag = 0: Sign Up
+//        // tag = 1: Log In
+//
+//        let userSignedUp = sender.tag == 0
+//
+//        guard let usernameText = usernameTextField.text, let passwordText = passwordTextField.text else {
+//            print("User did not enter valid text for either username or password")
+//            ProgressHUD.showError("Please enter both username and password")
+//            return
+//        }
+//
+//        ProgressHUD.animationType = .lineScaling
+//        ProgressHUD.show("Getting set up...")
+//
+//        if userSignedUp {
+//            let user = User()
+//            user.username = usernameText
+//            user.password = passwordText
+//            user.submittedPosts = []
+//            user.upvotedPosts = []
+//            user.favoritedPosts = []
+//            user.downvotedPosts = []
+//
+//            user.signUpInBackground { (success, error) in
+//                ProgressHUD.dismiss()
+//                if success {
+//                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+//                    print("\(user.username ?? "") signed up successfully!")
+//                } else {
+//                    print("Error: \(error?.localizedDescription ?? "")")
+//                }
+//            }
+//        }
+//        else {
+//            User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
+//                ProgressHUD.dismiss()
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                    return
+//                }
+//                self.performSegue(withIdentifier: "loginSegue", sender: self)
+//            }
+//        }
+//    }
 }
 
