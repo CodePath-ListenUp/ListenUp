@@ -136,6 +136,10 @@ class User: PFUser, Codable {
         super.init()
     }
     
+    required init(from decoder: Decoder) throws {
+        super.init()
+    }
+    
     @NSManaged var submittedPosts: [Post]
     @NSManaged var upvotedPosts: [Post]
     @NSManaged var favoritedPosts: [Post]

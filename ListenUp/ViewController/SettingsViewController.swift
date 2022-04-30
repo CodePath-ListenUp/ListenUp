@@ -67,7 +67,7 @@ struct SettingsView: View {
                             Text("Coming Soon").font(.subheadline).foregroundColor(color)
                         }
                     }
-                    .disabled(true)
+                    .disabled(false)
 //                    SettingToggleCell(settingName: "Display Post Scores", systemImage: "27.square.fill", toggleStatus: $displaysScore, color: $color)
 //                        .onChange(of: displaysScore) { newValue in
 //                            UserDefaults.standard.set(newValue, forKey: "showsScoreLabel")

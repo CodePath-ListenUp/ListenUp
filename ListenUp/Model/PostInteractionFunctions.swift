@@ -165,7 +165,7 @@ func generatePostsForFeed(completion: @escaping ([Post]) -> ()) {
 }
 
 // MARK: Genre
-var filteringGenre: String = UserDefaults.standard.string(forKey: "preferredGenreFilter") ?? "all" {
+var filteringGenre: String = UserDefaults.standard.string(forKey: "preferredGenreFilter") ?? "All Genres" {
     didSet {
         UserDefaults.standard.set(filteringGenre, forKey: "preferredGenreFilter")
     }
