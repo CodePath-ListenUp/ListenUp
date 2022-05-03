@@ -16,8 +16,6 @@ protocol PostListDelegate//: UITableViewDelegate, UITableViewDataSource
     var posts: [Post] { get }
 //    var tableView: UITableView! { get }
     var whatsPlaying: PostTableViewCell? { get }
-    
-    
 }
 
 class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSource, PostListDelegate {

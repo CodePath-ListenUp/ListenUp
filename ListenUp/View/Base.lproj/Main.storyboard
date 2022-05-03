@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="150"/>
+            <point key="canvasLocation" x="1030" y="799"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="nkO-0R-Pdd">
@@ -581,7 +581,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-cU-ZF6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892.753623188406" y="99.776785714285708"/>
+            <point key="canvasLocation" x="1920" y="799"/>
         </scene>
         <!--Paged Post View Controller-->
         <scene sceneID="nGq-ED-YPW">
@@ -761,7 +761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLi-g8-tS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3947.826086956522" y="-573.21428571428567"/>
+            <point key="canvasLocation" x="3713" y="-619"/>
         </scene>
         <!--Feed-->
         <scene sceneID="3CJ-S3-mUi">
@@ -816,7 +816,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHH-yA-bQG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320" y="1499"/>
+            <point key="canvasLocation" x="2803" y="1499"/>
         </scene>
         <!--Background Of Login View Controller-->
         <scene sceneID="EWm-VF-AAk">
@@ -825,12 +825,13 @@
                     <view key="view" contentMode="scaleToFill" id="1sK-jw-BGR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QFa-KP-CyI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2o-tW-CMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="811"/>
+            <point key="canvasLocation" x="1030" y="1498"/>
         </scene>
     </scenes>
     <designables>
