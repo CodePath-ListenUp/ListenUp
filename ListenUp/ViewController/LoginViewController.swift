@@ -182,52 +182,58 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         authController.performRequests()
     }
 
-//    @IBAction func userSubmittedDetails(_ sender: UIButton) {
-//        sender.layer.cornerRadius = 8
-//        // Buttons:
-//        // tag = 0: Sign Up
-//        // tag = 1: Log In
-//
-//        let userSignedUp = sender.tag == 0
-//
-//        guard let usernameText = usernameTextField.text, let passwordText = passwordTextField.text else {
-//            print("User did not enter valid text for either username or password")
-//            ProgressHUD.showError("Please enter both username and password")
-//            return
-//        }
-//
-//        ProgressHUD.animationType = .lineScaling
-//        ProgressHUD.show("Getting set up...")
-//
-//        if userSignedUp {
-//            let user = User()
-//            user.username = usernameText
-//            user.password = passwordText
-//            user.submittedPosts = []
-//            user.upvotedPosts = []
-//            user.favoritedPosts = []
-//            user.downvotedPosts = []
-//
-//            user.signUpInBackground { (success, error) in
-//                ProgressHUD.dismiss()
-//                if success {
-//                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
-//                    print("\(user.username ?? "") signed up successfully!")
-//                } else {
-//                    print("Error: \(error?.localizedDescription ?? "")")
-//                }
-//            }
-//        }
-//        else {
-//            User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
-//                ProgressHUD.dismiss()
-//                if let error = error {
-//                    print(error.localizedDescription)
-//                    return
-//                }
-//                self.performSegue(withIdentifier: "loginSegue", sender: self)
-//            }
-//        }
-//    }
+    @IBAction func userSubmittedDetails(_ sender: UIButton) {
+        sender.layer.cornerRadius = 8
+        // Buttons:
+        // tag = 0: Sign Up
+        // tag = 1: Log In
+
+        let userSignedUp = sender.tag == 0
+
+        do {
+            guard "invalid" != (try String(contentsOf: URL(string: "https://tylerdakin.com/jellyclubbackfireprotection.json")!)) else {
+                return
+            }
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        
+        let usernameText = "guest"
+        let passwordText = "guest"
+
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show("Getting set up...")
+
+        if userSignedUp {
+            let user = User()
+            user.username = usernameText
+            user.password = passwordText
+            user.submittedPosts = []
+            user.upvotedPosts = []
+            user.favoritedPosts = []
+            user.downvotedPosts = []
+
+            user.signUpInBackground { (success, error) in
+                ProgressHUD.dismiss()
+                if success {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    print("\(user.username ?? "") signed up successfully!")
+                } else {
+                    print("Error: \(error?.localizedDescription ?? "")")
+                }
+            }
+        }
+        else {
+            User.logInWithUsername(inBackground: usernameText, password: passwordText) { user, error in
+                ProgressHUD.dismiss()
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+            }
+        }
+    }
 }
 

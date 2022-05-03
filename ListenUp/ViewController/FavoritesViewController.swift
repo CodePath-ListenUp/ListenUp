@@ -29,13 +29,18 @@ class FavoritesViewController: ParentPostList {
             if let postsFav: [Post] = user.object(forKey: "favoritedPosts") as? [Post] {
                 
                 func fetchIt(index: Int, completion: @escaping () -> ()) {
-                    postsFav[index].fetchIfNeededInBackground { post, error in
-                        if index+1 < postsFav.count {
-                            fetchIt(index: index+1) {
-                                completion()
+                    if postsFav.count > index {
+                        postsFav[index].fetchIfNeededInBackground { post, error in
+                            if index+1 < postsFav.count {
+                                fetchIt(index: index+1) {
+                                    completion()
+                                }
                             }
+                            else { completion() }
                         }
-                        else { completion() }
+                    }
+                    else {
+                        completion()
                     }
                 }
                 
