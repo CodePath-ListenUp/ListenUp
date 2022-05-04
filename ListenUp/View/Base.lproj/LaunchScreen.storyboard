@@ -1,25 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lIz-Py-nbA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <!--JellyClub-->
+        <scene sceneID="Ihz-jI-tWt">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController storyboardIdentifier="LoginViewController" id="lIz-Py-nbA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hzX-Zb-n2z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lidColored" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-rz-XsU">
+                                <rect key="frame" x="57" y="248" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nnA-rz-XsU" secondAttribute="height" multiplier="1:1" priority="900" id="sxm-hc-3tG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ny1-6z-Fq9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nnA-rz-XsU" firstAttribute="centerX" secondItem="hzX-Zb-n2z" secondAttribute="centerX" priority="900" id="1Zm-nh-W2o"/>
+                            <constraint firstItem="nnA-rz-XsU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ny1-6z-Fq9" secondAttribute="leading" priority="900" constant="50" id="Lfk-Gv-VYg"/>
+                            <constraint firstItem="nnA-rz-XsU" firstAttribute="centerY" secondItem="hzX-Zb-n2z" secondAttribute="centerY" constant="-50" id="oPY-lf-fQX"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="JellyClub" id="ZdY-To-DE5"/>
+                    <connections>
+                        <outlet property="appIcon" destination="nnA-rz-XsU" id="wcX-ME-f9F"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18a-p1-BNU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-701" y="-84"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lidColored" width="300" height="300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

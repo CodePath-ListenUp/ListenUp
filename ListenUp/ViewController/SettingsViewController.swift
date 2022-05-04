@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var preferredLayout: Bool = UserDefaults.standard.bool(forKey: "prefersPagedFeed")
     @State private var prefersCleanContent: Bool = UserDefaults.standard.bool(forKey: "prefersCleanContent")
     @State private var displaysScore: Bool = UserDefaults.standard.bool(forKey: "showsScoreLabel")
+    @State private var prefersPlainBackground: Bool = plainBackground
     
     @State private var presentingLogOutConfirmation = false
     @State private var showingSortOrderAction = false
@@ -38,6 +39,10 @@ struct SettingsView: View {
                             }
                             
                             tabBarC.setupAppropriateViews()
+                        }
+                    SettingToggleCell(settingName: "Plain Paged Background", systemImage: "dial.min.fill", toggleStatus: $prefersPlainBackground, color: $color)
+                        .onChange(of: prefersPlainBackground) { newValue in
+                            plainBackground = newValue
                         }
                     SettingToggleCell(settingName: "Censor Explicit Names", systemImage: "ear.trianglebadge.exclamationmark", toggleStatus: $prefersCleanContent, color: $color)
                         .onChange(of: prefersCleanContent) { newValue in

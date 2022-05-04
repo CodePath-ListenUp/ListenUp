@@ -95,7 +95,7 @@ class BackgroundOfLoginViewController: UIViewController {
     
     init(uiColors: [UIColor]) {
         super.init(nibName: nil, bundle: nil)
-        var colors = uiColors.map { uiColor in
+        let colors = uiColors.map { uiColor in
             return Color(uiColor: uiColor)
         }
         

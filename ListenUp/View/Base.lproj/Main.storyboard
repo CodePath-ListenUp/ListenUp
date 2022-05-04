@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,13 +24,13 @@
                                 </connections>
                             </containerView>
                             <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmH-ka-N8o">
-                                <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                                <rect key="frame" x="8" y="44" width="398" height="96"/>
                                 <items>
                                     <navigationItem title="JellyClub" id="2Jm-JA-vlZ"/>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIconOriginal" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-Ht-yfN">
-                                <rect key="frame" x="50" y="190" width="314" height="314"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lidColored" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-Ht-yfN">
+                                <rect key="frame" x="57" y="240" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Hts-Ht-yfN" secondAttribute="height" multiplier="1:1" priority="900" id="WQ6-Qv-qln"/>
                                 </constraints>
@@ -42,7 +41,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtE-sT-HpB">
-                                <rect key="frame" x="50" y="190" width="314" height="314"/>
+                                <rect key="frame" x="57" y="240" width="300" height="300"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
@@ -54,18 +53,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ecv-O5-R2I" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4sb-4j-ATJ"/>
-                            <constraint firstItem="KmH-ka-N8o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7le-Lh-6HD"/>
-                            <constraint firstItem="Hts-Ht-yfN" firstAttribute="top" secondItem="KmH-ka-N8o" secondAttribute="bottom" priority="750" constant="50" id="BQi-4x-9mJ"/>
+                            <constraint firstItem="KmH-ka-N8o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="7le-Lh-6HD"/>
+                            <constraint firstItem="Hts-Ht-yfN" firstAttribute="top" secondItem="KmH-ka-N8o" secondAttribute="bottom" priority="750" constant="100" id="BQi-4x-9mJ"/>
                             <constraint firstItem="WtE-sT-HpB" firstAttribute="top" secondItem="Hts-Ht-yfN" secondAttribute="top" id="BrX-1z-UHc"/>
                             <constraint firstItem="Hts-Ht-yfN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="900" constant="50" id="DOo-XW-8iI"/>
                             <constraint firstItem="Ecv-O5-R2I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FF6-FK-KXC"/>
                             <constraint firstItem="KmH-ka-N8o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JPk-i7-0m6"/>
                             <constraint firstAttribute="bottom" secondItem="Ecv-O5-R2I" secondAttribute="bottom" id="QgT-nw-Mga"/>
-                            <constraint firstItem="KmH-ka-N8o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XQZ-6z-vm7"/>
                             <constraint firstItem="Hts-Ht-yfN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="900" id="efN-Mh-1PY"/>
                             <constraint firstItem="WtE-sT-HpB" firstAttribute="width" secondItem="Hts-Ht-yfN" secondAttribute="width" id="ejM-DN-x0X"/>
                             <constraint firstItem="Hts-Ht-yfN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" priority="900" id="jHn-VX-nbM"/>
                             <constraint firstItem="Ecv-O5-R2I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kua-7d-TPM"/>
+                            <constraint firstItem="KmH-ka-N8o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nj8-mV-hDN"/>
                             <constraint firstItem="WtE-sT-HpB" firstAttribute="height" secondItem="Hts-Ht-yfN" secondAttribute="height" id="umB-h2-t2m"/>
                             <constraint firstItem="WtE-sT-HpB" firstAttribute="leading" secondItem="Hts-Ht-yfN" secondAttribute="leading" id="vbe-uB-bhH"/>
                         </constraints>
@@ -279,7 +278,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurred rice box copy" translatesAutoresizingMaskIntoConstraints="NO" id="qMc-4q-NNR">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="qMc-4q-NNR">
                                                     <rect key="frame" x="20" y="4" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="qMc-4q-NNR" secondAttribute="height" multiplier="1:1" id="46I-uG-mft"/>
@@ -578,11 +577,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="LoggedInNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mkf-UC-AHn" customClass="TabBarController" customModule="ListenUp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6w8-Z2-DmV">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" name="AccentColor"/>
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
@@ -610,9 +609,9 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIp-Yc-NXS" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="20" y="478" width="374" height="22"/>
+                                <rect key="frame" x="20" y="478" width="374" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="hQQ-mm-1Di"/>
+                                    <constraint firstAttribute="height" constant="32" id="hQQ-mm-1Di"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -624,7 +623,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BX-i6-SSS" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="20" y="510" width="374" height="44"/>
+                                <rect key="frame" x="20" y="520" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="aeq-uO-igw"/>
                                 </constraints>
@@ -638,7 +637,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoc-Ba-2Pu" userLabel="secondaryControls">
-                                <rect key="frame" x="0.0" y="678" width="414" height="58"/>
+                                <rect key="frame" x="0.0" y="688" width="414" height="58"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ma-0O-xbq" userLabel="centerButton">
                                         <rect key="frame" x="151.5" y="-26.5" width="111" height="111"/>
@@ -684,7 +683,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXs-7W-F92">
-                                <rect key="frame" x="0.0" y="574" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="584" width="414" height="94"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEO-HL-WcU" userLabel="centerButton">
                                         <rect key="frame" x="160" y="0.0" width="94" height="94"/>
@@ -898,24 +897,20 @@
         </designable>
     </designables>
     <resources>
-        <image name="appIconOriginal" width="1024" height="1024"/>
         <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
-        <image name="blurred rice box copy" width="952" height="952"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="default" width="300" height="300"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="lidColored" width="300" height="300"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.69700002670288086" blue="0.57300001382827759" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

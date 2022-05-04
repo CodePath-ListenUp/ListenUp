@@ -47,7 +47,7 @@ class FeedViewController: ParentPostList {
 
     @objc func addPost() {
         print("user did press add button")
-        
+        // There is another instance of this function, if you change this one, change that one
         if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {
             newScreen.returningViewController = self
             self.present(newScreen, animated: true, completion: nil)

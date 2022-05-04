@@ -42,6 +42,9 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
         view.backgroundColor = .systemBackground
         
         navigationController?.navigationBar.backgroundColor = .clear
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
+        ]
         
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
@@ -70,6 +73,29 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
             print(user.username ?? "Username not defined")
         default:
             print("Unknown feed type")
+        }
+    }
+    
+    func reloadChildViewControllers() {
+        ProgressHUD.animationType = .lineScaling
+        ProgressHUD.show()
+        var postControllers: [PagedPostViewController] = []
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagedPostViewController") as? PagedPostViewController {
+            guard let first = self.posts.first else {
+                return
+            }
+            vc.post = first
+            postControllers.append(vc)
+        }
+        ProgressHUD.dismiss()
+        self.setViewControllers(postControllers, direction: .forward, animated: true)
+    }
+    
+    @objc func addPost() {
+        // There is another instance of this function, if you change this one, change that one
+        if let newScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PostViewController") as? NewPostViewController {
+            newScreen.returningPagedViewController = self
+            self.present(newScreen, animated: true, completion: nil)
         }
     }
 

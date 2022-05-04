@@ -44,29 +44,7 @@ class PagedPostViewController: UIViewController {
         trackNameLabel.text = clean ? post.trackCensoredName : post.trackName
         artistNameLabel.text = post.artistName
         albumArtworkView.load(url: URL(string: post.artworkUrl750)!) {
-            guard let image = self.albumArtworkView.image, false, self.traitCollection.userInterfaceStyle == .dark else {
-                return
-            }
-            DispatchQueue.global(qos: .background).async {
-                guard let colors = image.getColors(quality: .low) else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    let host = BackgroundOfLoginViewController(uiColors: [colors.secondary,colors.primary, colors.detail])
-                    self.addChild(host)
-                    self.containerBackground.addSubview(host.view)
-                    UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut) {
-                        self.containerBackground.layer.opacity = 1.0
-                        self.upvoteSymbol.tintColor = .white
-                        self.downvoteSymbol.tintColor = .white
-                        self.heartIcon.tintColor = .white
-                        self.shareButton.tintColor = .white
-                        self.songwhipButton.tintColor = .white
-                        self.mediaButton.tintColor = .white
-                    }
-                }
-            }
-            
+            self.startTheParty()
         }
         
         trackNameLabel.backgroundColor = .clear
@@ -99,7 +77,6 @@ class PagedPostViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         isViewInFocus = true
-//        enterPlayingState()
         player.initPlayer(url: post.previewUrl) {
             if self.isViewInFocus {
                 self.player.pause()
@@ -108,8 +85,7 @@ class PagedPostViewController: UIViewController {
             }
         }
         if self.isViewInFocus {
-            isPlaying = true
-            player.play()
+            enterPlayingState()
         }
     }
     
@@ -127,6 +103,8 @@ class PagedPostViewController: UIViewController {
             enterPlayingState()
         }
     }
+    
+   
     
     func enterPlayingState() {
         isPlaying = true
@@ -156,6 +134,36 @@ class PagedPostViewController: UIViewController {
         let trackURL = post.songLinkString
         let ac = UIActivityViewController(activityItems: [trackName,trackURL ?? ""], applicationActivities: nil)
         present(ac, animated: true)
+    }
+    
+    // https://stackoverflow.com/a/58017164
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            startTheParty()
+        }
+    }
+    
+    func startTheParty() {
+        // Only works if image is properly loaded, user has not set the plain background setting, and the user is in dark mode.
+        guard let image = self.albumArtworkView.image, !plainBackground, self.traitCollection.userInterfaceStyle == .dark else {
+            return
+        }
+        DispatchQueue.global(qos: .background).async {
+            guard let colors = image.getColors(quality: .low) else {
+                return
+            }
+            DispatchQueue.main.async {
+                let host = BackgroundOfLoginViewController(uiColors: [colors.secondary,colors.primary, colors.detail])
+                self.addChild(host)
+                self.containerBackground.addSubview(host.view)
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut) {
+                    self.containerBackground.layer.opacity = 1.0
+                    self.styleAllButtons(color: .white)
+                }
+            }
+        }
     }
     
     @objc func userTappedSongWhipButton(_ sender: UIButton) {
@@ -211,5 +219,16 @@ class PagedPostViewController: UIViewController {
     func styleDownvoteSymbol(value: Bool) {
         downvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: downvoteColor)
         downvoteSymbol.setImage(UIImage(systemName: value ? "arrow.down.circle.fill" : "arrow.down.circle"), for: .normal)
+    }
+    
+    func styleAllButtons(color: UIColor) {
+        [self.upvoteSymbol,
+         self.downvoteSymbol,
+         self.heartIcon,
+         self.shareButton,
+         self.songwhipButton,
+         self.mediaButton].forEach { element in
+            element?.tintColor = color
+        }
     }
 }

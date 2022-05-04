@@ -23,6 +23,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
     var searchAttempt = 0
     
     var returningViewController: FeedViewController? = nil
+    var returningPagedViewController: PageViewTemplateController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,6 +226,10 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
                             if let parent = self.returningViewController {
                                 parent.posts.insert(postReady,at: 0)
                                 parent.tableView.reloadData()
+                            }
+                            else if let parent = self.returningPagedViewController {
+                                parent.posts.insert(postReady, at: 0)
+                                parent.reloadChildViewControllers()
                             }
                             self.dismiss(animated: true)
                         }

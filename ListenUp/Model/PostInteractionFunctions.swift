@@ -14,6 +14,14 @@
 
 import Foundation
 
+// MARK: Paged Layout Cool Background Setting
+var plainBackground: Bool = UserDefaults.standard.bool(forKey: "prefersPlainBackground") {
+    didSet {
+        UserDefaults.standard.set(plainBackground, forKey: "prefersPlainBackground")
+    }
+}
+
+
 // MARK: Sort
 enum SortOrder: String, CaseIterable {
     case score = "Highest Score"
