@@ -26,7 +26,7 @@ class TabBarController: UITabBarController {
             let vc = PageViewTemplateController()
             let navOuter = UINavigationController(rootViewController: vc)
             vc.title = "Feed"
-            vc.feedType = .all(genre: .all) // when genres get implemented, this is how we'll specify it
+            vc.feedType = .all(Void()) // when genres get implemented, this is how we'll specify it
             navOuter.navigationBar.prefersLargeTitles = false
             navOuter.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "music.note.list"), selectedImage: UIImage(systemName:"music.note.list"))
             self.viewControllers?[0] = navOuter

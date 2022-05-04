@@ -75,7 +75,7 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }
 
-        cell.albumArtworkView?.load(url: albumArtworkURL)
+        cell.albumArtworkView?.load(url: albumArtworkURL, completion: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTriedToPostSong(_:)))
         tapGesture.numberOfTapsRequired = 1

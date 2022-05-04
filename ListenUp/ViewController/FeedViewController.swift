@@ -81,25 +81,18 @@ func logUserOut() {
 }
 
 extension PostTableViewCell {
-    func enterPausedState() {
-        self.isPlaying = false
-        self.player.pause()
-        self.darkeningLayer.opacity = nonPlayingArtworkOpacity
-        self.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
-    }
     
-    func updateHeartUI(favoriteStatus: Bool) {
-        DispatchQueue.main.async {
-            self.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
-            self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
-        }
-    }
 }
 
 // This should get moved to a different file at some point
 // Some file for Post related functions I guess
 func sortPosts(arr: [Post], completion: (@escaping ([Post]) -> ())) {
     var arrVar = arr
+    if sortOrder == .random {
+        arrVar.shuffle()
+        completion(arrVar)
+        return
+    }
     func fetchIt(index: Int, completion: @escaping () -> ()) {
         
             arrVar[index].fetchIfNeededInBackground(block: { post, error in
@@ -147,6 +140,8 @@ func sortPosts(arr: [Post], completion: (@escaping ([Post]) -> ())) {
                 
                 // Extremely unlikely that these are ever equal, so I'll take the improper sort
                 return date1.timeIntervalSince1970 < date2.timeIntervalSince1970
+            case .random:
+                return Bool.random()
             }
                     
         }
@@ -159,7 +154,7 @@ extension UIView {
         let duration = duration / 2.0
         UIView.animate(withDuration: duration,
             animations: {
-            self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            self.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         },
         completion: { _ in
             UIView.animate(withDuration: duration) {

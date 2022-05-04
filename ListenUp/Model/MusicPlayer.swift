@@ -12,7 +12,6 @@ import Foundation
 
 class MusicPlayer: NSObject, AVPlayerPlaybackCoordinatorDelegate {
     public static var instance = MusicPlayer()
-//    var player = AVPlayer()
     var player = AVPlayer()
     var whenDone: () -> () = {}
 

@@ -44,6 +44,8 @@
 		D076900C2807887F0019216A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900B2807887F0019216A /* FeedViewController.swift */; };
 		D076900E28078C090019216A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900D28078C090019216A /* PostTableViewCell.swift */; };
 		D0769010280798FF0019216A /* SafariWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900F280798FF0019216A /* SafariWork.swift */; };
+		D09798B02822D003005F5880 /* AverageColorOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09798AF2822D003005F5880 /* AverageColorOfImage.swift */; };
+		D09798B22822D0DC005F5880 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09798B12822D0DC005F5880 /* UIImageColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		D076900B2807887F0019216A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D076900D28078C090019216A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		D076900F280798FF0019216A /* SafariWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWork.swift; sourceTree = "<group>"; };
+		D09798AF2822D003005F5880 /* AverageColorOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorOfImage.swift; sourceTree = "<group>"; };
+		D09798B12822D0DC005F5880 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,6 +182,7 @@
 		D016767D2818CCCE00F5DDF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D09798AF2822D003005F5880 /* AverageColorOfImage.swift */,
 				D0558824281644EC00668AC5 /* ColorsAndUserDefaults.swift */,
 				D017C57D2807DA3B00E62C7F /* ImageFromURL.swift */,
 				D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */,
@@ -187,6 +192,7 @@
 				D076900F280798FF0019216A /* SafariWork.swift */,
 				1561AF162810C9B7006CF036 /* ShareContextMenu.swift */,
 				D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */,
+				D09798B12822D0DC005F5880 /* UIImageColors.swift */,
 				D032A6B7281086700024A4BE /* UserPostRelationFuncs.swift */,
 			);
 			path = Model;
@@ -534,7 +540,9 @@
 				D017C57E2807DA3B00E62C7F /* ImageFromURL.swift in Sources */,
 				D076900E28078C090019216A /* PostTableViewCell.swift in Sources */,
 				1534BCB7280DA97D0061800D /* ResultTableViewCell.swift in Sources */,
+				D09798B02822D003005F5880 /* AverageColorOfImage.swift in Sources */,
 				1561AF172810C9B7006CF036 /* ShareContextMenu.swift in Sources */,
+				D09798B22822D0DC005F5880 /* UIImageColors.swift in Sources */,
 				D0167684281B8CA000F5DDF6 /* GenrePickerView.swift in Sources */,
 				1534BCB3280D9F030061800D /* NewPostViewController.swift in Sources */,
 			);

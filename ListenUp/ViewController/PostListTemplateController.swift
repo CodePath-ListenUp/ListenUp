@@ -145,7 +145,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         }
         
-        cell.albumArtworkView?.load(url: albumArtworkURL)
+        cell.albumArtworkView?.load(url: albumArtworkURL, completion: nil)
         
         // Source: https://stackoverflow.com/a/35019685
         cell.darkeningLayer.frame = cell.albumArtworkView.bounds;

@@ -20,6 +20,7 @@ enum SortOrder: String, CaseIterable {
     case downvotes = "Most Downvotes"
     case recent = "Most Recent"
     case oldest = "Oldest"
+    case random = "Random"
 }
 
 var sortOrder: SortOrder { UserDefaults.standard.preferredSortOrder() }

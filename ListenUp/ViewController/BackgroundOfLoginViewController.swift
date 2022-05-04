@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct LoginBackgroundView: View {
-    let colors: [Color] = [.red,.purple,.pink,.orange]
+    let colors: [Color]
     
     let widthBase: CGFloat = 30
 //    let calculatedDimension: (Int) -> CGFloat = { givenInt in return widthBase*pow(2.0, CGFloat(givenInt)) }
@@ -85,11 +85,32 @@ struct BouncingCircle: View {
 
 class BackgroundOfLoginViewController: UIViewController {
     var backgroundView = UIViewController()
+    var colors: [Color] = [.red,.purple,.pink,.orange]
+    
+    init(colors: [Color]) {
+        super.init(nibName: nil, bundle: nil)
+        self.colors = colors
+        
+    }
+    
+    init(uiColors: [UIColor]) {
+        super.init(nibName: nil, bundle: nil)
+        var colors = uiColors.map { uiColor in
+            return Color(uiColor: uiColor)
+        }
+        
+        self.colors = colors
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundView = UIHostingController(rootView: LoginBackgroundView())
+        backgroundView = UIHostingController(rootView: LoginBackgroundView(colors: colors))
         backgroundView.view.layer.opacity = 0.5
         addChild(backgroundView)
         view.addSubview(backgroundView.view)

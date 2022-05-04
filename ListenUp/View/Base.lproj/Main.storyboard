@@ -603,6 +603,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f33-7X-Rc2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="ypy-1i-BoW" kind="embed" id="dam-RK-T9f"/>
+                                </connections>
+                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIp-Yc-NXS" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="20" y="478" width="374" height="22"/>
                                 <constraints>
@@ -662,7 +668,7 @@
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="3Ma-0O-xbq" firstAttribute="centerY" secondItem="Zoc-Ba-2Pu" secondAttribute="centerY" id="Dm6-kn-vrU"/>
                                     <constraint firstItem="3Ma-0O-xbq" firstAttribute="leading" secondItem="IDe-Un-fxE" secondAttribute="trailing" id="I6l-GH-6qK"/>
@@ -708,7 +714,7 @@
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="eEO-HL-WcU" secondAttribute="bottom" id="0cD-zV-L9e"/>
                                     <constraint firstItem="eEO-HL-WcU" firstAttribute="leading" secondItem="eNz-rz-4zS" secondAttribute="trailing" id="1Xt-f2-hws"/>
@@ -742,9 +748,12 @@
                         <constraints>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="0io-OP-cC1"/>
                             <constraint firstItem="aIp-Yc-NXS" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" constant="-20" id="4N2-KL-vL8"/>
+                            <constraint firstAttribute="trailing" secondItem="f33-7X-Rc2" secondAttribute="trailing" id="5Ah-dD-5P8"/>
                             <constraint firstItem="aIp-Yc-NXS" firstAttribute="top" secondItem="owt-gq-dd7" secondAttribute="bottom" constant="40" id="5Pj-f8-nVs"/>
+                            <constraint firstItem="f33-7X-Rc2" firstAttribute="top" secondItem="Yig-yV-H8Z" secondAttribute="top" id="B1I-dE-Nxc"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="top" secondItem="dXs-7W-F92" secondAttribute="bottom" constant="10" id="D4T-ln-8H6"/>
                             <constraint firstItem="2BX-i6-SSS" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="EVQ-Md-bOc"/>
+                            <constraint firstItem="f33-7X-Rc2" firstAttribute="leading" secondItem="Yig-yV-H8Z" secondAttribute="leading" id="G3N-hA-6Rc"/>
                             <constraint firstItem="5JW-Fy-940" firstAttribute="trailing" secondItem="2BX-i6-SSS" secondAttribute="trailing" constant="20" id="LRx-BV-ams"/>
                             <constraint firstItem="owt-gq-dd7" firstAttribute="top" secondItem="5JW-Fy-940" secondAttribute="top" constant="20" id="QZS-Ni-eGf"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="R1B-BJ-hdu"/>
@@ -755,6 +764,7 @@
                             <constraint firstItem="aIp-Yc-NXS" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="hcd-5E-MeA"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" id="lWO-bG-DKA"/>
                             <constraint firstItem="2BX-i6-SSS" firstAttribute="top" secondItem="aIp-Yc-NXS" secondAttribute="bottom" constant="10" id="oVV-fB-glx"/>
+                            <constraint firstAttribute="bottom" secondItem="f33-7X-Rc2" secondAttribute="bottom" id="zLv-Vb-S0w"/>
                             <constraint firstItem="Zoc-Ba-2Pu" firstAttribute="trailing" secondItem="5JW-Fy-940" secondAttribute="trailing" id="zMN-yE-BQi"/>
                             <constraint firstItem="owt-gq-dd7" firstAttribute="leading" secondItem="5JW-Fy-940" secondAttribute="leading" constant="20" id="zjt-OO-FPY"/>
                         </constraints>
@@ -762,6 +772,7 @@
                     <connections>
                         <outlet property="albumArtworkView" destination="owt-gq-dd7" id="dW1-ZH-Om0"/>
                         <outlet property="artistNameLabel" destination="aIp-Yc-NXS" id="Bus-5G-hYl"/>
+                        <outlet property="containerBackground" destination="f33-7X-Rc2" id="oR8-0i-DBQ"/>
                         <outlet property="downvoteSymbol" destination="eNz-rz-4zS" id="pCh-Rg-Njo"/>
                         <outlet property="heartIcon" destination="3Ma-0O-xbq" id="QrU-QP-MaM"/>
                         <outlet property="mediaButton" destination="eEO-HL-WcU" id="6z7-Vc-szF"/>
@@ -844,6 +855,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2o-tW-CMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1030" y="1498"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ctO-Dc-6iG">
+            <objects>
+                <viewController id="ypy-1i-BoW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g9d-J5-NPa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ht3-7U-NJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3006" y="-619"/>
         </scene>
     </scenes>
     <designables>

@@ -41,6 +41,20 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func enterPausedState() {
+        self.isPlaying = false
+        self.player.pause()
+        self.darkeningLayer.opacity = nonPlayingArtworkOpacity
+        self.mediaButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+    }
+    
+    func updateHeartUI(favoriteStatus: Bool) {
+        DispatchQueue.main.async {
+            self.heartIcon.image = UIImage(systemName: favoriteStatus ? "heart.fill" : "heart")
+            self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+        }
+    }
+    
     func upvote() {
         guard let post = self.post else {
             print("post has not been set yet")

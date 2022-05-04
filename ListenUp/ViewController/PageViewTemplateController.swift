@@ -9,7 +9,7 @@ import ProgressHUD
 import UIKit
 
 enum FeedType {
-    case all(genre: Genre)
+    case all(Void)
     case favorites(user: User)
     case upvoted(user: User)
     case downvoted(user: User)
@@ -41,12 +41,14 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
         
         view.backgroundColor = .systemBackground
         
+        navigationController?.navigationBar.backgroundColor = .clear
+        
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
         
         switch feedType {
             // genre will probably end up being global... so I might remove it from the FeedType enum
-        case .all(let genre):
+        case .all():
             var postControllers: [PagedPostViewController] = []
             generatePostsForFeed { sortedPosts in
                 self.posts = sortedPosts
