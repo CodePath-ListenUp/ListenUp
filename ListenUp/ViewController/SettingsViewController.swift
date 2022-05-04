@@ -21,6 +21,7 @@ struct SettingsView: View {
     @State private var showingSortOrderAction = false
     
     @State private var color: Color = Color(uiColor: jellyColor)
+    @State private var genre: String = filteringGenre
     
     @State private var sortOrderString = sortOrder.rawValue
     
@@ -62,9 +63,9 @@ struct SettingsView: View {
                         SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color)
                     }
                     
-                    NavigationLink { GenrePickerView() } label: {
+                    NavigationLink { GenrePickerView(currentGenre: $genre) } label: {
                         SettingNavigationCell(title: "Genre Filter", systemImage: "guitars", color: $color) {
-                            Text("Coming Soon").font(.subheadline).foregroundColor(color)
+                            Text(genre).font(.subheadline).foregroundColor(color)
                         }
                     }
                     .disabled(false)

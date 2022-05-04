@@ -117,4 +117,8 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
     func prepareViewControllerForPageView() {
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
 }

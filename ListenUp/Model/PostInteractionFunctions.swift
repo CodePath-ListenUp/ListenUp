@@ -158,7 +158,11 @@ func generatePostsForFeed(completion: @escaping ([Post]) -> ()) {
             return
         }
         
-        sortPosts(arr: postsReturned, completion: { posts in
+        let postsFiltered = postsReturned.filter { post in
+            post.primaryGenreName == filteringGenre
+        }
+        
+        sortPosts(arr: postsFiltered, completion: { posts in
             completion(posts)
         })
     })
@@ -170,28 +174,3 @@ var filteringGenre: String = UserDefaults.standard.string(forKey: "preferredGenr
         UserDefaults.standard.set(filteringGenre, forKey: "preferredGenreFilter")
     }
 }
-
-let anExtensiveListOfGenres = [
-    "Alternative",
-    "Blues",
-    "Children's Music",
-    "Christian",
-    "Classical",
-    "Comedy",
-    "Country",
-    "Dance",
-    "Electronic",
-    "Hip-Hop/Rap",
-    "Holiday",
-    "Jazz",
-    "K-Pop",
-    "Latin",
-    "Metal",
-    "Pop",
-    "R&B/Soul",
-    "Reggae",
-    "Rock",
-    "Singer/Songwriter",
-    "Soundtrack",
-    "Worldwide"
-]

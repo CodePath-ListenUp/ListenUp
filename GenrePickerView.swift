@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GenrePickerView: View {
     @State private var availableGenres = Set<String>(["All Genres"])
-    @State private var currentGenre = filteringGenre
+    @Binding var currentGenre: String
     var body: some View {
         List(Array(availableGenres).sorted(), id: \.self) { genre in
             Button {
@@ -47,8 +47,8 @@ struct GenrePickerView: View {
     }
 }
 
-struct GenrePickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        GenrePickerView()
-    }
-}
+//struct GenrePickerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GenrePickerView(currentGenre: Binding<String>("All Genres"))
+//    }
+//}
