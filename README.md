@@ -36,8 +36,8 @@ An app for sharing songs with others.
 
 - [✅] User can share streaming links from in the app
 - [✅] User can Sign In with Apple
-- [] User can switch between grid view and list view
-- [] User can filter by genre (or other tags, potentially)
+- [✅] User can switch between grid view and list view
+- [✅] User can filter by genre (or other tags, potentially)
 - [] User can comment on posted songs
 - [] User can open the app from the share page in other apps to quickly create a post
 
