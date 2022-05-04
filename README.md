@@ -202,3 +202,18 @@ GET: "/search"
 - Revamped UI for Post Screen
 
 <img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-3.gif" width=320>
+
+#### Sprint 4:
+
+- Issue #10: User can switch between paged view and list view
+- Issue #11: User can filter by genre
+- Issue #23: User can have access to more settings
+- Minor Bug Fixes!
+- Revamped UI for Post Screen
+
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-4-a.gif" width=320>
+
+- Issue #24: User can Sign In with Apple
+- Revamped Login Screen!
+
+<img src="https://github.com/CodePath-ListenUp/ListenUp/blob/main/assets/sprint-4-b.gif" width=320>
