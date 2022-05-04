@@ -159,7 +159,7 @@ func generatePostsForFeed(completion: @escaping ([Post]) -> ()) {
         }
         
         let postsFiltered = postsReturned.filter { post in
-            post.primaryGenreName == filteringGenre
+            filteringGenre == "All Genres" || post.primaryGenreName == filteringGenre 
         }
         
         sortPosts(arr: postsFiltered, completion: { posts in
