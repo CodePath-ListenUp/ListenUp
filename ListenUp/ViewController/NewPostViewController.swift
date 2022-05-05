@@ -207,6 +207,24 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
                     ProgressHUD.colorAnimation = jellyColor
                     ProgressHUD.show("Posting...")
                     
+                    var flag = false
+                    
+                    if let parent = self.returningViewController {
+                        flag = parent.posts.contains { post in
+                            post.trackViewUrl == result.trackViewUrl
+                        }
+                    }
+                    else if let parent = self.returningPagedViewController {
+                        flag = parent.posts.contains { post in
+                            post.trackViewUrl == result.trackViewUrl
+                        }
+                    }
+                    
+                    if flag {
+                        ProgressHUD.showError("Someone already posted that")
+                        return
+                    }
+                    
                     // Do Post processing here (pun intended)
                     let _ = Post(song: result, createdBy: User.current()!) { postReady in
                         postReady.saveInBackground { success, error in

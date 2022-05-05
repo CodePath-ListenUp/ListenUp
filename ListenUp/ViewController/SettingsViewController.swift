@@ -44,6 +44,7 @@ struct SettingsView: View {
                         .onChange(of: prefersPlainBackground) { newValue in
                             plainBackground = newValue
                         }
+                        .disabled(!preferredLayout)
                     SettingToggleCell(settingName: "Censor Explicit Names", systemImage: "ear.trianglebadge.exclamationmark", toggleStatus: $prefersCleanContent, color: $color)
                         .onChange(of: prefersCleanContent) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "prefersCleanContent")
