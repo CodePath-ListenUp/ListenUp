@@ -11,16 +11,22 @@ import UIKit
 struct LoginBackgroundView: View {
     let colors: [Color]
     
-    let widthBase: CGFloat = 30
+    let widthBase: CGFloat = 20
 //    let calculatedDimension: (Int) -> CGFloat = { givenInt in return widthBase*pow(2.0, CGFloat(givenInt)) }
     var body: some View {
         GeometryReader { geometry in
-            ForEach(10..<20, id: \.self) { i in
+            ForEach(10..<30, id: \.self) { i in
                 ZStack {
-                    BouncingCircle(x: CGFloat.random(in: 0.0..<geometry.size.width), y: CGFloat.random(in: 0.0..<geometry.size.height), circleFrame: widthBase * CGFloat(Double(i)), width: geometry.size.width, height: geometry.size.height)
-                        .opacity(Double.random(in: 20.0..<50.0))
-                        .foregroundColor(colors.randomElement())
-                        .ignoresSafeArea()
+                    // Got a crash as I turned off my device because geo.size.width was 0.0 and the random value couldn't be generated
+                    if geometry.size.width > 0.0 {
+                        BouncingCircle(x: CGFloat.random(in: 0.0..<geometry.size.width), y: CGFloat.random(in: 0.0..<geometry.size.height), circleFrame: widthBase * CGFloat(Double(i)), width: geometry.size.width, height: geometry.size.height)
+                            .opacity(Double.random(in: 20.0..<50.0))
+                            .foregroundColor(colors.randomElement())
+                            .ignoresSafeArea()
+                    }
+                    else {
+                        EmptyView()
+                    }
                 }
                 .ignoresSafeArea()
             }

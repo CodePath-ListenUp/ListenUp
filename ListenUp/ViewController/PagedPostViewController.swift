@@ -33,6 +33,8 @@ class PagedPostViewController: UIViewController {
     var isPlaying: Bool = false
     var isViewInFocus = false
     
+    var weArePartying: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +50,10 @@ class PagedPostViewController: UIViewController {
         }
         
         trackNameLabel.backgroundColor = .clear
+        
+        self.mediaButton.tintColor = jellyColor
+        shareButton.tintColor = jellyColor
+        songwhipButton.tintColor = jellyColor
         
         if let user = User.current() {
             user.fetchIfNeededInBackground { success, error in
@@ -146,10 +152,12 @@ class PagedPostViewController: UIViewController {
     }
     
     func startTheParty() {
+        
         // Only works if image is properly loaded, user has not set the plain background setting, and the user is in dark mode.
         guard let image = self.albumArtworkView.image, !plainBackground, self.traitCollection.userInterfaceStyle == .dark else {
             return
         }
+        weArePartying = true
         DispatchQueue.global(qos: .background).async {
             guard let colors = image.getColors(quality: .low) else {
                 return
@@ -181,7 +189,9 @@ class PagedPostViewController: UIViewController {
     func updateHeartUI(favoriteStatus: Bool) {
         DispatchQueue.main.async {
             self.heartIcon.setImage(UIImage(systemName: favoriteStatus ? "heart.fill" : "heart"), for: .normal)
-            self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+            if self.weArePartying == false {
+                self.heartIcon.tintColor = overrideAccentColor(basedOn: favoriteStatus, with: favoriteColor)
+            }
         }
     }
     
@@ -212,12 +222,16 @@ class PagedPostViewController: UIViewController {
     }
     
     func styleUpvoteSymbol(value: Bool) {
-        upvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: upvoteColor)
+        if weArePartying == false {
+            upvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: upvoteColor)
+        }
         upvoteSymbol.setImage(UIImage(systemName: value ? "arrow.up.circle.fill" : "arrow.up.circle"), for: .normal)
     }
     
     func styleDownvoteSymbol(value: Bool) {
-        downvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: downvoteColor)
+        if weArePartying == false {
+            downvoteSymbol.tintColor = overrideAccentColor(basedOn: value, with: downvoteColor)
+        }
         downvoteSymbol.setImage(UIImage(systemName: value ? "arrow.down.circle.fill" : "arrow.down.circle"), for: .normal)
     }
     

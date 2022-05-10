@@ -43,28 +43,43 @@ import SwiftUI
 //    }
 //}
 
+
 struct AccentColorPicker: View {
     let parent: SettingsViewController
     @Binding var colorPicked: Color
     
-    let possibleColors: [String:Color] = [
-        "Cherry": Color.init(red: 155.0/255.0, green: 20.0/255.0, blue: 23.0/255.0),
-        "Strawberry": Color.init(red: 252.0/255.0, green: 90.0/255.0, blue: 141.0/255.0),
-        "Grape": .purple,
-        "Peach": Color(red: 255.0/255.0, green: 186.0/255.0, blue: 97.0/255.0),
-        "Apple": Color.init(red: 140.0/255.0, green: 180.0/255.0, blue: 2.0/255.0),
-        "Blueberry": .blue
+    let possibleColors: [String:UIColor] = [
+        "Cherry": UIColor.init(red: 155.0/255.0, green: 20.0/255.0, blue: 23.0/255.0, alpha: 1.0),
+        "Strawberry": UIColor.init(red: 252.0/255.0, green: 90.0/255.0, blue: 141.0/255.0, alpha: 1.0),
+        "Grape": UIColor.systemPurple,
+        "Peach": UIColor(red: 255.0/255.0, green: 186.0/255.0, blue: 97.0/255.0, alpha: 1.0),
+        "Apple": UIColor.init(red: 140.0/255.0, green: 180.0/255.0, blue: 2.0/255.0, alpha: 1.0),
+        "Blueberry": .systemBlue,
+        "Lemon Curd": .systemYellow,
+        "Raspberry":.systemRed,
+        "Monoberry":.label
     ]
+//    let possibleColors: [String:Color] = [
+//        "Cherry": Color.init(red: 155.0/255.0, green: 20.0/255.0, blue: 23.0/255.0),
+//        "Strawberry": Color.init(red: 252.0/255.0, green: 90.0/255.0, blue: 141.0/255.0),
+//        "Grape": .purple,
+//        "Peach": Color(red: 255.0/255.0, green: 186.0/255.0, blue: 97.0/255.0),
+//        "Apple": Color.init(red: 140.0/255.0, green: 180.0/255.0, blue: 2.0/255.0),
+//        "Blueberry": .blue,
+//        "Lemon Curd": .yellow,
+//        "Raspberry":.red,
+//        "Monoberry":.primary
+//    ]
     
     var body: some View {
         
         List(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
             if let color = possibleColors[possibleColor] {
                 Button(action: {
-                    colorPicked = color
-                    jellyColor = UIColor(color)
+                    colorPicked = .init(uiColor: color)
+                    jellyColor = color
                 }) {
-                    AccentColorCell(name: possibleColor, color: possibleColors[possibleColor]!, colorPicked: $colorPicked)
+                    AccentColorCell(name: possibleColor, color: .init(uiColor: possibleColors[possibleColor]!), colorPicked: $colorPicked)
                 }
             }
             else {

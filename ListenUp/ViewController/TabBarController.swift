@@ -18,6 +18,8 @@ class TabBarController: UITabBarController {
             self.setupAppropriateViews()
         }
         
+        print(jellyColor)
+        
         
     }
 
@@ -55,5 +57,11 @@ class TabBarController: UITabBarController {
         //            navOuter.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "music.note.list"), selectedImage: UIImage(systemName:"music.note.list"))
         //            self.viewControllers?[1] = navOuter
         //        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
+            tabBarController?.tabBar.tintColor = jellyColor
+        }
     }
 }

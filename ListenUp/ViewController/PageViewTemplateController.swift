@@ -45,6 +45,7 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(addPost))
         ]
+        navigationItem.leftBarButtonItem?.tintColor = jellyColor
         
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()
