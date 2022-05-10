@@ -33,6 +33,32 @@ var jellyColor : UIColor = UserDefaults.standard.colorForKey(key: "accentColor")
     }
 }
 
+enum AppTheme: String, CaseIterable {
+    case device = "Device Theme"
+    case dark = "Dark"
+    case light = "Light"
+}
+
+func getUserInterfaceStyle(forAppTheme aT: AppTheme) -> UIUserInterfaceStyle {
+    switch aT {
+    case .device:
+        return .unspecified
+    case .dark:
+        return .dark
+    case .light:
+        return .light
+    }
+}
+
+var preferredAppTheme: AppTheme = AppTheme(rawValue: UserDefaults.standard.string(forKey: "preferredAppTheme") ?? "Device") ?? .device {
+    didSet {
+        UserDefaults.standard.set(preferredAppTheme.rawValue, forKey: "preferredAppTheme")
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let delegate = windowScene.delegate as? SceneDelegate else { return }
+        delegate.window?.rootViewController?.overrideUserInterfaceStyle = getUserInterfaceStyle(forAppTheme: preferredAppTheme)
+    }
+}
+
 extension UserDefaults {
     func setColor(color: UIColor?, forKey key: String) {
         if let color = color {

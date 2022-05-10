@@ -39,6 +39,11 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         searchBar.searchTextField.placeholder = "Search Songs"
         searchBar.becomeFirstResponder()
         
+        searchBar.tintColor = jellyColor
+        
+    
+        
+        
 //        tableView.separatorColor = UIColor.clear
     }
     
@@ -87,6 +92,8 @@ class NewPostViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.darkeningLayer.backgroundColor = UIColor.black.cgColor
         cell.darkeningLayer.opacity = nonPlayingArtworkOpacity
         cell.albumArtworkView.layer.addSublayer(cell.darkeningLayer)
+        
+        cell.tintColor = jellyColor
         
         //
         // MARK: Media Button Work

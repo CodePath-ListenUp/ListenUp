@@ -23,6 +23,8 @@ class TabBarController: UITabBarController {
         
     }
 
+    
+    
     func setupAppropriateViews() {
         if UserDefaults.standard.bool(forKey: "prefersPagedFeed") {
             let vc = PageViewTemplateController()

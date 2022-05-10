@@ -38,6 +38,10 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         
         self.title = "JellyClub"
         
+        if plainBackground {
+            overrideUserInterfaceStyle = .light
+        }
+        
         // new code till line 181
         addSIWAButton()
     }

@@ -163,7 +163,7 @@ class PagedPostViewController: UIViewController {
                 return
             }
             DispatchQueue.main.async {
-                let host = BackgroundOfLoginViewController(uiColors: [colors.secondary,colors.primary, colors.detail])
+                let host = BackgroundOfLoginViewController(uiColors: [colors.secondary,colors.primary, colors.detail,colors.background])
                 self.addChild(host)
                 self.containerBackground.addSubview(host.view)
                 UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut) {

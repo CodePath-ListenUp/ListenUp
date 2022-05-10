@@ -11,15 +11,15 @@ import UIKit
 struct LoginBackgroundView: View {
     let colors: [Color]
     
-    let widthBase: CGFloat = 20
+    let widthBase: CGFloat = 15
 //    let calculatedDimension: (Int) -> CGFloat = { givenInt in return widthBase*pow(2.0, CGFloat(givenInt)) }
     var body: some View {
         GeometryReader { geometry in
-            ForEach(10..<30, id: \.self) { i in
+            ForEach(0..<50, id: \.self) { i in
                 ZStack {
                     // Got a crash as I turned off my device because geo.size.width was 0.0 and the random value couldn't be generated
                     if geometry.size.width > 0.0 {
-                        BouncingCircle(x: CGFloat.random(in: 0.0..<geometry.size.width), y: CGFloat.random(in: 0.0..<geometry.size.height), circleFrame: widthBase * CGFloat(Double(i)), width: geometry.size.width, height: geometry.size.height)
+                        BouncingCircle(x: CGFloat.random(in: 0.0..<geometry.size.width), y: CGFloat.random(in: 0.0..<geometry.size.height), circleFrame: widthBase * CGFloat.random(in: 10..<20), width: geometry.size.width, height: geometry.size.height)
                             .opacity(Double.random(in: 20.0..<50.0))
                             .foregroundColor(colors.randomElement())
                             .ignoresSafeArea()
@@ -33,6 +33,7 @@ struct LoginBackgroundView: View {
             .ignoresSafeArea()
         }
         .ignoresSafeArea()
+        .clipped()
         .blur(radius: 50.0)
        
     }
@@ -116,11 +117,13 @@ class BackgroundOfLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundView = UIHostingController(rootView: LoginBackgroundView(colors: colors))
-        backgroundView.view.layer.opacity = 0.5
-        addChild(backgroundView)
-        view.addSubview(backgroundView.view)
-        setupContraints()
+        if !plainBackground {
+            backgroundView = UIHostingController(rootView: LoginBackgroundView(colors: colors))
+            backgroundView.view.layer.opacity = 0.5
+            addChild(backgroundView)
+            view.addSubview(backgroundView.view)
+            setupContraints()
+        }
     }
     
     fileprivate func setupContraints() {

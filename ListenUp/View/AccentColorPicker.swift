@@ -73,7 +73,9 @@ struct AccentColorPicker: View {
     
     var body: some View {
         
-        List(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
+        List {
+            Section(footer: Text("Most parts of JellyClub update to your accent color immediately, but restarting the app may be necessary for accent color changes to take effect everywhere.")) {
+        ForEach(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
             if let color = possibleColors[possibleColor] {
                 Button(action: {
                     colorPicked = .init(uiColor: color)
@@ -84,6 +86,8 @@ struct AccentColorPicker: View {
             }
             else {
                 EmptyView()
+            }
+        }
             }
         }
         .onDisappear {

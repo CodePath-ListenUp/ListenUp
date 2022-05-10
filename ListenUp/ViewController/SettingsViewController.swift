@@ -18,13 +18,16 @@ struct SettingsView: View {
     @State private var displaysScore: Bool = UserDefaults.standard.bool(forKey: "showsScoreLabel")
     @State private var prefersPlainBackground: Bool = plainBackground
     
+    
     @State private var presentingLogOutConfirmation = false
     @State private var showingSortOrderAction = false
+    @State private var showingAppThemeAction = false
     
     @State private var color: Color = Color(uiColor: jellyColor)
     @State private var genre: String = filteringGenre
     
     @State private var sortOrderString = sortOrder.rawValue
+    @State private var appThemeString = preferredAppTheme.rawValue
     
     var body: some View {
         NavigationView {
@@ -40,15 +43,39 @@ struct SettingsView: View {
                             
                             tabBarC.setupAppropriateViews()
                         }
-                    SettingToggleCell(settingName: "Plain Paged Background", systemImage: "dial.min.fill", toggleStatus: $prefersPlainBackground, color: $color)
+                    SettingToggleCell(settingName: "Static Backgrounds", systemImage: "dial.min.fill", toggleStatus: $prefersPlainBackground, color: $color)
                         .onChange(of: prefersPlainBackground) { newValue in
                             plainBackground = newValue
                         }
-                        .disabled(!preferredLayout)
                     SettingToggleCell(settingName: "Censor Explicit Names", systemImage: "ear.trianglebadge.exclamationmark", toggleStatus: $prefersCleanContent, color: $color)
                         .onChange(of: prefersCleanContent) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "prefersCleanContent")
                         }
+                    NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
+                        SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color) {
+                            Capsule()
+                                .fill(color)
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.primary, lineWidth: 1.0)
+                                        )
+                                .frame(maxWidth: 100)
+                                .padding(.vertical, 5)
+                        }
+                    }
+                    SettingChoiceCell(settingName: "App Theme", systemImage: "circle", choice: $appThemeString, color: $color) {
+                        showingAppThemeAction = true
+                    }
+                    .confirmationDialog("", isPresented: $showingAppThemeAction) {
+                        ForEach(AppTheme.allCases, id: \.rawValue) { theme in
+                            Button {
+                                preferredAppTheme = theme
+                                appThemeString = theme.rawValue
+                            } label: {
+                                Text(theme.rawValue)
+                            }
+                        }
+                    }
                     SettingChoiceCell(settingName: "Sort Order", systemImage: "line.3.horizontal.decrease.circle.fill", choice: $sortOrderString, color: $color) {
                         showingSortOrderAction = true
                     }
@@ -64,11 +91,6 @@ struct SettingsView: View {
 
                         }
                     }
-
-                    NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
-                        SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color)
-                    }
-                    
                     NavigationLink { GenrePickerView(currentGenre: $genre) } label: {
                         SettingNavigationCell(title: "Genre Filter", systemImage: "guitars", color: $color) {
                             Text(genre).font(.subheadline).foregroundColor(color)
@@ -167,6 +189,7 @@ struct SettingToggleCell: View {
             Label("", systemImage: systemImage)
                 .labelStyle(.iconOnly)
                 .foregroundColor(color)
+                .lineLimit(1)
             Label(settingName, systemImage: "")
                 .labelStyle(.titleOnly)
                 .foregroundColor(.init(uiColor: .label))

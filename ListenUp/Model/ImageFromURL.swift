@@ -32,16 +32,27 @@ func getImage(from link: String) -> UIImage? {
     return getImage(from: url)
 }
 
+let imageCache = NSCache<NSURL,UIImage>()
+
 //If you're using an imageView, use this UIImageView extension instead!
 extension UIImageView {
     func load(url: URL, completion: (() -> ())?) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                        if let completion = completion {
-                            completion()
+        if let image = imageCache.object(forKey: url as NSURL) {
+            self.image = image
+            if let completion = completion {
+                completion()
+            }
+        }
+        else {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            imageCache.setObject(image, forKey: (url as NSURL))
+                            self?.image = image
+                            if let completion = completion {
+                                completion()
+                            }
                         }
                     }
                 }

@@ -27,6 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Use this to set the tintColor initially
         self.window?.tintColor = jellyColor
+        
+        // Use this to override the theme if necessary
+        window?.rootViewController?.overrideUserInterfaceStyle = getUserInterfaceStyle(forAppTheme: preferredAppTheme)
 
     }
 
