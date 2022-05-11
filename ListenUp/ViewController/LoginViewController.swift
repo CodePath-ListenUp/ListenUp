@@ -46,6 +46,18 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         addSIWAButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Onboarding trigger code
+//        thisIsFirstLaunch = true
+//        if thisIsFirstLaunch {
+//            thisIsFirstLaunch = false
+//            let host = UIHostingController(rootView: OnboardingScreen())
+//            host.isModalInPresentation = true
+//            present(host, animated: true)
+//            
+//        }
+    }
+    
     func addSIWAButton() {
         // Sign In with Apple button
         let signInWithAppleButton = ASAuthorizationAppleIDButton()

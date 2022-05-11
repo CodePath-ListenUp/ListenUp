@@ -59,6 +59,13 @@ var preferredAppTheme: AppTheme = AppTheme(rawValue: UserDefaults.standard.strin
     }
 }
 
+// As cursed as this feels, I don't think we'll ever use this for anything else, so inverting the UserDefault seems acceptable in this scenario
+var thisIsFirstLaunch = !UserDefaults.standard.bool(forKey: "userHasLaunchedBefore") {
+    didSet {
+        UserDefaults.standard.set(!thisIsFirstLaunch, forKey: "userHasLaunchedBefore")
+    }
+}
+
 extension UserDefaults {
     func setColor(color: UIColor?, forKey key: String) {
         if let color = color {

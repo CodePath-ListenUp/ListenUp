@@ -58,6 +58,7 @@
 		D0E22321282C146C00629E5D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E22320282C146C00629E5D /* Bolts.framework */; };
 		D0E22323282C172C00629E5D /* SongwhipNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */; };
 		D0E22324282C17FA00629E5D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
+		D0F7916C282C414E00D71B10 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7916B282C414E00D71B10 /* OnboardingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		D0E22310282C133100629E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0E22319282C140D00629E5D /* Parse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Parse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E22320282C146C00629E5D /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F7916B282C414E00D71B10 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,6 +232,7 @@
 			children = (
 				D01676802819902700F5DDF6 /* AccentColorPicker.swift */,
 				D0167683281B8CA000F5DDF6 /* GenrePickerView.swift */,
+				D0F7916B282C414E00D71B10 /* OnboardingScreen.swift */,
 				D042BC3C27FE5FC20096F24D /* LaunchScreen.storyboard */,
 				D042BC3727FE5FBE0096F24D /* Main.storyboard */,
 			);
@@ -656,6 +659,7 @@
 				D032A6B8281086700024A4BE /* UserPostRelationFuncs.swift in Sources */,
 				D016768F281CF8C300F5DDF6 /* BackgroundOfLoginViewController.swift in Sources */,
 				D05588272816483200668AC5 /* SettingsViewController.swift in Sources */,
+				D0F7916C282C414E00D71B10 /* OnboardingScreen.swift in Sources */,
 				D042BC3227FE5FBE0096F24D /* AppDelegate.swift in Sources */,
 				D017C5802807DF9800E62C7F /* SongwhipNetworking.swift in Sources */,
 				D076900C2807887F0019216A /* FeedViewController.swift in Sources */,
