@@ -19,6 +19,23 @@ enum Genre {
     case all,chosen(genre: String)
 }
 
+//
+//  The following variables are designed to make the user experience more seamless.
+//
+//  shouldReloadFeed -> This is a global variable that should be set when a crucial
+//                      change in the posts or how they're displayed is expected.
+//                      For example, this should be true if the user changes their
+//                      accent color preference.
+//
+//  postToComeBackTo -> This is a global variable that tells the PageViewController
+//                      which post it should start the user on. This is useful for
+//                      when we need to reload the feed but want to keep the user at
+//                      the same place in their browsing. This should be set to nil if
+//                      the sortOrder is changed.
+//
+var shouldReloadFeed = false
+var postToComeBackTo: Post?
+
 class PageViewTemplateController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     var feedType: FeedType!
@@ -58,10 +75,19 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
                 self.posts = sortedPosts
                 
                 if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PagedPostViewController") as? PagedPostViewController {
-                    guard let first = self.posts.first else {
-                        return
+                    
+                    if let postToComeBackTo = postToComeBackTo, let index = self.posts.firstIndex(where: { post in
+                            post.objectId == postToComeBackTo.objectId
+                    }) {
+                        vc.post = self.posts[index]
                     }
-                    vc.post = first
+                    else {
+                        guard let first = self.posts.first else {
+                            return
+                        }
+                        vc.post = first
+                    }
+                
                     postControllers.append(vc)
                 }
                 
@@ -148,6 +174,24 @@ class PageViewTemplateController: UIPageViewController, UIPageViewControllerDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewDidLoad()
+        if shouldReloadFeed {
+            shouldReloadFeed = false
+            viewDidLoad()
+        }
+        else {
+            print("\n\nNUMBER OF VIEW CONTROLLERS IN PAGEVIEW: ", self.viewControllers?.count ?? -1, "\n\n")
+            if self.viewControllers?.count ?? 0 > 0, let postViewController = (self.viewControllers?[0] as? PagedPostViewController) {
+                postViewController.viewWillAppear(true)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("\n\nNUMBER OF VIEW CONTROLLERS IN PAGEVIEW: ", self.viewControllers?.count ?? -1, "\n\n")
+        if self.viewControllers?.count ?? 0 > 0, let postViewController = (self.viewControllers?[0] as? PagedPostViewController) {
+            postToComeBackTo = postViewController.post
+            
+            postViewController.viewWillDisappear(true)
+        }
     }
 }

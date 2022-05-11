@@ -16,6 +16,11 @@ target 'ListenUp' do
     # Pods for testing
   end
 
+  target 'JellyClubWidgetExtension' do
+    inherit! :search_paths
+    # Pods for Widget
+  end
+
   target 'ListenUpUITests' do
     # Pods for testing
   end

@@ -269,6 +269,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
     func openPost(post: Post, indexPath: IndexPath) {
         if let songwhipStr = post.songLinkString, let url = URL(string: songwhipStr) {
             let svc = SFSafariViewController(url: url)
+            svc.preferredControlTintColor = jellyColor
             DispatchQueue.main.async {
                 self.present(svc, animated: true)
             }
@@ -278,6 +279,7 @@ class ParentPostList: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.posts[indexPath.row].songLinkString = result.url
                 let url = URL(string: result.url)!
                 let svc = SFSafariViewController(url: url)
+                svc.preferredControlTintColor = jellyColor
                 DispatchQueue.main.async {
                     self.present(svc, animated: true)
                 }

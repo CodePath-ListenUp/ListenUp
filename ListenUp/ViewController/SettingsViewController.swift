@@ -46,10 +46,12 @@ struct SettingsView: View {
                     SettingToggleCell(settingName: "Static Backgrounds", systemImage: "dial.min.fill", toggleStatus: $prefersPlainBackground, color: $color)
                         .onChange(of: prefersPlainBackground) { newValue in
                             plainBackground = newValue
+                            shouldReloadFeed = true
                         }
                     SettingToggleCell(settingName: "Censor Explicit Names", systemImage: "ear.trianglebadge.exclamationmark", toggleStatus: $prefersCleanContent, color: $color)
                         .onChange(of: prefersCleanContent) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "prefersCleanContent")
+                            shouldReloadFeed = true
                         }
                     NavigationLink(destination: AccentColorPicker(parent: parent, colorPicked: $color)) {
                         SettingNavigationCell(title: "Accent Color", systemImage: "eyedropper.halffull", color: $color) {
@@ -85,6 +87,8 @@ struct SettingsView: View {
                                 print(SortOrder.allCases)
                                 UserDefaults.standard.setPreferredSortOrder(sort)
                                 sortOrderString = sortOrder.rawValue
+                                shouldReloadFeed = true
+                                postToComeBackTo = nil
                             } label: {
                                 Text(sort.rawValue)
                             }
@@ -137,6 +141,7 @@ struct SettingsView: View {
             
         }
         .tint(color)
+        .accentColor(color)
     }
 }
 

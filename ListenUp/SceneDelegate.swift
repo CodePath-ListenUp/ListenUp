@@ -19,6 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        // https://stackoverflow.com/a/63715553
+        maybeOpenedFromWidget(urlContexts: connectionOptions.urlContexts)
+        
         if User.current() != nil {
             let main = UIStoryboard(name: "Main", bundle: nil)
             let loggedInNavigationController = main.instantiateViewController(withIdentifier: "LoggedInNavigationController")
@@ -61,6 +64,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    // https://stackoverflow.com/a/63715553
+    // App opened from background
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        maybeOpenedFromWidget(urlContexts: URLContexts)
+    }
+
+    private func maybeOpenedFromWidget(urlContexts: Set<UIOpenURLContext>) {
+        guard let _: UIOpenURLContext = urlContexts.first(where: { $0.url.scheme == "widget-deeplink" }) else { return }
+        print("🚀 Launched from widget")
+    }
 
 }
 

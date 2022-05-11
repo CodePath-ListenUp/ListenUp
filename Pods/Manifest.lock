@@ -5,7 +5,7 @@ PODS:
   - Bolts/AppLinks (1.9.1):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
-  - IQKeyboardManagerSwift (6.5.9)
+  - IQKeyboardManagerSwift (6.5.10)
   - MarqueeLabel (4.3.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
@@ -30,11 +30,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
-  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
 
-PODFILE CHECKSUM: ac0828cad7a1c18b928d1990741e0d60fb8e4613
+PODFILE CHECKSUM: 48c91b74881e88e5c2bf094a706759be0fac7e5f
 
 COCOAPODS: 1.11.2

@@ -10,9 +10,11 @@
 		1534BCB3280D9F030061800D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534BCB2280D9F030061800D /* NewPostViewController.swift */; };
 		1534BCB7280DA97D0061800D /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */; };
 		1561AF172810C9B7006CF036 /* ShareContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1561AF162810C9B7006CF036 /* ShareContextMenu.swift */; };
+		2AE31FAF8588A73924748508 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2618B7887BDB65E06409D8AF /* Pods_ListenUp.framework */; };
+		4702607CAE664E228E4913EC /* Pods_JellyClubWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A554D6A15B268EA5280E5DA8 /* Pods_JellyClubWidgetExtension.framework */; };
 		99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */; };
 		A346F23A8B11C66BAC4D326A /* Pods_ListenUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */; };
-		B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */; };
+		B7C57818DEF343FCA1384779 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		D016767F28197C1300F5DDF6 /* PostInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */; };
 		D01676812819902700F5DDF6 /* AccentColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01676802819902700F5DDF6 /* AccentColorPicker.swift */; };
 		D0167684281B8CA000F5DDF6 /* GenrePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0167683281B8CA000F5DDF6 /* GenrePickerView.swift */; };
@@ -46,6 +48,16 @@
 		D0769010280798FF0019216A /* SafariWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076900F280798FF0019216A /* SafariWork.swift */; };
 		D09798B02822D003005F5880 /* AverageColorOfImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09798AF2822D003005F5880 /* AverageColorOfImage.swift */; };
 		D09798B22822D0DC005F5880 /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09798B12822D0DC005F5880 /* UIImageColors.swift */; };
+		D0E22308282C132F00629E5D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E22307282C132F00629E5D /* WidgetKit.framework */; };
+		D0E2230A282C132F00629E5D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E22309282C132F00629E5D /* SwiftUI.framework */; };
+		D0E2230D282C132F00629E5D /* JellyClubWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E2230C282C132F00629E5D /* JellyClubWidget.swift */; };
+		D0E2230F282C133100629E5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E2230E282C133100629E5D /* Assets.xcassets */; };
+		D0E22313282C133100629E5D /* JellyClubWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D0E22306282C132F00629E5D /* JellyClubWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D0E22318282C13DE00629E5D /* iTunesAPINetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57B2807D37200E62C7F /* iTunesAPINetworking.swift */; };
+		D0E2231A282C140D00629E5D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E22319282C140D00629E5D /* Parse.framework */; };
+		D0E22321282C146C00629E5D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E22320282C146C00629E5D /* Bolts.framework */; };
+		D0E22323282C172C00629E5D /* SongwhipNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017C57F2807DF9800E62C7F /* SongwhipNetworking.swift */; };
+		D0E22324282C17FA00629E5D /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = D042BC6127FE5FE50096F24D /* Private.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,19 +75,43 @@
 			remoteGlobalIDString = D042BC2D27FE5FBE0096F24D;
 			remoteInfo = ListenUp;
 		};
+		D0E22311282C133100629E5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D042BC2627FE5FBD0096F24D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0E22305282C132F00629E5D;
+			remoteInfo = JellyClubWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D0E22317282C133100629E5D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D0E22313282C133100629E5D /* JellyClubWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1534BCB2280D9F030061800D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		1534BCB6280DA97D0061800D /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		1561AF162810C9B7006CF036 /* ShareContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContextMenu.swift; sourceTree = "<group>"; };
 		1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.debug.xcconfig"; sourceTree = "<group>"; };
+		2618B7887BDB65E06409D8AF /* Pods_ListenUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp.release.xcconfig"; path = "Target Support Files/Pods-ListenUp/Pods-ListenUp.release.xcconfig"; sourceTree = "<group>"; };
 		5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.release.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		5DA78C8F6E88A1F959465753 /* Pods-ListenUp-ListenUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.release.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		844EF2C7664EC9722A1546C2 /* Pods-JellyClubWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JellyClubWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-JellyClubWidgetExtension/Pods-JellyClubWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		92FFCA6B544334D4B19493AB /* Pods-ListenUp-ListenUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUp-ListenUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUp-ListenUpUITests/Pods-ListenUp-ListenUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListenUpTests.debug.xcconfig"; path = "Target Support Files/Pods-ListenUpTests/Pods-ListenUpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9EE570E2503CB4F228FBD61D /* Pods-JellyClubWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JellyClubWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-JellyClubWidgetExtension/Pods-JellyClubWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		A554D6A15B268EA5280E5DA8 /* Pods_JellyClubWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JellyClubWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D016767E28197C1300F5DDF6 /* PostInteractionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInteractionFunctions.swift; sourceTree = "<group>"; };
 		D01676802819902700F5DDF6 /* AccentColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPicker.swift; sourceTree = "<group>"; };
@@ -116,6 +152,14 @@
 		D076900F280798FF0019216A /* SafariWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWork.swift; sourceTree = "<group>"; };
 		D09798AF2822D003005F5880 /* AverageColorOfImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorOfImage.swift; sourceTree = "<group>"; };
 		D09798B12822D0DC005F5880 /* UIImageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
+		D0E22306282C132F00629E5D /* JellyClubWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JellyClubWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E22307282C132F00629E5D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D0E22309282C132F00629E5D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D0E2230C282C132F00629E5D /* JellyClubWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyClubWidget.swift; sourceTree = "<group>"; };
+		D0E2230E282C133100629E5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0E22310282C133100629E5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0E22319282C140D00629E5D /* Parse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Parse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E22320282C146C00629E5D /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ListenUp_ListenUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,7 +170,8 @@
 			files = (
 				D016768C281C06A300F5DDF6 /* Parse.framework in Frameworks */,
 				D016768A281C069E00F5DDF6 /* Bolts.framework in Frameworks */,
-				B7C57818DEF343FCA1384779 /* Pods_ListenUp.framework in Frameworks */,
+				B7C57818DEF343FCA1384779 /* (null) in Frameworks */,
+				2AE31FAF8588A73924748508 /* Pods_ListenUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +188,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FCF07529E5E9A7BE4B0CEE /* Pods_ListenUp_ListenUpUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0E22303282C132F00629E5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0E22321282C146C00629E5D /* Bolts.framework in Frameworks */,
+				D0E2230A282C132F00629E5D /* SwiftUI.framework in Frameworks */,
+				D0E2231A282C140D00629E5D /* Parse.framework in Frameworks */,
+				D0E22308282C132F00629E5D /* WidgetKit.framework in Frameworks */,
+				4702607CAE664E228E4913EC /* Pods_JellyClubWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +261,7 @@
 				D042BC3027FE5FBE0096F24D /* ListenUp */,
 				D042BC4727FE5FC30096F24D /* ListenUpTests */,
 				D042BC5127FE5FC30096F24D /* ListenUpUITests */,
+				D0E2230B282C132F00629E5D /* JellyClubWidget */,
 				D042BC2F27FE5FBE0096F24D /* Products */,
 				D3EAA543291C1A93A474FED7 /* Pods */,
 				F1B5C04C88B8AF2C05765D46 /* Frameworks */,
@@ -216,6 +274,7 @@
 				D042BC2E27FE5FBE0096F24D /* ListenUp.app */,
 				D042BC4427FE5FC20096F24D /* ListenUpTests.xctest */,
 				D042BC4E27FE5FC30096F24D /* ListenUpUITests.xctest */,
+				D0E22306282C132F00629E5D /* JellyClubWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +311,16 @@
 			path = ListenUpUITests;
 			sourceTree = "<group>";
 		};
+		D0E2230B282C132F00629E5D /* JellyClubWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D0E2230C282C132F00629E5D /* JellyClubWidget.swift */,
+				D0E2230E282C133100629E5D /* Assets.xcassets */,
+				D0E22310282C133100629E5D /* Info.plist */,
+			);
+			path = JellyClubWidget;
+			sourceTree = "<group>";
+		};
 		D3EAA543291C1A93A474FED7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +330,8 @@
 				5DA78C8F6E88A1F959465753 /* Pods-ListenUp-ListenUpUITests.release.xcconfig */,
 				9BB8F17A439ED8BFDBD4F20A /* Pods-ListenUpTests.debug.xcconfig */,
 				5A99AD94A58DBA5C9990DB7B /* Pods-ListenUpTests.release.xcconfig */,
+				844EF2C7664EC9722A1546C2 /* Pods-JellyClubWidgetExtension.debug.xcconfig */,
+				9EE570E2503CB4F228FBD61D /* Pods-JellyClubWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -268,12 +339,17 @@
 		F1B5C04C88B8AF2C05765D46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0E22320282C146C00629E5D /* Bolts.framework */,
+				D0E22319282C140D00629E5D /* Parse.framework */,
 				D016768B281C06A300F5DDF6 /* Parse.framework */,
 				D0167689281C069E00F5DDF6 /* Bolts.framework */,
 				D0167685281C05CA00F5DDF6 /* Bolts.framework */,
-				8B324E8AEC619336AA032E41 /* Pods_ListenUp.framework */,
 				F86A41410E8CE9171D9EA77F /* Pods_ListenUp_ListenUpUITests.framework */,
 				B999177ECC3CC9EC0EA24750 /* Pods_ListenUpTests.framework */,
+				D0E22307282C132F00629E5D /* WidgetKit.framework */,
+				D0E22309282C132F00629E5D /* SwiftUI.framework */,
+				A554D6A15B268EA5280E5DA8 /* Pods_JellyClubWidgetExtension.framework */,
+				2618B7887BDB65E06409D8AF /* Pods_ListenUp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -290,10 +366,12 @@
 				D042BC2B27FE5FBE0096F24D /* Frameworks */,
 				D042BC2C27FE5FBE0096F24D /* Resources */,
 				5DCD8DDA825CF9B2C5F4DD97 /* [CP] Embed Pods Frameworks */,
+				D0E22317282C133100629E5D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D0E22312282C133100629E5D /* PBXTargetDependency */,
 			);
 			name = ListenUp;
 			productName = ListenUp;
@@ -339,6 +417,24 @@
 			productReference = D042BC4E27FE5FC30096F24D /* ListenUpUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D0E22305282C132F00629E5D /* JellyClubWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0E22314282C133100629E5D /* Build configuration list for PBXNativeTarget "JellyClubWidgetExtension" */;
+			buildPhases = (
+				859516B633359AFAEE483702 /* [CP] Check Pods Manifest.lock */,
+				D0E22302282C132F00629E5D /* Sources */,
+				D0E22303282C132F00629E5D /* Frameworks */,
+				D0E22304282C132F00629E5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JellyClubWidgetExtension;
+			productName = JellyClubWidgetExtension;
+			productReference = D0E22306282C132F00629E5D /* JellyClubWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -360,6 +456,9 @@
 						CreatedOnToolsVersion = 13.3;
 						TestTargetID = D042BC2D27FE5FBE0096F24D;
 					};
+					D0E22305282C132F00629E5D = {
+						CreatedOnToolsVersion = 13.3;
+					};
 				};
 			};
 			buildConfigurationList = D042BC2927FE5FBD0096F24D /* Build configuration list for PBXProject "ListenUp" */;
@@ -378,6 +477,7 @@
 				D042BC2D27FE5FBE0096F24D /* ListenUp */,
 				D042BC4327FE5FC20096F24D /* ListenUpTests */,
 				D042BC4D27FE5FC30096F24D /* ListenUpUITests */,
+				D0E22305282C132F00629E5D /* JellyClubWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -407,6 +507,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0E22304282C132F00629E5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0E2230F282C133100629E5D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -425,6 +533,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ListenUp/Pods-ListenUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		859516B633359AFAEE483702 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JellyClubWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		87FF01BBB9972EBE1D21EA99 /* [CP] Check Pods Manifest.lock */ = {
@@ -565,6 +695,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0E22302282C132F00629E5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0E22318282C13DE00629E5D /* iTunesAPINetworking.swift in Sources */,
+				D0E22323282C172C00629E5D /* SongwhipNetworking.swift in Sources */,
+				D0E2230D282C132F00629E5D /* JellyClubWidget.swift in Sources */,
+				D0E22324282C17FA00629E5D /* Private.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -577,6 +718,11 @@
 			isa = PBXTargetDependency;
 			target = D042BC2D27FE5FBE0096F24D /* ListenUp */;
 			targetProxy = D042BC4F27FE5FC30096F24D /* PBXContainerItemProxy */;
+		};
+		D0E22312282C133100629E5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0E22305282C132F00629E5D /* JellyClubWidgetExtension */;
+			targetProxy = D0E22311282C133100629E5D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -721,13 +867,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1E3420C5D8901AC0995C4EA6 /* Pods-ListenUp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
@@ -761,13 +908,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 30DA7A0B1B53AD6360C7F73A /* Pods-ListenUp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = ListenUp/ListenUp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListenUp/Info.plist;
@@ -878,6 +1026,66 @@
 			};
 			name = Release;
 		};
+		D0E22315282C133100629E5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 844EF2C7664EC9722A1546C2 /* Pods-JellyClubWidgetExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JellyClubWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JellyClubWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tylerdakin.JellyClub.JellyClubWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0E22316282C133100629E5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EE570E2503CB4F228FBD61D /* Pods-JellyClubWidgetExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_TEAM = K5Y29Z4JQZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JellyClubWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JellyClubWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tylerdakin.JellyClub.JellyClubWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -913,6 +1121,15 @@
 			buildConfigurations = (
 				D042BC5F27FE5FC30096F24D /* Debug */,
 				D042BC6027FE5FC30096F24D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0E22314282C133100629E5D /* Build configuration list for PBXNativeTarget "JellyClubWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0E22315282C133100629E5D /* Debug */,
+				D0E22316282C133100629E5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

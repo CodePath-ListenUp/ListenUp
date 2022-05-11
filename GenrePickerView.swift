@@ -28,6 +28,8 @@ struct GenrePickerView: View {
         }
         .onChange(of: currentGenre, perform: { newVal in
             filteringGenre = newVal
+            shouldReloadFeed = true
+            postToComeBackTo = nil
         })
         .onAppear {
             let query = Post.query()

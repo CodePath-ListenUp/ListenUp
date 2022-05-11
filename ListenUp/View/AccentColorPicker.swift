@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 //enum AccentColor: String, Comparable {
 //    static func < (lhs: AccentColor, rhs: AccentColor) -> Bool {
@@ -75,19 +76,23 @@ struct AccentColorPicker: View {
         
         List {
             Section(footer: Text("Most parts of JellyClub update to your accent color immediately, but restarting the app may be necessary for accent color changes to take effect everywhere.")) {
-        ForEach(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
-            if let color = possibleColors[possibleColor] {
-                Button(action: {
-                    colorPicked = .init(uiColor: color)
-                    jellyColor = color
-                }) {
-                    AccentColorCell(name: possibleColor, color: .init(uiColor: possibleColors[possibleColor]!), colorPicked: $colorPicked)
+                ForEach(Array(possibleColors.keys.sorted()), id: \.self) { possibleColor in
+                    if let color = possibleColors[possibleColor] {
+                        Button(action: {
+                            colorPicked = .init(uiColor: color)
+                            jellyColor = color
+                            shouldReloadFeed = true
+                            parent.navigationController?.navigationBar.tintColor = jellyColor
+                            
+                            parent.tabBarController?.tabBar.tintColor = jellyColor
+                        }) {
+                            AccentColorCell(name: possibleColor, color: .init(uiColor: possibleColors[possibleColor]!), colorPicked: $colorPicked)
+                        }
+                    }
+                    else {
+                        EmptyView()
+                    }
                 }
-            }
-            else {
-                EmptyView()
-            }
-        }
             }
         }
         .onDisappear {

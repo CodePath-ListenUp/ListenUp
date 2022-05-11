@@ -5,12 +5,13 @@
 //  Created by Tyler Dakin on 4/26/22.
 //
 
+import AVFoundation
 import CoreMedia
 import MarqueeLabel
 import ProgressHUD
 import SafariServices
-import UIKit
 import SwiftUI
+import UIKit
 
 
 class PagedPostViewController: UIViewController {
@@ -31,7 +32,13 @@ class PagedPostViewController: UIViewController {
     
     let player = MusicPlayer()
     var isPlaying: Bool = false
-    var isViewInFocus = false
+    var isViewInFocus = false {
+        didSet {
+            if !isViewInFocus {
+                enterPausedState()
+            }
+        }
+    }
     
     var weArePartying: Bool = false
     
@@ -205,6 +212,7 @@ class PagedPostViewController: UIViewController {
     func openPost(post: Post) {
         if let songwhipStr = post.songLinkString, let url = URL(string: songwhipStr) {
             let svc = SFSafariViewController(url: url)
+            svc.preferredControlTintColor = jellyColor
             DispatchQueue.main.async {
                 self.present(svc, animated: true)
             }
@@ -214,6 +222,7 @@ class PagedPostViewController: UIViewController {
                 self.post.songLinkString = result.url
                 let url = URL(string: result.url)!
                 let svc = SFSafariViewController(url: url)
+                svc.preferredControlTintColor = jellyColor
                 DispatchQueue.main.async {
                     self.present(svc, animated: true)
                 }
